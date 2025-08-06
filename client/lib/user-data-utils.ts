@@ -201,6 +201,50 @@ export function saveUserBirthday(username: string, birthday: string): void {
 }
 
 /**
+ * Switch to a different user (for multi-user support)
+ */
+export function switchToUser(username: string): boolean {
+  const userKey = username.toLowerCase().replace(/\s+/g, '-');
+  const hasProfile = localStorage.getItem(`bloom-user-${userKey}-display-name`) ||
+                     localStorage.getItem(`bloom-user-${userKey}-birthday`) ||
+                     localStorage.getItem(`bloom-user-${userKey}-character`);
+
+  if (hasProfile) {
+    setCurrentUser(userKey);
+    return true; // User exists
+  }
+
+  return false; // User doesn't exist
+}
+
+/**
+ * Get user profile summary
+ */
+export function getUserProfile(username: string): {
+  displayName: string;
+  birthday: string | null;
+  character: string | null;
+  totalDays: number;
+  hasData: boolean;
+} {
+  const userKey = username.toLowerCase().replace(/\s+/g, '-');
+  return {
+    displayName: loadUserDisplayName(userKey),
+    birthday: getUserBirthday(userKey),
+    character: getUserCharacter(userKey),
+    totalDays: getUserStoredDates(userKey).length,
+    hasData: getUserStoredDates(userKey).length > 0
+  };
+}
+
+/**
+ * Clear current user session (logout)
+ */
+export function clearCurrentUser(): void {
+  localStorage.removeItem('bloom-current-user');
+}
+
+/**
  * Check if user exists (has any data)
  */
 export function userExists(username: string): boolean {
@@ -252,6 +296,13 @@ export function isCompletelyNewUser(username: string): boolean {
                      localStorage.getItem(`bloom-user-${userKey}-birthday`) ||
                      localStorage.getItem(`bloom-user-${userKey}-character`);
   return !hasProfile;
+}
+
+/**
+ * Get a safe username (normalized)
+ */
+export function normalizeUsername(username: string): string {
+  return username.toLowerCase().replace(/\s+/g, '-');
 }
 
 /**
