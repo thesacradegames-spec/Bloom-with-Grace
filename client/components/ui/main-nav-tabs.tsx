@@ -30,7 +30,7 @@ export function MainNavTabs() {
 
   return (
     <div className="mb-8">
-      <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-2 border border-white/20 shadow-xl">
+      <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-3xl p-2 border border-white/20 dark:border-purple-400/30 shadow-xl transition-colors duration-300">
         <div className="flex items-center justify-center">
           <nav className="flex items-center gap-2">
             {tabs.map((tab) => {
