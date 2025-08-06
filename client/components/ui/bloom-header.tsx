@@ -71,7 +71,6 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
             <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-1 border border-white/20 shadow-lg">
               <UserDropdown
                 userName={userName}
-                onUserNameChange={onUserNameChange || (() => {})}
               />
             </div>
           </div>
