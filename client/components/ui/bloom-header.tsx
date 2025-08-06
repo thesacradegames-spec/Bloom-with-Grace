@@ -80,9 +80,9 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
 
       {/* Daily Quote Section */}
       <div className="max-w-7xl mx-auto mt-4 relative z-10">
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 shadow-lg mx-6">
+        <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20 dark:border-purple-400/30 shadow-lg mx-6">
           <div className="flex items-start gap-3">
-            <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg border border-white/20 flex-shrink-0">
+            <div className="bg-white/20 dark:bg-purple-400/20 backdrop-blur-sm p-2 rounded-lg border border-white/20 dark:border-purple-400/30 flex-shrink-0">
               <Quote className="w-4 h-4 text-white" />
             </div>
             <div className="flex-1 min-w-0">
@@ -98,6 +98,20 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Image Section */}
+      <div className="max-w-7xl mx-auto mt-4 relative z-10">
+        <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20 dark:border-purple-400/30 shadow-lg mx-6">
+          <div className="relative overflow-hidden rounded-xl">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F8093c6ee30ac47bc8b7ae314dcbc6b5e%2Fecc26b2844654b19a5b108c3e69a8143?format=webp&width=800"
+              alt="Daily Inspiration"
+              className="w-full h-auto object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
           </div>
         </div>
       </div>
