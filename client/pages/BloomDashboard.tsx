@@ -220,6 +220,22 @@ export default function BloomDashboard() {
 
   const todaysTasks = dashboardData.goals.reduce((total, goal) => total + goal.current, 0);
 
+  const handleCompleteDay = () => {
+    // Mark the day as completed - this could trigger additional logic
+    // like updating streaks, sending notifications, etc.
+    console.log('Day completed!', {
+      date: currentDate,
+      goals: dashboardData.goals,
+      waterIntake: dashboardData.waterIntake
+    });
+
+    // You could add additional completion logic here:
+    // - Show a completion animation
+    // - Update completion timestamps
+    // - Calculate bonus points
+    // - Send notifications
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 relative overflow-hidden">
       {/* Optimized background decorative elements */}
