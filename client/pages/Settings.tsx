@@ -49,6 +49,7 @@ export default function Settings() {
   const [userName, setUserName] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [selectedCharacter, setSelectedCharacter] = useState<Character>(CUTE_CHARACTERS[0]);
   const [goals, setGoals] = useState<Goal[]>(DEFAULT_GOALS);
   const [notifications, setNotifications] = useState(true);
   const [isAddingGoal, setIsAddingGoal] = useState(false);
