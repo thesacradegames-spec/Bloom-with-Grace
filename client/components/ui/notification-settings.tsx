@@ -13,6 +13,7 @@ import {
   showNotification,
   initializeNotifications
 } from "@/lib/notification-utils";
+import { MobileNotificationInfo } from "./mobile-notification-info";
 
 interface NotificationSettingsProps {
   username: string;
