@@ -241,6 +241,7 @@ export default function BloomDashboard() {
         ))}
       </div>
 
+      <BirthdayCelebration isActive={isBirthday} />
       <BirthdayPopup currentDate={currentDate} />
       <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
       
