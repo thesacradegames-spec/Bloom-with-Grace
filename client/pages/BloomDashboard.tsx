@@ -422,17 +422,20 @@ export default function BloomDashboard() {
 
           {/* Right Column - Enhanced Calendar */}
           <div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 shadow-xl">
+            <div className="glass-card rounded-3xl p-6 shadow-xl animate-fade-in floating" style={{ animationDelay: '0.3s' }}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-xl shadow-lg">
+                <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-xl shadow-lg animate-pulse">
                   <Calendar className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white">Progress Calendar</h3>
-                  <p className="text-white/70 text-xs">Your journey overview</p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                    Progress Calendar
+                    <span className="text-sm animate-bounce">🗓️</span>
+                  </h3>
+                  <p className="text-white/70 text-xs">Your magical journey overview ✨</p>
                 </div>
               </div>
-              <CalendarWidget 
+              <CalendarWidget
                 currentDate={currentDate}
                 onDateSelect={handleDateSelect}
               />
