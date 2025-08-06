@@ -12,19 +12,21 @@ interface ProfileFormProps {
 export function ProfileForm({ onComplete }: ProfileFormProps) {
   const [name, setName] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [selectedCharacter, setSelectedCharacter] = useState<Character>(CUTE_CHARACTERS[0]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !birthday) return;
+    if (!name.trim() || !birthday || !selectedCharacter) return;
 
     setIsLoading(true);
-    
+
     // Simulate loading for smooth transition
     setTimeout(() => {
       onComplete({
         name: name.trim(),
-        birthday
+        birthday,
+        character: selectedCharacter.id
       });
     }, 800);
   };
