@@ -149,7 +149,7 @@ export default function Settings() {
     localStorage.setItem(key, enabled ? 'true' : 'false');
   };
 
-  const handleExportData = () => {
+  const handleExportJSON = () => {
     if (!userName) return;
 
     // Collect all user data
@@ -195,6 +195,10 @@ export default function Settings() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const handleExportCSV = (timeRange: 'all' | 'weekly' | 'monthly') => {
+    exportUserDataAsCSV(timeRange, userName);
   };
 
   const handleClearAllData = () => {
