@@ -477,7 +477,8 @@ export default function Settings() {
           </div>
 
           {/* Data Management */}
-          <div className="lg:col-span-2 bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
+          <div className="lg:col-span-2 glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+               style={{ animationDelay: '0.3s' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-gradient-to-r from-red-400 to-pink-400 p-2 rounded-xl shadow-lg">
                 <Download className="w-6 h-6 text-white" />
