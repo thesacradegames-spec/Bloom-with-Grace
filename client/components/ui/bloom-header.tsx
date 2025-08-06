@@ -100,6 +100,30 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
         </div>
       </div>
 
+      {/* Daily Quote Section */}
+      <div className="max-w-7xl mx-auto mt-4 relative z-10">
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 shadow-lg mx-6">
+          <div className="flex items-start gap-3">
+            <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg border border-white/20 flex-shrink-0">
+              <Quote className="w-4 h-4 text-white" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <blockquote className="text-white/95 text-sm font-medium italic leading-relaxed">
+                "{dailyQuote.text}"
+              </blockquote>
+              {dailyQuote.author && (
+                <div className="flex items-center gap-2 mt-2">
+                  <div className="w-8 h-px bg-white/30"></div>
+                  <cite className="text-white/80 text-xs font-medium not-italic">
+                    {dailyQuote.author}
+                  </cite>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom gradient line */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 via-purple-500 to-blue-500 opacity-60"></div>
     </header>
