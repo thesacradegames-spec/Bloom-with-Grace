@@ -10,6 +10,7 @@ import Landing from "./pages/Landing";
 import BloomDashboard from "./pages/BloomDashboard";
 import Analytics from "./pages/Analytics";
 import History from "./pages/History";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
