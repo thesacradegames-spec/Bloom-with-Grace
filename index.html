@@ -2,10 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Theme and App Metadata -->
     <meta name="theme-color" content="#ec4899" />
+    <meta name="application-name" content="Her Daily Bloom" />
+    <meta name="description" content="Track your daily goals and bloom every day with personalized reminders" />
+
+    <!-- iOS Specific -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Daily Bloom" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+
+    <!-- Mobile Optimizations -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/client/global.css" as="style" />
+
     <title>Her Daily Bloom - Track Your Goals</title>
   </head>
 
