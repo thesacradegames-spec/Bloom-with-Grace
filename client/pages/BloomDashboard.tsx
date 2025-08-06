@@ -337,16 +337,16 @@ export default function BloomDashboard() {
         </div>
 
         {/* Enhanced Date and Next Day Section */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-12 gap-6">
-          <div className="glass-card rounded-2xl p-6 shadow-xl animate-fade-in floating">
-            <div className="flex items-center gap-3 mb-2">
-              <Calendar className="w-6 h-6 text-white animate-pulse" />
-              <h2 className="text-2xl font-bold text-white drop-shadow-lg">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
+          <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl animate-fade-in floating">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-pulse" />
+              <h2 className="text-lg sm:text-2xl font-bold text-white drop-shadow-lg">
                 {formatDateForDisplay(currentDate)}
               </h2>
-              <span className="text-lg animate-bounce">🌸</span>
+              <span className="text-base sm:text-lg animate-bounce">🌸</span>
             </div>
-            <p className="text-white/90 text-sm font-medium">
+            <p className="text-white/90 text-xs sm:text-sm font-medium">
               ✨ Ready to bloom and achieve your dreams today? ✨
             </p>
           </div>
