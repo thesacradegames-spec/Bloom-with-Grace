@@ -96,23 +96,23 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
         {/* Header section */}
         <div className="text-center mb-8 relative z-10">
           <div className="mb-6 relative">
-            <div className="bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm p-4 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg">
-              <User className="w-10 h-10 text-white drop-shadow-lg" />
+            <div className={`bg-gradient-to-r ${selectedCharacter.color} backdrop-blur-sm p-4 rounded-full w-24 h-24 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg animate-pulse`}>
+              <span className="text-4xl drop-shadow-lg">{selectedCharacter.emoji}</span>
             </div>
             <div className="absolute -top-2 -right-8 w-6 h-6 bg-yellow-400/80 rounded-full animate-bounce blur-sm" style={{ animationDelay: '0.5s' }}></div>
             <div className="absolute -bottom-2 -left-8 w-4 h-4 bg-pink-400/80 rounded-full animate-bounce blur-sm" style={{ animationDelay: '1s' }}></div>
           </div>
-          
+
           <h1 className="text-4xl font-bold text-white drop-shadow-lg mb-3 tracking-wide">
             Tell Us About You
           </h1>
-          
+
           <p className="text-white/90 text-lg mb-2">
             🌟 Let's personalize your journey 🌟
           </p>
-          
+
           <p className="text-sm text-white/80">
-            We'll use this information to make your experience special!
+            Choose your cute companion and let's get started!
           </p>
         </div>
 
