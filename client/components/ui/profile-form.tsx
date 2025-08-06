@@ -94,30 +94,30 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-300/20 via-purple-300/20 to-blue-300/20 opacity-60 animate-pulse"></div>
         
         {/* Header section with app icon */}
-        <div className="text-center mb-8 relative z-10">
+        <div className="text-center mb-6 sm:mb-8 relative z-10">
           {/* App icon and title */}
-          <div className="mb-6 relative">
-            <div className="bg-gradient-to-br from-pink-400/30 to-purple-400/30 backdrop-blur-sm p-6 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg">
-              <span className="text-3xl">🌸</span>
+          <div className="mb-4 sm:mb-6 relative">
+            <div className="bg-gradient-to-br from-pink-400/30 to-purple-400/30 backdrop-blur-sm p-4 sm:p-6 rounded-full w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center mb-3 sm:mb-4 border border-white/30 shadow-lg">
+              <span className="text-2xl sm:text-3xl">🌸</span>
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold text-white drop-shadow-lg mb-3 tracking-wide">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white drop-shadow-lg mb-2 sm:mb-3 tracking-wide">
             Her Daily Bloom
           </h1>
 
-          <p className="text-white/90 text-lg mb-4">
+          <p className="text-white/90 text-base sm:text-lg mb-3 sm:mb-4">
             ✨ Track your goals, bloom every day ✨
           </p>
 
-          <p className="text-sm text-white/80 mb-6">
+          <p className="text-xs sm:text-sm text-white/80 mb-4 sm:mb-6">
             Your personal journey to achieving dreams starts here!
           </p>
 
           {/* Welcome section */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-6 border border-white/20">
-            <h2 className="text-xl font-semibold text-white mb-2">🌸 Welcome, Beautiful! 🌸</h2>
-            <p className="text-white/80 text-sm">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-4 sm:mb-6 border border-white/20">
+            <h2 className="text-lg sm:text-xl font-semibold text-white mb-2">🌸 Welcome, Beautiful! 🌸</h2>
+            <p className="text-white/80 text-xs sm:text-sm">
               Ready to start your amazing journey? Enter your name below and let's begin tracking your daily goals together!
             </p>
           </div>
