@@ -69,7 +69,10 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
         </Link>
 
         {/* Enhanced Navigation and User Section */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Notification Status */}
+          <NotificationStatus />
+
           {/* Theme Toggle */}
           <ThemeToggle />
 
