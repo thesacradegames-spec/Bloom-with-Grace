@@ -278,7 +278,7 @@ export default function BloomDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 relative overflow-hidden transition-colors duration-500">
       {/* Enhanced background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-60">
         {/* Cute floating shapes */}
@@ -286,7 +286,7 @@ export default function BloomDashboard() {
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-purple-300/15 to-blue-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
         {/* Cute floating emojis */}
-        {['🌸', '✨', '🦋', '🌺', '💖', '����', '🎀', '🌙'].map((emoji, i) => (
+        {['🌸', '✨', '🦋', '🌺', '💖', '🌟', '🎀', '🌙'].map((emoji, i) => (
           <div
             key={i}
             className="absolute text-white/20 text-xl animate-bounce"
