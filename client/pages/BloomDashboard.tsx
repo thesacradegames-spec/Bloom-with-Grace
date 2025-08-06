@@ -14,14 +14,22 @@ import { getCurrentLocalDate, addDaysToDateString, formatDateForDisplay } from "
 import { isTodayUsersBirthday } from "@/lib/birthday-utils";
 import { getUserGoals } from "@/lib/goal-utils";
 import { calculateGlobalStats, GlobalStats } from "@/lib/stats-utils";
-import { 
-  getCurrentUser, 
-  saveUserDayData, 
-  loadUserDayData, 
+import {
+  getCurrentUser,
+  saveUserDayData,
+  loadUserDayData,
   calculateUserGlobalStats,
   saveUserDisplayName,
   loadUserDisplayName
 } from "@/lib/user-data-utils";
+import {
+  createGoalReminders,
+  createWaterReminders,
+  createDailyReminder,
+  showGoalReminder,
+  getNotificationSettings,
+  initializeNotifications
+} from "@/lib/notification-utils";
 
 interface Goal {
   id: string;
