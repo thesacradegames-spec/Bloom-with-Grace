@@ -152,6 +152,17 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
                 <Edit3 className="w-4 h-4 mr-2" />
                 Edit Name
               </Button>
+
+              <Link to="/settings" onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full justify-start text-left border-gray-200 hover:bg-gray-50"
+                >
+                  <Settings className="w-4 h-4 mr-2" />
+                  Settings
+                </Button>
+              </Link>
             </div>
           )}
         </div>,
