@@ -32,7 +32,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 flex items-center justify-center p-4 relative overflow-hidden transition-colors duration-500">
       {/* Animated background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating flowers */}
