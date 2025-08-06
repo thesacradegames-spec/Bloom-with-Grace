@@ -10,7 +10,8 @@ interface BloomHeaderProps {
 
 export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHeaderProps) {
   const location = useLocation();
-  
+  const dailyQuote = getDailyQuote();
+
   return (
     <header className="relative w-full px-6 py-6 overflow-hidden z-40">
       {/* Background with enhanced glass morphism */}
