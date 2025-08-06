@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SplashScreen } from "@/components/ui/splash-screen";
 import { ProfileForm } from "@/components/ui/profile-form";
-import { getCurrentUser } from "@/lib/user-data-utils";
+import { getCurrentUser, initializeNewUser, isCompletelyNewUser } from "@/lib/user-data-utils";
 
 type OnboardingStage = 'splash' | 'profile' | 'complete';
 
@@ -29,11 +29,19 @@ export default function Landing() {
   };
 
   const handleProfileComplete = (profileData: ProfileData) => {
-    // Save user data to localStorage
-    localStorage.setItem('bloom-current-user', profileData.name);
-    localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-birthday`, profileData.birthday);
-    localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-display-name`, profileData.name);
-    localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-character`, profileData.character);
+    // Check if this is a completely new user and initialize properly
+    const username = profileData.name.toLowerCase().replace(/\s+/g, '-');
+
+    if (isCompletelyNewUser(username)) {
+      // Initialize as completely new user with fresh data
+      initializeNewUser(username, profileData.name, profileData.birthday, profileData.character);
+    } else {
+      // Existing user - just update current user but keep their progress
+      localStorage.setItem('bloom-current-user', username);
+      localStorage.setItem(`bloom-user-${username}-display-name`, profileData.name);
+      localStorage.setItem(`bloom-user-${username}-birthday`, profileData.birthday);
+      localStorage.setItem(`bloom-user-${username}-character`, profileData.character);
+    }
 
     setStage('complete');
 
