@@ -128,9 +128,9 @@ export function StatsCards({
 
           {/* Progress indicator for water intake */}
           {stat.label.includes('Water') && (
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200 rounded-b-2xl overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500"
+            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gray-200/70 dark:bg-gray-700/50 rounded-b-2xl overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 dark:from-cyan-300 dark:to-blue-400 transition-all duration-500 animate-pulse"
                 style={{ width: `${Math.min((waterIntake / 3) * 100, 100)}%` }}
               ></div>
             </div>
@@ -138,7 +138,14 @@ export function StatsCards({
 
           {/* Perfect day indicator */}
           {stat.label.includes('Perfect') && perfectDays > 0 && (
-            <div className="absolute top-2 right-2 w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+            <div className="absolute top-2 right-2 w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 dark:from-purple-300 dark:to-pink-300 rounded-full animate-pulse shadow-lg"></div>
+          )}
+
+          {/* Streak fire effect */}
+          {stat.label.includes('Streak') && stat.value > 0 && (
+            <div className="absolute top-2 right-2 text-xs animate-bounce" style={{ animationDelay: '1s' }}>
+              🔥
+            </div>
           )}
         </div>
       ))}
