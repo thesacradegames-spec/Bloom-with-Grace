@@ -259,23 +259,23 @@ export default function Settings() {
 
       <BloomHeader userName={displayName} onUserNameChange={setDisplayName} />
       
-      <main className="max-w-4xl mx-auto px-6 pb-12 relative z-10">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12 relative z-10">
         {/* Page Title */}
-        <div className="mb-8">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-3 rounded-xl shadow-lg">
-                <SettingsIcon className="w-7 h-7 text-white" />
+        <div className="mb-6 sm:mb-8">
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 shadow-lg">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg">
+                <SettingsIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
               </div>
-              <div>
-                <h1 className="text-2xl font-bold text-white drop-shadow-lg">Settings</h1>
-                <p className="text-white/80 text-sm">Customize your Her Daily Bloom experience</p>
+              <div className="min-w-0 flex-1">
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-lg">Settings</h1>
+                <p className="text-white/80 text-xs sm:text-sm">Customize your Her Daily Bloom experience</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {/* Profile Settings */}
           <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in">
             <div className="flex items-center gap-3 mb-6">
