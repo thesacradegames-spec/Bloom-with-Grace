@@ -14,15 +14,15 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(userName);
-  const [userCharacter, setUserCharacter] = useState(getUserCharacter());
+  const [userCharacter, setUserCharacter] = useState(() => getUserCharacter());
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Update character when dropdown opens or userName changes
+  // Update character only when userName changes, not when dropdown opens
   useEffect(() => {
     setUserCharacter(getUserCharacter());
-  }, [userName, isOpen]);
+  }, [userName]);
 
   // Calculate dropdown position
   const updateDropdownPosition = () => {
