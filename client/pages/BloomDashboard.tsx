@@ -279,21 +279,38 @@ export default function BloomDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 relative overflow-hidden">
-      {/* Optimized background decorative elements */}
+      {/* Enhanced background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-60">
-        {/* Reduced decorative circles */}
-        <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-white/8 to-pink-300/15 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-purple-300/15 to-blue-400/15 rounded-full blur-3xl"></div>
+        {/* Cute floating shapes */}
+        <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-white/8 to-pink-300/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-purple-300/15 to-blue-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
-        {/* Reduced floating sparkles */}
-        {[...Array(5)].map((_, i) => (
-          <Sparkles
+        {/* Cute floating emojis */}
+        {['🌸', '✨', '🦋', '🌺', '💖', '🌟', '🎀', '🌙'].map((emoji, i) => (
+          <div
             key={i}
-            className="absolute text-white/8"
+            className="absolute text-white/20 text-xl animate-bounce"
             style={{
-              left: `${20 + i * 20}%`,
-              top: `${20 + i * 15}%`,
-              fontSize: '12px',
+              left: `${10 + i * 12}%`,
+              top: `${15 + (i % 3) * 25}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + (i % 2)}s`
+            }}
+          >
+            {emoji}
+          </div>
+        ))}
+
+        {/* Floating sparkles */}
+        {[...Array(8)].map((_, i) => (
+          <Sparkles
+            key={`sparkle-${i}`}
+            className="absolute text-white/10 animate-pulse"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${10 + i * 20}%`,
+              fontSize: '14px',
+              animationDelay: `${i * 0.3}s`
             }}
           />
         ))}
