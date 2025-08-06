@@ -192,7 +192,7 @@ export default function Analytics() {
       
       <main className="max-w-7xl mx-auto px-6 pb-8">
         {/* Navigation Tabs */}
-        <NavTabs activeTab="analytics" onTabChange={() => {}} />
+        <MainNavTabs />
 
         <div className="space-y-8">
           {/* Overview Stats */}
