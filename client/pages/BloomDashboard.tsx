@@ -321,6 +321,9 @@ export default function BloomDashboard() {
       <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
       
       <main className="max-w-7xl mx-auto px-6 pb-12 relative z-10">
+        {/* Beautiful Navigation Tabs */}
+        <MainNavTabs />
+
         {/* Enhanced Statistics Cards with better spacing */}
         <div className="mb-12">
           <StatsCards
@@ -332,9 +335,6 @@ export default function BloomDashboard() {
             waterIntake={dashboardData.waterIntake}
           />
         </div>
-
-        {/* Beautiful Navigation Tabs */}
-        <MainNavTabs />
 
         {/* Enhanced Date and Next Day Section */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-12 gap-6">
