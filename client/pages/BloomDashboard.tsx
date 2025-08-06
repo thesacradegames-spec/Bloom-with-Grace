@@ -155,30 +155,8 @@ export default function BloomDashboard() {
     }
   }, [currentDate]);
 
-  // Create goal and water reminders when significant changes occur
-  useEffect(() => {
-    const currentUser = getCurrentUser();
-    if (!currentUser || !sessionStorage.getItem('notifications-initialized')) return;
-
-    const settings = getNotificationSettings(currentUser);
-    if (!settings.enabled) return;
-
-    // Only create reminders after a delay to avoid conflicts with initialization
-    const timer = setTimeout(() => {
-      // Create goal reminders for incomplete goals
-      const incompleteGoals = dashboardData.goals.filter(goal => goal.current < goal.target);
-      if (incompleteGoals.length > 0 && settings.goalReminders) {
-        createGoalReminders(currentUser, incompleteGoals);
-      }
-
-      // Create water reminders if needed
-      if (dashboardData.waterIntake < 3 && settings.waterReminder) {
-        createWaterReminders(currentUser, dashboardData.waterIntake);
-      }
-    }, 1000); // 1 second delay
-
-    return () => clearTimeout(timer);
-  }, [dashboardData.goals.length, Math.floor(dashboardData.waterIntake)]); // Use floor to reduce sensitivity
+  // Note: Removed problematic notifications useEffect that was causing infinite loops
+  // Goal and water reminders are now only created during manual actions (increment/decrement)
 
   // Listen for goal changes from settings
   useEffect(() => {
