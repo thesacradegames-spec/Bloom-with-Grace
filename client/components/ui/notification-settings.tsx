@@ -120,13 +120,13 @@ export function NotificationSettingsComponent({ username, onSettingsChange }: No
       </div>
 
       {/* Permission Status */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+      <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             {getPermissionStatusIcon()}
-            <div>
-              <div className="text-white font-medium">Notification Permission</div>
-              <div className="text-white/70 text-sm">{getPermissionStatusText()}</div>
+            <div className="min-w-0 flex-1">
+              <div className="text-white font-medium text-sm sm:text-base">Notification Permission</div>
+              <div className="text-white/70 text-xs sm:text-sm">{getPermissionStatusText()}</div>
             </div>
           </div>
           
