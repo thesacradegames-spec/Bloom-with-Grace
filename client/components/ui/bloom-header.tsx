@@ -85,19 +85,19 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
       </div>
 
       {/* Daily Quote Section */}
-      <div className="max-w-7xl mx-auto mt-4 relative z-10">
-        <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20 dark:border-purple-400/30 shadow-lg mx-6">
-          <div className="flex items-start gap-3">
-            <div className="bg-white/20 dark:bg-purple-400/20 backdrop-blur-sm p-2 rounded-lg border border-white/20 dark:border-purple-400/30 flex-shrink-0">
-              <Quote className="w-4 h-4 text-white" />
+      <div className="max-w-7xl mx-auto mt-3 sm:mt-4 relative z-10">
+        <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20 dark:border-purple-400/30 shadow-lg mx-4 sm:mx-6">
+          <div className="flex items-start gap-2 sm:gap-3">
+            <div className="bg-white/20 dark:bg-purple-400/20 backdrop-blur-sm p-1.5 sm:p-2 rounded-lg border border-white/20 dark:border-purple-400/30 flex-shrink-0">
+              <Quote className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
             </div>
             <div className="flex-1 min-w-0">
-              <blockquote className="text-white/95 text-sm font-medium italic leading-relaxed">
+              <blockquote className="text-white/95 text-xs sm:text-sm font-medium italic leading-relaxed">
                 "{dailyQuote.text}"
               </blockquote>
               {dailyQuote.author && (
-                <div className="flex items-center gap-2 mt-2">
-                  <div className="w-8 h-px bg-white/30"></div>
+                <div className="flex items-center gap-2 mt-1 sm:mt-2">
+                  <div className="w-6 sm:w-8 h-px bg-white/30"></div>
                   <cite className="text-white/80 text-xs font-medium not-italic">
                     {dailyQuote.author}
                   </cite>
