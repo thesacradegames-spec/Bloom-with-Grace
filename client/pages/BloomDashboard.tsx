@@ -73,7 +73,7 @@ export default function BloomDashboard() {
   });
   const [dashboardData, setDashboardData] = useState<DashboardData>({
     waterIntake: 0,
-    goals: DEFAULT_GOALS
+    goals: []
   });
 
   // Load data from localStorage
