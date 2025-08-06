@@ -353,21 +353,21 @@ export default function BloomDashboard() {
         </div>
 
         {/* Enhanced Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-10">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {/* Left Column - Goals and Wellness with better spacing */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
             {/* Beautiful Goals Section */}
-            <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-3 rounded-xl shadow-lg animate-pulse">
-                  <Trophy className="w-7 h-7 text-white" />
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
+                <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg animate-pulse">
+                  <Trophy className="w-5 h-5 sm:w-6 sm:w-7 sm:h-7 text-white" />
                 </div>
-                <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-white drop-shadow-lg flex items-center gap-2">
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-lg flex items-center gap-1 sm:gap-2">
                     Today's Goals
-                    <span className="text-lg animate-bounce">🎯</span>
+                    <span className="text-sm sm:text-base lg:text-lg animate-bounce">🎯</span>
                   </h2>
-                  <p className="text-white/80 text-sm">Track your daily achievements and bloom! 🌺</p>
+                  <p className="text-white/80 text-xs sm:text-sm">Track your daily achievements and bloom! 🌺</p>
                 </div>
               </div>
               
