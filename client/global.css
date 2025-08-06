@@ -167,4 +167,39 @@
     animation: floating 3s ease-in-out infinite;
     animation-delay: 1.5s;
   }
+
+  /* Responsive utilities */
+  .responsive-text {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .responsive-padding {
+    @apply p-3 sm:p-4 md:p-6;
+  }
+
+  .responsive-margin {
+    @apply m-3 sm:m-4 md:m-6;
+  }
+
+  /* Mobile-optimized animations */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-bounce,
+    .animate-pulse,
+    .animate-spin,
+    .floating,
+    .floating-delayed {
+      animation: none !important;
+    }
+  }
+
+  /* Better scrolling on mobile */
+  @media (max-width: 768px) {
+    body {
+      overscroll-behavior: none;
+    }
+
+    .overflow-y-auto {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
 }
