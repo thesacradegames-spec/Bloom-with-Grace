@@ -47,43 +47,19 @@ interface DashboardData {
   goals: Goal[];
 }
 
-const DEFAULT_GOALS: Goal[] = [
-  {
-    id: "codeforces",
-    title: "Codeforces",
-    icon: <Trophy className="w-6 h-6 text-yellow-500" />,
-    current: 0,
-    target: 2
-  },
-  {
-    id: "codechef",
-    title: "CodeChef",
-    icon: <Trophy className="w-6 h-6 text-orange-500" />,
-    current: 0,
-    target: 2
-  },
-  {
-    id: "leetcode",
-    title: "LeetCode",
-    icon: <Code className="w-6 h-6 text-blue-500" />,
-    current: 0,
-    target: 3
-  },
-  {
-    id: "dsa",
-    title: "DSA Practice",
-    icon: <Brain className="w-6 h-6 text-pink-500" />,
-    current: 0,
-    target: 2
-  },
-  {
-    id: "github",
-    title: "GitHub",
-    icon: <Github className="w-6 h-6 text-gray-700" />,
-    current: 0,
-    target: 1
-  }
-];
+// Icon mapping for goals
+const getGoalIcon = (iconString: string) => {
+  const iconMap: Record<string, React.ReactNode> = {
+    '🏆': <Trophy className="w-6 h-6 text-yellow-500" />,
+    '🥇': <Trophy className="w-6 h-6 text-orange-500" />,
+    '💻': <Code className="w-6 h-6 text-blue-500" />,
+    '🧠': <Brain className="w-6 h-6 text-pink-500" />,
+    '📂': <Github className="w-6 h-6 text-gray-700" />,
+    '🎯': <Target className="w-6 h-6 text-purple-500" />,
+    '⭐': <Sparkles className="w-6 h-6 text-yellow-400" />,
+  };
+  return iconMap[iconString] || <Target className="w-6 h-6 text-gray-500" />;
+};
 
 export default function BloomDashboard() {
   const [currentDate, setCurrentDate] = useState(getCurrentLocalDate());
