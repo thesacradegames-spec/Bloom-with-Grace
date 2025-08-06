@@ -160,17 +160,17 @@ export function NotificationSettingsComponent({ username, onSettingsChange }: No
       {permissionStatus !== 'unsupported' && (
         <div className="space-y-4">
           {/* Master Toggle */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
                 {settings.enabled ? (
-                  <Bell className="w-5 h-5 text-white" />
+                  <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
                 ) : (
-                  <BellOff className="w-5 h-5 text-white/60" />
+                  <BellOff className="w-4 h-4 sm:w-5 sm:h-5 text-white/60 flex-shrink-0" />
                 )}
-                <div>
-                  <Label className="text-white font-medium">Enable Notifications</Label>
-                  <div className="text-white/70 text-sm">
+                <div className="min-w-0 flex-1">
+                  <Label className="text-white font-medium text-sm sm:text-base">Enable Notifications</Label>
+                  <div className="text-white/70 text-xs sm:text-sm">
                     Turn on reminders to help you achieve your goals
                   </div>
                 </div>
