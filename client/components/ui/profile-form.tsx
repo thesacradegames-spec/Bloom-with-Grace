@@ -118,6 +118,34 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
 
         {/* Profile Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Character Selection */}
+          <div className="space-y-3">
+            <Label className="text-white font-medium">
+              Choose Your Cute Companion 🎭
+            </Label>
+            <div className="grid grid-cols-4 gap-3 max-h-48 overflow-y-auto bg-white/5 rounded-2xl p-4 border border-white/20 backdrop-blur-sm">
+              {CUTE_CHARACTERS.map((character) => (
+                <button
+                  key={character.id}
+                  type="button"
+                  onClick={() => setSelectedCharacter(character)}
+                  className={`p-3 rounded-xl transition-all duration-300 border-2 ${
+                    selectedCharacter.id === character.id
+                      ? `border-white/60 bg-gradient-to-r ${character.color} shadow-lg scale-105`
+                      : 'border-white/20 bg-white/10 hover:bg-white/20 hover:scale-105'
+                  }`}
+                  disabled={isLoading}
+                >
+                  <div className="text-2xl mb-1">{character.emoji}</div>
+                  <div className="text-white text-xs font-medium">{character.name}</div>
+                </button>
+              ))}
+            </div>
+            <p className="text-white/70 text-xs text-center">
+              Selected: {selectedCharacter.name} - {selectedCharacter.description} ✨
+            </p>
+          </div>
+
           {/* Name Field */}
           <div className="space-y-2">
             <Label htmlFor="name" className="text-white font-medium">
