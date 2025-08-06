@@ -69,13 +69,6 @@ export default function History() {
     setUserName(displayName);
   }, []);
 
-  const handleUserNameChange = (newName: string) => {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-
-    setUserName(newName);
-    saveUserDisplayName(currentUser, newName);
-  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
