@@ -100,7 +100,8 @@ export default function Settings() {
     if (!userName) return;
 
     saveUserDisplayName(userName, displayName);
-    
+    saveUserCharacter(selectedCharacter.id, userName);
+
     if (birthday) {
       saveUserBirthday(userName, birthday);
     }
