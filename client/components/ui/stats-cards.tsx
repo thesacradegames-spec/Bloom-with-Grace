@@ -91,31 +91,35 @@ export function StatsCards({
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`group relative bg-gradient-to-br ${stat.bgGradient} rounded-2xl p-5 border ${stat.borderColor} shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]`}
+          className={`group relative bg-gradient-to-br ${stat.bgGradient} backdrop-blur-sm rounded-2xl p-5 border ${stat.borderColor} ${stat.shadowColor} hover:shadow-xl transition-all duration-300 hover:scale-[1.05] animate-fade-in`}
+          style={{ animationDelay: `${index * 100}ms` }}
         >
-          {/* Simplified background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-          
+          {/* Enhanced background decoration */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 dark:from-white/10 dark:to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
           <div className="flex flex-col items-start relative z-10">
-            {/* Simplified icon */}
-            <div className="relative mb-3">
-              <div className="bg-white/80 rounded-lg p-2 shadow-sm group-hover:shadow-md transition-shadow duration-200">
-                <stat.icon className={`w-6 h-6 ${stat.iconColor}`} />
+            {/* Icon with emoji */}
+            <div className="relative mb-3 flex items-center gap-2">
+              <div className="bg-white/90 dark:bg-white/20 backdrop-blur-sm rounded-lg p-2 shadow-sm group-hover:shadow-md transition-all duration-300">
+                <stat.icon className={`w-5 h-5 ${stat.iconColor}`} />
               </div>
+              <span className="text-lg animate-bounce" style={{ animationDelay: `${index * 200}ms` }}>
+                {stat.emoji}
+              </span>
             </div>
-            
-            {/* Enhanced text */}
-            <div className="text-xs font-medium text-gray-600 whitespace-pre-line mb-2 group-hover:text-gray-700 transition-colors duration-300">
+
+            {/* Enhanced label */}
+            <div className="text-xs font-medium text-gray-700 dark:text-gray-300 whitespace-pre-line mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors duration-300">
               {stat.label}
             </div>
-            
+
             {/* Enhanced value display */}
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent group-hover:from-gray-900 group-hover:to-gray-700 transition-all duration-300">
+              <span className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent group-hover:from-gray-900 group-hover:to-gray-700 dark:group-hover:from-white dark:group-hover:to-gray-100 transition-all duration-300">
                 {stat.value}
               </span>
               {stat.unit && (
-                <span className="text-sm font-medium text-gray-500 group-hover:text-gray-600 transition-colors duration-300">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
                   {stat.unit}
                 </span>
               )}
