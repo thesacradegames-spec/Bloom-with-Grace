@@ -145,6 +145,22 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "floating": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+        },
+        "pulse-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px rgba(255, 255, 255, 0.2)",
+          },
+          "50%": {
+            boxShadow: "0 0 30px rgba(255, 255, 255, 0.4)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
