@@ -56,7 +56,7 @@ export function CompleteDayButton({
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 shadow-xl">
+    <div className="glass-card rounded-2xl p-6 shadow-xl animate-fade-in">
       {/* Progress Summary */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
