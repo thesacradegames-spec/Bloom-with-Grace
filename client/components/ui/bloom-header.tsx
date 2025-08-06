@@ -60,33 +60,7 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
         </Link>
 
         {/* Enhanced Navigation and User Section */}
-        <div className="flex items-center gap-8">
-          {/* Beautiful Navigation */}
-          <nav className="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-2xl p-2 border border-white/20 shadow-lg">
-            <Link 
-              to="/analytics" 
-              className={`group px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 font-medium ${
-                location.pathname === '/analytics' 
-                  ? 'bg-white/20 text-white shadow-lg scale-105' 
-                  : 'text-white/80 hover:text-white hover:bg-white/10 hover:scale-105'
-              }`}
-            >
-              <BarChart3 className="w-4 h-4 group-hover:animate-pulse" />
-              <span className="hidden lg:block">Analytics</span>
-            </Link>
-            <Link 
-              to="/history" 
-              className={`group px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 font-medium ${
-                location.pathname === '/history' 
-                  ? 'bg-white/20 text-white shadow-lg scale-105' 
-                  : 'text-white/80 hover:text-white hover:bg-white/10 hover:scale-105'
-              }`}
-            >
-              <Clock className="w-4 h-4 group-hover:animate-pulse" />
-              <span className="hidden lg:block">History</span>
-            </Link>
-          </nav>
-
+        <div className="flex items-center gap-6">
           {/* Enhanced User Profile */}
           <div className="relative z-50">
             <div className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-300/20 rounded-2xl blur-lg"></div>
