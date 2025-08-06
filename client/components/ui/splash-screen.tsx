@@ -125,35 +125,48 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         </div>
 
         {/* App title with animation */}
-        <div 
+        <div
           className={`transition-all duration-1500 ease-out delay-500 ${
-            animationStage >= 1 
-              ? 'opacity-100 translate-y-0' 
+            animationStage >= 1
+              ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-8'
           }`}
         >
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg mb-4 tracking-wide">
+          <h1 className="text-5xl font-bold text-white drop-shadow-lg mb-2 tracking-wide">
             <span className="bg-gradient-to-r from-white via-pink-100 to-white bg-clip-text text-transparent">
               Her Daily Bloom
             </span>
           </h1>
-          
-          <div 
-            className={`transition-all duration-1000 ease-out delay-1000 ${
-              animationStage >= 1 
-                ? 'opacity-100 translate-y-0' 
+
+          {/* Blooming with grace text */}
+          <div
+            className={`transition-all duration-1200 ease-out delay-800 ${
+              animationStage >= 1
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 translate-y-6 scale-90'
+            }`}
+          >
+            <p className="text-2xl font-semibold text-white/95 mb-4 italic tracking-wide drop-shadow-md">
+              🌸 Blooming with Grace 🌸
+            </p>
+          </div>
+
+          <div
+            className={`transition-all duration-1000 ease-out delay-1200 ${
+              animationStage >= 1
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-4'
             }`}
           >
-            <p className="text-white/90 text-xl font-medium tracking-wide mb-2">
+            <p className="text-white/90 text-lg font-medium tracking-wide mb-2">
               ✨ Track your goals, bloom every day ✨
             </p>
-            
+
             {/* Loading indicator */}
-            <div 
-              className={`transition-all duration-1000 ease-out delay-1500 ${
-                animationStage >= 1 
-                  ? 'opacity-100' 
+            <div
+              className={`transition-all duration-1000 ease-out delay-1800 ${
+                animationStage >= 1
+                  ? 'opacity-100'
                   : 'opacity-0'
               }`}
             >
@@ -170,7 +183,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
                 ))}
               </div>
               <p className="text-white/70 text-sm mt-4 animate-pulse">
-                Preparing your garden...
+                Preparing your magical garden... 🌺
               </p>
             </div>
           </div>
