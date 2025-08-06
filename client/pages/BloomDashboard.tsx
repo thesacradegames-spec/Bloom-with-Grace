@@ -141,20 +141,17 @@ export default function BloomDashboard() {
     }
 
     // Initialize notifications for the user (only once per session)
-    const initNotifications = async () => {
-      const settings = getNotificationSettings(currentUser);
-      if (settings.enabled) {
-        await initializeNotifications(currentUser);
-
-        // Create daily reminders
-        createDailyReminder(currentUser);
-      }
-    };
-
-    // Only initialize notifications once per session
-    if (!sessionStorage.getItem('notifications-initialized')) {
-      initNotifications();
-      sessionStorage.setItem('notifications-initialized', 'true');
+    const initKey = `notifications-initialized-${currentUser}`;
+    if (!sessionStorage.getItem(initKey)) {
+      // Use setTimeout to avoid blocking the main render
+      setTimeout(async () => {
+        const settings = getNotificationSettings(currentUser);
+        if (settings.enabled) {
+          await initializeNotifications(currentUser);
+          createDailyReminder(currentUser);
+        }
+      }, 100);
+      sessionStorage.setItem(initKey, 'true');
     }
   }, [currentDate]);
 
