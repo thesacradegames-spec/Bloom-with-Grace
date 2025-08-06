@@ -100,7 +100,7 @@ export default function History() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 transition-colors duration-500">
-      <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
+      <BloomHeader userName={userName} />
       
       <main className="max-w-7xl mx-auto px-6 pb-8">
         {/* Navigation Tabs */}
