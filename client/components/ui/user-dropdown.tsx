@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { User, Edit3, Check, X } from "lucide-react";
+import { User, Edit3, Check, X, Settings } from "lucide-react";
 import { Button } from "./button";
+import { Link } from "react-router-dom";
 
 interface UserDropdownProps {
   userName: string;
