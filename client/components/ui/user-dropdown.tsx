@@ -4,7 +4,6 @@ import { User, Edit3, Check, X, Settings } from "lucide-react";
 import { Button } from "./button";
 import { Link } from "react-router-dom";
 import { getUserCharacter } from "@/lib/character-utils";
-import { useEffect, useState } from "react";
 
 interface UserDropdownProps {
   userName: string;
