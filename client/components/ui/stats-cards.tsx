@@ -87,11 +87,11 @@ export function StatsCards({
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-6 sm:mb-8">
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`group relative bg-gradient-to-br ${stat.bgGradient} backdrop-blur-sm rounded-2xl p-5 border ${stat.borderColor} ${stat.shadowColor} hover:shadow-xl transition-all duration-300 hover:scale-[1.05] animate-fade-in`}
+          className={`group relative bg-gradient-to-br ${stat.bgGradient} backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-5 border ${stat.borderColor} ${stat.shadowColor} hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-[1.05] animate-fade-in`}
           style={{ animationDelay: `${index * 100}ms` }}
         >
           {/* Enhanced background decoration */}
