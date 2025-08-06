@@ -26,6 +26,7 @@ import { exportUserDataAsCSV, getExportStats } from "@/lib/export-utils";
 import { getUserCharacter, saveUserCharacter } from "@/lib/character-utils";
 import { CUTE_CHARACTERS, Character } from "@/lib/characters";
 import { NotificationSettingsComponent } from "@/components/ui/notification-settings";
+import { NotificationTestButton } from "@/components/ui/notification-test-button";
 import { useNavigate } from "react-router-dom";
 
 interface Goal {
