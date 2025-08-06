@@ -78,7 +78,7 @@ export function UserDropdown({ userName }: UserDropdownProps) {
       {isOpen && typeof window !== 'undefined' && createPortal(
         <div
           ref={dropdownRef}
-          className="fixed w-64 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 p-4 z-[99999] animate-fade-in"
+          className="fixed w-56 sm:w-64 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 p-3 sm:p-4 z-[99999] animate-fade-in"
           style={{
             top: `${dropdownPosition.top}px`,
             right: `${dropdownPosition.right}px`,
