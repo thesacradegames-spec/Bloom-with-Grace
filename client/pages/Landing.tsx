@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SplashScreen } from "@/components/ui/splash-screen";
 import { ProfileForm } from "@/components/ui/profile-form";
-import { getCurrentUser, initializeNewUser, isCompletelyNewUser } from "@/lib/user-data-utils";
+import { getCurrentUser, initializeNewUser, isCompletelyNewUser, normalizeUsername } from "@/lib/user-data-utils";
 
 type OnboardingStage = 'splash' | 'profile' | 'complete';
 
@@ -29,18 +29,18 @@ export default function Landing() {
   };
 
   const handleProfileComplete = (profileData: ProfileData) => {
-    // Check if this is a completely new user and initialize properly
-    const username = profileData.name.toLowerCase().replace(/\s+/g, '-');
+    // Normalize the username for consistency
+    const normalizedUsername = normalizeUsername(profileData.name);
 
-    if (isCompletelyNewUser(username)) {
+    if (isCompletelyNewUser(normalizedUsername)) {
       // Initialize as completely new user with fresh data
-      initializeNewUser(username, profileData.name, profileData.birthday, profileData.character);
+      initializeNewUser(normalizedUsername, profileData.name, profileData.birthday, profileData.character);
     } else {
       // Existing user - just update current user but keep their progress
-      localStorage.setItem('bloom-current-user', username);
-      localStorage.setItem(`bloom-user-${username}-display-name`, profileData.name);
-      localStorage.setItem(`bloom-user-${username}-birthday`, profileData.birthday);
-      localStorage.setItem(`bloom-user-${username}-character`, profileData.character);
+      localStorage.setItem('bloom-current-user', normalizedUsername);
+      localStorage.setItem(`bloom-user-${normalizedUsername}-display-name`, profileData.name);
+      localStorage.setItem(`bloom-user-${normalizedUsername}-birthday`, profileData.birthday);
+      localStorage.setItem(`bloom-user-${normalizedUsername}-character`, profileData.character);
     }
 
     setStage('complete');
