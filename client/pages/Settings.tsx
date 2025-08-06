@@ -324,6 +324,35 @@ export default function Settings() {
                 )}
               </div>
 
+              <div>
+                <Label className="text-white font-medium mb-3 block">
+                  Profile Character 🎭
+                </Label>
+                <div className="grid grid-cols-4 gap-3 max-h-40 overflow-y-auto bg-white/5 rounded-2xl p-4 border border-white/20">
+                  {CUTE_CHARACTERS.map((character) => (
+                    <button
+                      key={character.id}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCharacter(character);
+                        setHasChanges(true);
+                      }}
+                      className={`p-3 rounded-xl transition-all duration-300 border-2 ${
+                        selectedCharacter.id === character.id
+                          ? `border-white/60 bg-gradient-to-r ${character.color} shadow-lg scale-105`
+                          : 'border-white/20 bg-white/10 hover:bg-white/20 hover:scale-105'
+                      }`}
+                    >
+                      <div className="text-2xl mb-1">{character.emoji}</div>
+                      <div className="text-white text-xs font-medium">{character.name}</div>
+                    </button>
+                  ))}
+                </div>
+                <p className="text-white/70 text-xs mt-2">
+                  Selected: {selectedCharacter.name} - {selectedCharacter.description} ✨
+                </p>
+              </div>
+
               {hasChanges && (
                 <Button
                   onClick={handleSaveProfile}
