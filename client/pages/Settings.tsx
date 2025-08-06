@@ -380,16 +380,16 @@ export default function Settings() {
           </div>
 
           {/* Goal Management */}
-          <div className="lg:col-span-2 glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+          <div className="lg:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
                style={{ animationDelay: '0.2s' }}>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-400 p-2 rounded-xl shadow-lg">
-                  <Target className="w-6 h-6 text-white" />
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-400 p-2 rounded-lg sm:rounded-xl shadow-lg">
+                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <div>
-                  <h2 className="text-xl font-bold text-white">Goals Management</h2>
-                  <p className="text-white/70 text-sm">Add, edit, or remove your daily goals</p>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-lg sm:text-xl font-bold text-white">Goals Management</h2>
+                  <p className="text-white/70 text-xs sm:text-sm">Add, edit, or remove your daily goals</p>
                 </div>
               </div>
               
