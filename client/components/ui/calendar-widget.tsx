@@ -119,14 +119,14 @@ export function CalendarWidget({ currentDate, onDateSelect }: CalendarWidgetProp
   };
 
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
+    <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 shadow-sm border border-white/40">
       {/* Calendar Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3 sm:mb-4">
         <button
           onClick={() => navigateMonth("prev")}
           className="p-1 hover:bg-gray-100 rounded-full transition-colors"
         >
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
         </button>
         
         <h3 className="text-lg font-semibold text-gray-900">
