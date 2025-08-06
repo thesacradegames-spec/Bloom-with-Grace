@@ -1,26 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Flower2, Sparkles, Heart, Star, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { SplashScreen } from "@/components/ui/splash-screen";
+import { ProfileForm } from "@/components/ui/profile-form";
+import { getCurrentUser } from "@/lib/user-data-utils";
+
+type OnboardingStage = 'splash' | 'profile' | 'complete';
+
+interface ProfileData {
+  name: string;
+  birthday: string;
+}
 
 export default function Landing() {
-  const [username, setUsername] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [stage, setStage] = useState<OnboardingStage>('splash');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!username.trim()) return;
+  // Check if user already exists and redirect
+  useEffect(() => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
 
-    setIsLoading(true);
-    
-    // Save username to localStorage
-    localStorage.setItem('bloom-current-user', username.trim());
-    
-    // Simulate a brief loading for smooth transition
+  const handleSplashComplete = () => {
+    setStage('profile');
+  };
+
+  const handleProfileComplete = (profileData: ProfileData) => {
+    // Save user data to localStorage
+    localStorage.setItem('bloom-current-user', profileData.name);
+    localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-birthday`, profileData.birthday);
+    localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-display-name`, profileData.name);
+
+    setStage('complete');
+
+    // Navigate to dashboard after brief delay
     setTimeout(() => {
       navigate('/dashboard');
-    }, 800);
+    }, 1000);
   };
 
   return (
