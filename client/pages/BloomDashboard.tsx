@@ -86,6 +86,7 @@ const DEFAULT_GOALS: Goal[] = [
 export default function BloomDashboard() {
   const [currentDate, setCurrentDate] = useState(getCurrentLocalDate());
   const [userName, setUserName] = useState("");
+  const [isBirthday, setIsBirthday] = useState(false);
   const [globalStats, setGlobalStats] = useState<GlobalStats>({
     currentStreak: 0,
     longestStreak: 0,
