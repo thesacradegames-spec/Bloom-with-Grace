@@ -55,17 +55,6 @@ export function UserDropdown({ userName }: UserDropdownProps) {
     };
   }, [userName, isOpen]);
 
-  const handleSave = () => {
-    if (editValue.trim() && editValue.trim() !== userName) {
-      onUserNameChange(editValue.trim());
-    }
-    setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setEditValue(userName);
-    setIsEditing(false);
-  };
 
   return (
     <div className="relative" ref={dropdownRef}>
