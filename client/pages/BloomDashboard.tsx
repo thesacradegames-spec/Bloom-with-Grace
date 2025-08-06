@@ -133,6 +133,55 @@ export default function BloomDashboard() {
     }
   }, [currentDate]);
 
+  // Listen for goal changes from settings
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      // Check if goals were updated
+      if (e.key === `bloom-user-${currentUser.toLowerCase().replace(/\s+/g, '-')}-goals`) {
+        // Reload goals when they change in settings
+        const userGoals = getUserGoals(currentUser);
+        const savedData = loadUserDayData(currentUser, currentDate);
+
+        if (savedData) {
+          const updatedGoals = userGoals.map(userGoal => {
+            const savedGoal = savedData.goalData?.find(g => g.id === userGoal.id);
+            return {
+              id: userGoal.id,
+              title: userGoal.title,
+              icon: getGoalIcon(userGoal.icon),
+              current: savedGoal?.current || 0,
+              target: userGoal.target
+            };
+          });
+
+          setDashboardData(prev => ({
+            ...prev,
+            goals: updatedGoals
+          }));
+        } else {
+          const newGoals = userGoals.map(userGoal => ({
+            id: userGoal.id,
+            title: userGoal.title,
+            icon: getGoalIcon(userGoal.icon),
+            current: 0,
+            target: userGoal.target
+          }));
+
+          setDashboardData(prev => ({
+            ...prev,
+            goals: newGoals
+          }));
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [currentDate]);
+
   // Save daily data to localStorage and recalculate global stats
   useEffect(() => {
     const currentUser = getCurrentUser();
