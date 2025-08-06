@@ -94,30 +94,18 @@ export function UserDropdown({ userName }: UserDropdownProps) {
             </div>
           </div>
 
-          {!isEditing && (
-            <div className="space-y-2">
+          <div className="space-y-2">
+            <Link to="/settings" onClick={() => setIsOpen(false)}>
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setIsEditing(true)}
                 className="w-full justify-start text-left border-gray-200 hover:bg-gray-50"
               >
-                <Edit3 className="w-4 h-4 mr-2" />
-                Edit Name
+                <Settings className="w-4 h-4 mr-2" />
+                Settings
               </Button>
-
-              <Link to="/settings" onClick={() => setIsOpen(false)}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full justify-start text-left border-gray-200 hover:bg-gray-50"
-                >
-                  <Settings className="w-4 h-4 mr-2" />
-                  Settings
-                </Button>
-              </Link>
-            </div>
-          )}
+            </Link>
+          </div>
         </div>,
         document.body
       )}
