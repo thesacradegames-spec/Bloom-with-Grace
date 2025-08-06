@@ -16,8 +16,8 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
   return (
     <header className="relative w-full px-6 py-6 overflow-hidden z-40">
       {/* Background with enhanced glass morphism */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-400/80 via-purple-500/80 to-blue-500/80 backdrop-blur-xl"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-pink-400/80 via-purple-500/80 to-blue-500/80 dark:from-purple-900/90 dark:via-black/80 dark:to-purple-800/90 backdrop-blur-xl transition-colors duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-transparent dark:from-purple-400/10 dark:via-purple-500/5 dark:to-transparent"></div>
       
       {/* Optimized decorative background patterns */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
