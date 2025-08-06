@@ -9,6 +9,7 @@ type OnboardingStage = 'splash' | 'profile' | 'complete';
 interface ProfileData {
   name: string;
   birthday: string;
+  character: string;
 }
 
 export default function Landing() {
