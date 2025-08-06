@@ -8,7 +8,9 @@ import { CalendarWidget } from "@/components/ui/calendar-widget";
 import { WellnessSection } from "@/components/ui/wellness-section";
 import { NextDayButton } from "@/components/ui/next-day-button";
 import { BirthdayPopup } from "@/components/ui/birthday-popup";
+import { BirthdayCelebration } from "@/components/ui/birthday-celebration";
 import { getCurrentLocalDate, addDaysToDateString, formatDateForDisplay } from "@/lib/date-utils";
+import { isTodayUsersBirthday } from "@/lib/birthday-utils";
 import { calculateGlobalStats, GlobalStats } from "@/lib/stats-utils";
 import { 
   getCurrentUser, 
