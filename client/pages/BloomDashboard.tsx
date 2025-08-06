@@ -403,7 +403,7 @@ export default function BloomDashboard() {
             </div>
 
             {/* Enhanced Wellness Section */}
-            <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <WellnessSection
                 waterIntake={dashboardData.waterIntake}
                 targetWater={3}
@@ -415,15 +415,15 @@ export default function BloomDashboard() {
 
           {/* Right Column - Enhanced Calendar */}
           <div>
-            <div className="glass-card rounded-3xl p-6 shadow-xl animate-fade-in floating" style={{ animationDelay: '0.3s' }}>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-xl shadow-lg animate-pulse">
-                  <Calendar className="w-6 h-6 text-white" />
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 shadow-xl animate-fade-in floating" style={{ animationDelay: '0.3s' }}>
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg animate-pulse">
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-1 sm:gap-2">
                     Progress Calendar
-                    <span className="text-sm animate-bounce">🗓️</span>
+                    <span className="text-xs sm:text-sm animate-bounce">🗓️</span>
                   </h3>
                   <p className="text-white/70 text-xs">Your magical journey overview ✨</p>
                 </div>
