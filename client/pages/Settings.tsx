@@ -467,7 +467,7 @@ export default function Settings() {
               </Dialog>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               {goals.map(goal => (
                 <div key={goal.id} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                   <div className="flex items-center gap-3 mb-3">
@@ -477,7 +477,7 @@ export default function Settings() {
                       <p className="text-white/70 text-sm">Daily target: {goal.target}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-2">
                     <Button
                       size="sm"
@@ -507,6 +507,20 @@ export default function Settings() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Save Changes Button for Goals */}
+            <div className="flex justify-center">
+              <Button
+                onClick={() => {
+                  // Goals are automatically saved when modified, this is for user feedback
+                  alert('✨ Goal changes have been saved successfully! ✨');
+                }}
+                className="bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+              >
+                <Save className="w-5 h-5 mr-2" />
+                Save Goal Changes ✅
+              </Button>
             </div>
           </div>
 
