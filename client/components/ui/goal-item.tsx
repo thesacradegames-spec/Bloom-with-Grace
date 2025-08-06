@@ -115,20 +115,20 @@ export function GoalItem({
         </div>
         
         {/* Control buttons */}
-        <div className="flex items-center gap-2 ml-4">
+        <div className="flex items-center gap-1 sm:gap-2 ml-2 sm:ml-4 flex-shrink-0">
           <button
             onClick={() => onDecrement(id)}
             disabled={current <= 0}
-            className="group/btn w-10 h-10 bg-gradient-to-r from-gray-100 to-gray-50 hover:from-red-100 hover:to-pink-100 disabled:from-gray-50 disabled:to-gray-50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg disabled:hover:scale-100"
+            className="group/btn w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gradient-to-r from-gray-100 to-gray-50 hover:from-red-100 hover:to-pink-100 disabled:from-gray-50 disabled:to-gray-50 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 sm:hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg disabled:hover:scale-100"
           >
-            <Minus className="w-4 h-4 text-gray-600 group-hover/btn:text-red-600 transition-colors duration-200" />
+            <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600 group-hover/btn:text-red-600 transition-colors duration-200" />
           </button>
-          
+
           <button
             onClick={() => onIncrement(id)}
-            className="group/btn w-10 h-10 bg-gradient-to-r from-purple-100 to-pink-100 hover:from-purple-200 hover:to-pink-200 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-md hover:shadow-lg"
+            className="group/btn w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gradient-to-r from-purple-100 to-pink-100 hover:from-purple-200 hover:to-pink-200 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 sm:hover:scale-110 shadow-md hover:shadow-lg"
           >
-            <Plus className="w-4 h-4 text-purple-600 group-hover/btn:text-purple-700 transition-colors duration-200" />
+            <Plus className="w-3 h-3 sm:w-4 sm:h-4 text-purple-600 group-hover/btn:text-purple-700 transition-colors duration-200" />
           </button>
         </div>
       </div>
