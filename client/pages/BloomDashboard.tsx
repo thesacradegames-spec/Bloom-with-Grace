@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles } from "lucide-react";
+import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles, Target } from "lucide-react";
 import { BloomHeader } from "@/components/ui/bloom-header";
 import { StatsCards } from "@/components/ui/stats-cards";
 import { MainNavTabs } from "@/components/ui/main-nav-tabs";
@@ -286,7 +286,7 @@ export default function BloomDashboard() {
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-purple-300/15 to-blue-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
         {/* Cute floating emojis */}
-        {['🌸', '✨', '🦋', '🌺', '💖', '🌟', '🎀', '🌙'].map((emoji, i) => (
+        {['🌸', '✨', '🦋', '🌺', '💖', '����', '🎀', '🌙'].map((emoji, i) => (
           <div
             key={i}
             className="absolute text-white/20 text-xl animate-bounce"
