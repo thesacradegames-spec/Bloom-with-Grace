@@ -76,11 +76,11 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
         }}
         className="flex items-center gap-3 hover:opacity-80 transition-opacity"
       >
-        <span className="text-white font-medium hidden sm:block">
+        <span className="text-white font-medium hidden sm:block drop-shadow-lg">
           {userName}
         </span>
-        <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-lg">
+        <div className="w-10 h-10 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 hover:from-white/30 hover:to-white/20">
+          <span className="text-white font-bold text-lg drop-shadow-lg">
             {userName.charAt(0).toUpperCase()}
           </span>
         </div>
