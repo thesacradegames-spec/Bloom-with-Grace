@@ -129,29 +129,29 @@ export function CalendarWidget({ currentDate, onDateSelect }: CalendarWidgetProp
           <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
         </button>
         
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-base sm:text-lg font-semibold text-gray-900">
           {monthNames[displayDate.getMonth()]} {displayDate.getFullYear()}
         </h3>
-        
+
         <button
           onClick={() => navigateMonth("next")}
           className="p-1 hover:bg-gray-100 rounded-full transition-colors"
         >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
         </button>
       </div>
 
       {/* Day names */}
-      <div className="grid grid-cols-7 gap-1 mb-2">
+      <div className="grid grid-cols-7 gap-0.5 sm:gap-1 mb-2">
         {dayNames.map((day, index) => (
-          <div key={`day-name-${index}`} className="text-center text-sm font-medium text-gray-500 py-2">
+          <div key={`day-name-${index}`} className="text-center text-xs sm:text-sm font-medium text-gray-500 py-1 sm:py-2">
             {day}
           </div>
         ))}
       </div>
 
       {/* Calendar days */}
-      <div className="grid grid-cols-7 gap-1">
+      <div className="grid grid-cols-7 gap-0.5 sm:gap-1">
         {days.map((dayData, index) => (
           <div key={`calendar-day-${index}`} className="aspect-square flex items-center justify-center relative">
             {dayData && (
@@ -159,12 +159,12 @@ export function CalendarWidget({ currentDate, onDateSelect }: CalendarWidgetProp
                 <button
                   onClick={() => onDateSelect && onDateSelect(dayData.date)}
                   className={cn(
-                    "w-8 h-8 rounded-full text-sm font-medium transition-all duration-200 relative",
+                    "w-6 h-6 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 relative",
                     getDayStyles(dayData),
-                    onDateSelect && "cursor-pointer hover:scale-110"
+                    onDateSelect && "cursor-pointer hover:scale-105 sm:hover:scale-110"
                   )}
-                  title={dayData.progress ? 
-                    `${dayData.progress.completionRate}% completion - ${dayData.progress.completedGoals}/${dayData.progress.goalCount} goals` : 
+                  title={dayData.progress ?
+                    `${dayData.progress.completionRate}% completion - ${dayData.progress.completedGoals}/${dayData.progress.goalCount} goals` :
                     "No data"
                   }
                 >
