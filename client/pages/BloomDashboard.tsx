@@ -320,7 +320,7 @@ export default function BloomDashboard() {
       <BirthdayPopup currentDate={currentDate} />
       <BloomHeader userName={userName} />
       
-      <main className="max-w-7xl mx-auto px-6 pb-12 relative z-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12 relative z-10">
         {/* Beautiful Navigation Tabs */}
         <MainNavTabs />
 
