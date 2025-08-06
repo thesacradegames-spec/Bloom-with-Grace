@@ -41,22 +41,29 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
 
       <div className="max-w-7xl mx-auto flex items-center justify-between relative z-10">
         {/* Enhanced Logo and Title */}
-        <Link to="/dashboard" className="group flex items-center gap-4 hover:scale-105 transition-all duration-300">
+        <Link to="/dashboard" className="group flex items-center gap-2 sm:gap-4 hover:scale-105 transition-all duration-300">
           <div className="relative">
-            <div className="bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20 shadow-lg group-hover:shadow-xl transition-all duration-300">
-              <Flower2 className="w-8 h-8 text-white drop-shadow-lg" />
+            <div className="bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-white/20 shadow-lg group-hover:shadow-xl transition-all duration-300">
+              <Flower2 className="w-6 h-6 sm:w-8 sm:h-8 text-white drop-shadow-lg" />
             </div>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full animate-pulse"></div>
+            <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full animate-pulse"></div>
           </div>
-          <div>
-            <h1 className="text-3xl font-bold text-white drop-shadow-lg tracking-wide">
+          <div className="hidden sm:block">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg tracking-wide">
               <span className="bg-gradient-to-r from-white via-pink-100 to-white bg-clip-text text-transparent">
                 Her Daily Bloom
               </span>
             </h1>
-            <p className="text-white/90 text-sm font-medium tracking-wide drop-shadow-sm">
+            <p className="text-white/90 text-xs sm:text-sm font-medium tracking-wide drop-shadow-sm">
               ✨ Track your goals, bloom every day ✨
             </p>
+          </div>
+          <div className="block sm:hidden">
+            <h1 className="text-lg font-bold text-white drop-shadow-lg tracking-wide">
+              <span className="bg-gradient-to-r from-white via-pink-100 to-white bg-clip-text text-transparent">
+                Her Daily Bloom
+              </span>
+            </h1>
           </div>
         </Link>
 
