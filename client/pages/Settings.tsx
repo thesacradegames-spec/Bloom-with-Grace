@@ -270,7 +270,7 @@ export default function Settings() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Profile Settings */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
+          <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in">
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-xl shadow-lg">
                 <User className="w-6 h-6 text-white" />
