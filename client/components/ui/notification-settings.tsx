@@ -311,6 +311,9 @@ export function NotificationSettingsComponent({ username, onSettingsChange }: No
         </div>
       )}
 
+      {/* Mobile Notification Info */}
+      <MobileNotificationInfo />
+
       {/* Help Text */}
       <div className="bg-blue-500/10 border border-blue-400/30 rounded-xl p-4">
         <div className="flex items-start gap-3">
@@ -318,7 +321,7 @@ export function NotificationSettingsComponent({ username, onSettingsChange }: No
           <div className="text-blue-100 text-sm">
             <div className="font-medium mb-1">💡 Tip:</div>
             <p>
-              Notifications help you stay consistent with your goals. Set reminder times that work best for your schedule, 
+              Notifications help you stay consistent with your goals. Set reminder times that work best for your schedule,
               and we'll gently nudge you to keep blooming! 🌸
             </p>
           </div>
