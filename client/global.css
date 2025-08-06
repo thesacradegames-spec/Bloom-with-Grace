@@ -115,6 +115,17 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Better font smoothing for mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Ensure proper touch targets on mobile */
+  button, [role="button"], input, select, textarea {
+    touch-action: manipulation;
+  }
 }
 
 @layer utilities {
