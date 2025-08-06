@@ -192,7 +192,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
           {/* Submit Button */}
           <Button
             type="submit"
-            disabled={!name.trim() || !birthday || isLoading}
+            disabled={!name.trim() || !birthday || !selectedCharacter || isLoading}
             className="w-full bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg relative overflow-hidden border border-white/30 backdrop-blur-sm"
           >
             {isLoading ? (
