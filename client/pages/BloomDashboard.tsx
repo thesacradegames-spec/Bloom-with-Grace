@@ -109,6 +109,9 @@ export default function BloomDashboard() {
     const displayName = loadUserDisplayName(currentUser);
     setUserName(displayName);
 
+    // Check if today is user's birthday
+    setIsBirthday(isTodayUsersBirthday(currentDate, currentUser));
+
     // Load global stats for this user
     const globalStatsData = calculateUserGlobalStats(currentUser);
     setGlobalStats(globalStatsData);
