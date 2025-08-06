@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Flower2, Sparkles, Heart } from "lucide-react";
+import { Flower2, Sparkles, Heart, Star, Moon } from "lucide-react";
 
 interface SplashScreenProps {
   onComplete: () => void;
