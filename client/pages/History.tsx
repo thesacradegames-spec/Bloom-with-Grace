@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { BloomHeader } from "@/components/ui/bloom-header";
-import { Calendar, Clock, CheckCircle, XCircle, Trophy, Target, Droplets, Code, Brain, Github } from "lucide-react";
+import { Calendar, Clock, CheckCircle, XCircle, Trophy, Target, Droplets, Code, Brain, Github, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { exportUserDataAsCSV } from "@/lib/export-utils";
 import { getAllStoredDates, getDayProgress, getMonthProgress, DayProgress } from "@/lib/data-utils";
 import {
   getCurrentUser,
