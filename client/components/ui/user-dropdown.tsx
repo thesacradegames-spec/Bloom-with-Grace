@@ -7,7 +7,6 @@ import { getUserCharacter } from "@/lib/character-utils";
 
 interface UserDropdownProps {
   userName: string;
-  onUserNameChange: (newName: string) => void;
 }
 
 export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) {
