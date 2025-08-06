@@ -25,7 +25,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 flex items-center justify-center overflow-hidden transition-colors duration-500">
       {/* Animated background elements with stars and moons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Twinkling Stars */}
