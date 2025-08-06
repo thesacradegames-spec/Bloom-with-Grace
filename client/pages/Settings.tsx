@@ -22,6 +22,7 @@ import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { getCurrentUser, getAllUsers, saveUserDisplayName, loadUserDisplayName } from "@/lib/user-data-utils";
 import { getUserBirthday, saveUserBirthday, formatBirthday } from "@/lib/birthday-utils";
+import { exportUserDataAsCSV, getExportStats } from "@/lib/export-utils";
 import { useNavigate } from "react-router-dom";
 
 interface Goal {
