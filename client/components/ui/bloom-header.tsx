@@ -68,14 +68,14 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
         </Link>
 
         {/* Enhanced Navigation and User Section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Theme Toggle */}
           <ThemeToggle />
 
           {/* Enhanced User Profile */}
           <div className="relative z-50">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-300/20 rounded-2xl blur-lg"></div>
-            <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-1 border border-white/20 shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-300/20 rounded-xl sm:rounded-2xl blur-lg"></div>
+            <div className="relative bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-1 border border-white/20 shadow-lg">
               <UserDropdown
                 userName={userName}
               />
