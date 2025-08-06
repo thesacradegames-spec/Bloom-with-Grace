@@ -60,6 +60,10 @@ export default function Landing() {
   };
 
   // Render based on current stage
+  if (stage === 'webapp-loading') {
+    return <WebappLoader onComplete={handleWebappLoaderComplete} />;
+  }
+
   if (stage === 'splash') {
     return <SplashScreen onComplete={handleSplashComplete} />;
   }
