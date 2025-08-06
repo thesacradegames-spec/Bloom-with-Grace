@@ -37,8 +37,6 @@ export function UserDropdown({ userName }: UserDropdownProps) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
           buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
         setIsOpen(false);
-        setIsEditing(false);
-        setEditValue(userName);
       }
     };
 
