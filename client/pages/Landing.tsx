@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { WebappLoader } from "@/components/ui/webapp-loader";
 import { SplashScreen } from "@/components/ui/splash-screen";
 import { ProfileForm } from "@/components/ui/profile-form";
 import { getCurrentUser, initializeNewUser, isCompletelyNewUser, normalizeUsername } from "@/lib/user-data-utils";
 
-type OnboardingStage = 'splash' | 'profile' | 'complete';
+type OnboardingStage = 'webapp-loading' | 'splash' | 'profile' | 'complete';
 
 interface ProfileData {
   name: string;
