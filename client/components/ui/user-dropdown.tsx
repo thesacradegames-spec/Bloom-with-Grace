@@ -9,10 +9,8 @@ interface UserDropdownProps {
   userName: string;
 }
 
-export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) {
+export function UserDropdown({ userName }: UserDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(userName);
   const [userCharacter, setUserCharacter] = useState(() => getUserCharacter());
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
   const dropdownRef = useRef<HTMLDivElement>(null);
