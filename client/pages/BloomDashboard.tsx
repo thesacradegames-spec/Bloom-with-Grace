@@ -7,6 +7,7 @@ import { GoalItem } from "@/components/ui/goal-item";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
 import { WellnessSection } from "@/components/ui/wellness-section";
 import { NextDayButton } from "@/components/ui/next-day-button";
+import { CompleteDayButton } from "@/components/ui/complete-day-button";
 import { BirthdayPopup } from "@/components/ui/birthday-popup";
 import { BirthdayCelebration } from "@/components/ui/birthday-celebration";
 import { getCurrentLocalDate, addDaysToDateString, formatDateForDisplay } from "@/lib/date-utils";
