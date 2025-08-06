@@ -87,6 +87,9 @@ export default function Settings() {
         setGoals(DEFAULT_GOALS);
       }
     }
+
+    // Load export statistics
+    setExportStats(getExportStats(currentUser));
   }, [navigate]);
 
   const handleSaveProfile = () => {
