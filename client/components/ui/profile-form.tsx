@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { User, Calendar, Sparkles } from "lucide-react";
+import { User, Calendar, Sparkles, Heart } from "lucide-react";
 import { Button } from "./button";
 import { Input } from "./input";
 import { Label } from "./label";
+import { CUTE_CHARACTERS, Character } from "@/lib/characters";
 
 interface ProfileFormProps {
-  onComplete: (profileData: { name: string; birthday: string }) => void;
+  onComplete: (profileData: { name: string; birthday: string; character: string }) => void;
 }
 
 export function ProfileForm({ onComplete }: ProfileFormProps) {
