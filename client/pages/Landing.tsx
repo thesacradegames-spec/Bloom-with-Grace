@@ -14,16 +14,23 @@ interface ProfileData {
 }
 
 export default function Landing() {
-  const [stage, setStage] = useState<OnboardingStage>('splash');
+  const [stage, setStage] = useState<OnboardingStage>('webapp-loading');
   const navigate = useNavigate();
 
   // Check if user already exists and redirect
   useEffect(() => {
     const currentUser = getCurrentUser();
     if (currentUser) {
-      navigate('/dashboard');
+      // Still show webapp loading even for existing users for consistency
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
     }
   }, [navigate]);
+
+  const handleWebappLoaderComplete = () => {
+    setStage('splash');
+  };
 
   const handleSplashComplete = () => {
     setStage('profile');
