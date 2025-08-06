@@ -144,33 +144,33 @@ export default function History() {
           </div>
         </div>
 
-        {/* Summary Stats */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-2">
-              <Calendar className="w-6 h-6 text-blue-500" />
-              <span className="text-sm text-gray-600">Days Tracked</span>
+        {/* Summary Stats - Mobile Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+              <span className="text-xs sm:text-sm text-gray-600 font-medium">Days Tracked</span>
             </div>
-            <div className="text-3xl font-bold text-gray-900">{filteredData.length}</div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900">{filteredData.length}</div>
           </div>
-          
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-2">
-              <Trophy className="w-6 h-6 text-yellow-500" />
-              <span className="text-sm text-gray-600">Perfect Days</span>
+
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500" />
+              <span className="text-xs sm:text-sm text-gray-600 font-medium">Perfect Days</span>
             </div>
-            <div className="text-3xl font-bold text-gray-900">{perfectDaysCount}</div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900">{perfectDaysCount}</div>
             <div className="text-xs text-gray-500">
               {filteredData.length > 0 ? Math.round((perfectDaysCount / filteredData.length) * 100) : 0}% success rate
             </div>
           </div>
-          
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-2">
-              <Target className="w-6 h-6 text-green-500" />
-              <span className="text-sm text-gray-600">Avg Completion</span>
+
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40 sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <Target className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+              <span className="text-xs sm:text-sm text-gray-600 font-medium">Avg Completion</span>
             </div>
-            <div className="text-3xl font-bold text-gray-900">{averageCompletion || 0}%</div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900">{averageCompletion || 0}%</div>
           </div>
         </div>
 
