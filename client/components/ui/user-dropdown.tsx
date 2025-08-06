@@ -81,14 +81,11 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
           updateDropdownPosition();
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+        className="flex items-center gap-3 hover:opacity-80 transition-all duration-300"
       >
-        <span className="text-white font-medium hidden sm:block drop-shadow-lg">
-          {userName}
-        </span>
-        <div className="w-10 h-10 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 hover:from-white/30 hover:to-white/20">
-          <span className="text-white font-bold text-lg drop-shadow-lg">
-            {userName.charAt(0).toUpperCase()}
+        <div className={`w-12 h-12 bg-gradient-to-br ${userCharacter.color} backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 animate-pulse`}>
+          <span className="text-2xl drop-shadow-lg">
+            {userCharacter.emoji}
           </span>
         </div>
       </button>
