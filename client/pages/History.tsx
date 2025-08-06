@@ -102,41 +102,41 @@ export default function History() {
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 transition-colors duration-500">
       <BloomHeader userName={userName} />
       
-      <main className="max-w-7xl mx-auto px-6 pb-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8">
         {/* Navigation Tabs */}
         <MainNavTabs />
 
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <h1 className="text-3xl font-bold text-white drop-shadow-lg">Progress History</h1>
+        {/* Header - Mobile Optimized */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg">Progress History</h1>
             <Button
               onClick={() => exportUserDataAsCSV('monthly')}
-              className="bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white border border-white/30 backdrop-blur-sm"
+              className="self-start bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white border border-white/30 backdrop-blur-sm text-sm sm:text-base"
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Export Month
             </Button>
           </div>
 
-          {/* Month/Year Selector */}
-          <div className="flex gap-3">
+          {/* Month/Year Selector - Mobile Optimized */}
+          <div className="flex gap-2 sm:gap-3">
             <select
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
-              className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl border border-white/40 text-gray-900 font-medium"
+              className="px-2 py-1.5 sm:px-4 sm:py-2 bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/40 text-gray-900 font-medium text-sm sm:text-base"
             >
               {Array.from({ length: 12 }, (_, i) => (
                 <option key={i} value={i}>
-                  {new Date(2024, i).toLocaleDateString('en-US', { month: 'long' })}
+                  {new Date(2024, i).toLocaleDateString('en-US', { month: 'short' })}
                 </option>
               ))}
             </select>
-            
+
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-              className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl border border-white/40 text-gray-900 font-medium"
+              className="px-2 py-1.5 sm:px-4 sm:py-2 bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/40 text-gray-900 font-medium text-sm sm:text-base"
             >
               <option value={2024}>2024</option>
               <option value={2025}>2025</option>
