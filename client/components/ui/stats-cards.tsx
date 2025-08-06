@@ -99,27 +99,27 @@ export function StatsCards({
 
           <div className="flex flex-col items-start relative z-10">
             {/* Icon with emoji */}
-            <div className="relative mb-3 flex items-center gap-2">
-              <div className="bg-white/90 dark:bg-white/20 backdrop-blur-sm rounded-lg p-2 shadow-sm group-hover:shadow-md transition-all duration-300">
-                <stat.icon className={`w-5 h-5 ${stat.iconColor}`} />
+            <div className="relative mb-2 sm:mb-3 flex items-center gap-1 sm:gap-2">
+              <div className="bg-white/90 dark:bg-white/20 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-sm group-hover:shadow-md transition-all duration-300">
+                <stat.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${stat.iconColor}`} />
               </div>
-              <span className="text-lg animate-bounce" style={{ animationDelay: `${index * 200}ms` }}>
+              <span className="text-sm sm:text-lg animate-bounce" style={{ animationDelay: `${index * 200}ms` }}>
                 {stat.emoji}
               </span>
             </div>
 
             {/* Enhanced label */}
-            <div className="text-xs font-medium text-gray-700 dark:text-gray-300 whitespace-pre-line mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors duration-300">
+            <div className="text-xs font-medium text-gray-700 dark:text-gray-300 whitespace-pre-line mb-1 sm:mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors duration-300 leading-tight">
               {stat.label}
             </div>
 
             {/* Enhanced value display */}
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent group-hover:from-gray-900 group-hover:to-gray-700 dark:group-hover:from-white dark:group-hover:to-gray-100 transition-all duration-300">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent group-hover:from-gray-900 group-hover:to-gray-700 dark:group-hover:from-white dark:group-hover:to-gray-100 transition-all duration-300">
                 {stat.value}
               </span>
               {stat.unit && (
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
                   {stat.unit}
                 </span>
               )}
