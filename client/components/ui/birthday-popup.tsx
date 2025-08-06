@@ -121,21 +121,21 @@ export function BirthdayPopup({ currentDate }: BirthdayPopupProps) {
           
           {/* Title with gentle gradient */}
           <h2 className="text-3xl font-bold text-gray-800 mb-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-            🎉 Happy Birthday! 🎂
+            🎉 Happy Birthday{userName ? `, ${userName}` : ''}! 🎂
           </h2>
-          
-          {/* Simple subtitle */}
+
+          {/* Simple subtitle with age */}
           <h3 className="text-lg font-medium text-purple-600 mb-4">
-            ✨ Wishing you a wonderful day! ✨
+            ✨ {userAge ? `Celebrating ${userAge} amazing years!` : 'Wishing you a wonderful day!'} ✨
           </h3>
-          
+
           {/* Birthday message in calm container */}
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-pink-200">
             <p className="text-base text-gray-700 mb-2 leading-relaxed">
               🌟 May this special day bring you joy, success, and all the happiness you deserve!
             </p>
             <p className="text-sm text-purple-600 font-medium">
-              Keep achieving your dreams! ✨
+              Keep blooming and achieving your dreams! ✨
             </p>
           </div>
 
