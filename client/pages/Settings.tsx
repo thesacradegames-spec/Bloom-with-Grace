@@ -23,6 +23,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { getCurrentUser, getAllUsers, saveUserDisplayName, loadUserDisplayName } from "@/lib/user-data-utils";
 import { getUserBirthday, saveUserBirthday, formatBirthday } from "@/lib/birthday-utils";
 import { exportUserDataAsCSV, getExportStats } from "@/lib/export-utils";
+import { getUserCharacter, saveUserCharacter } from "@/lib/character-utils";
+import { CUTE_CHARACTERS, Character } from "@/lib/characters";
 import { useNavigate } from "react-router-dom";
 
 interface Goal {
