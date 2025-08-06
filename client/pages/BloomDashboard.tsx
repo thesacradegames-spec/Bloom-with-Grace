@@ -253,14 +253,35 @@ export default function BloomDashboard() {
   };
 
   const handleGoalIncrement = (goalId: string) => {
-    setDashboardData(prev => ({
-      ...prev,
-      goals: prev.goals.map(goal =>
-        goal.id === goalId && goal.current < goal.target
-          ? { ...goal, current: goal.current + 1 }
-          : goal
-      )
-    }));
+    setDashboardData(prev => {
+      const updatedGoals = prev.goals.map(goal => {
+        if (goal.id === goalId && goal.current < goal.target) {
+          const newCurrent = goal.current + 1;
+          const updatedGoal = { ...goal, current: newCurrent };
+
+          // Show notification when goal is completed
+          if (newCurrent === goal.target) {
+            const currentUser = getCurrentUser();
+            if (currentUser) {
+              const settings = getNotificationSettings(currentUser);
+              if (settings.enabled && settings.goalReminders) {
+                setTimeout(() => {
+                  showGoalReminder(goal.title, newCurrent, goal.target);
+                }, 500); // Slight delay for better UX
+              }
+            }
+          }
+
+          return updatedGoal;
+        }
+        return goal;
+      });
+
+      return {
+        ...prev,
+        goals: updatedGoals
+      };
+    });
   };
 
   const handleGoalDecrement = (goalId: string) => {
