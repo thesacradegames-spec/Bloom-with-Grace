@@ -17,19 +17,19 @@ export function WellnessSection({
   const isCompleted = waterIntake >= targetWater;
 
   return (
-    <div className="mt-10">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="bg-gradient-to-r from-cyan-100 to-teal-100 p-2 rounded-xl">
-          <Droplets className="w-6 h-6 text-cyan-600" />
+    <div className="mt-6 sm:mt-8 lg:mt-10">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <div className="bg-gradient-to-r from-cyan-100 to-teal-100 p-1.5 sm:p-2 rounded-lg sm:rounded-xl">
+          <Droplets className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-cyan-600" />
         </div>
-        <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
+        <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
           Wellness Tracker
         </h3>
       </div>
-      
-      <div className={`group relative bg-gradient-to-r from-white/95 to-white/90 backdrop-blur-sm rounded-2xl p-6 border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 ${
-        isCompleted 
-          ? "border-cyan-200 bg-gradient-to-r from-cyan-50/95 to-teal-50/90 shadow-cyan-100" 
+
+      <div className={`group relative bg-gradient-to-r from-white/95 to-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01] sm:hover:scale-[1.02] hover:-translate-y-1 ${
+        isCompleted
+          ? "border-cyan-200 bg-gradient-to-r from-cyan-50/95 to-teal-50/90 shadow-cyan-100"
           : "border-gray-200 hover:border-cyan-200 hover:shadow-cyan-100"
       }`}>
         
