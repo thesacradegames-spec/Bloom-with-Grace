@@ -14,6 +14,7 @@ import History from "./pages/History";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { PWAInstallPrompt } from "./components/ui/pwa-install-prompt";
 
 const queryClient = new QueryClient();
 
