@@ -34,11 +34,15 @@ export function GoalItem({
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       
-      {/* Success indicator */}
+      {/* Cute success indicator */}
       {isCompleted && (
-        <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-          <Star className="w-3 h-3 text-white" />
-        </div>
+        <>
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+            <Star className="w-3 h-3 text-white" />
+          </div>
+          <div className="absolute -top-1 -left-1 text-lg animate-bounce">🎉</div>
+          <div className="absolute -bottom-1 -right-1 text-sm animate-bounce" style={{ animationDelay: '0.5s' }}>✨</div>
+        </>
       )}
 
       {/* Progress background */}
