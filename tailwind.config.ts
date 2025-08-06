@@ -171,6 +171,8 @@ export default {
         "zoom-in": "zoom-in 0.3s ease-out",
         "sparkle": "sparkle 2s ease-in-out infinite",
         "fade-in": "fade-in 0.6s ease-out",
+        "floating": "floating 3s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
     },
   },
