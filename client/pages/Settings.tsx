@@ -368,7 +368,7 @@ export default function Settings() {
           </div>
 
           {/* Notification Settings */}
-          <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in lg:col-span-2"
                style={{ animationDelay: '0.1s' }}>
             <NotificationSettingsComponent
               username={userName}
