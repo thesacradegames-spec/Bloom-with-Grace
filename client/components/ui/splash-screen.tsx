@@ -26,45 +26,64 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
   return (
     <div className="fixed inset-0 z-50 bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 flex items-center justify-center overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated background elements with stars and moons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating petals */}
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={`petal-${i}`}
-            className={`absolute w-4 h-4 bg-white/20 rounded-full animate-bounce ${
+        {/* Twinkling Stars */}
+        {[...Array(25)].map((_, i) => (
+          <Star
+            key={`star-${i}`}
+            className={`absolute text-white/40 animate-pulse ${
               animationStage >= 1 ? 'opacity-100' : 'opacity-0'
             }`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
+              fontSize: `${8 + Math.random() * 12}px`,
+              animationDelay: `${Math.random() * 3}s`,
               animationDuration: `${2 + Math.random() * 2}s`,
-              transition: 'opacity 1s ease-in-out'
+              transition: 'opacity 1.5s ease-in-out'
             }}
           />
         ))}
 
-        {/* Sparkles */}
-        {[...Array(15)].map((_, i) => (
+        {/* Floating Moons */}
+        {[...Array(6)].map((_, i) => (
+          <Moon
+            key={`moon-${i}`}
+            className={`absolute text-yellow-200/30 animate-bounce ${
+              animationStage >= 1 ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              fontSize: `${14 + Math.random() * 10}px`,
+              animationDelay: `${Math.random() * 2.5}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+              transition: 'opacity 1.5s ease-in-out'
+            }}
+          />
+        ))}
+
+        {/* Magical Sparkles */}
+        {[...Array(18)].map((_, i) => (
           <Sparkles
             key={`sparkle-${i}`}
-            className={`absolute text-white/30 animate-spin ${
+            className={`absolute text-white/35 animate-spin ${
               animationStage >= 1 ? 'opacity-100' : 'opacity-0'
             }`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              fontSize: `${12 + Math.random() * 8}px`,
+              fontSize: `${10 + Math.random() * 8}px`,
               animationDelay: `${Math.random() * 3}s`,
               animationDuration: `${4 + Math.random() * 2}s`,
-              transition: 'opacity 1s ease-in-out'
+              transition: 'opacity 1.5s ease-in-out'
             }}
           />
         ))}
 
-        {/* Hearts */}
-        {[...Array(10)].map((_, i) => (
+        {/* Floating Hearts */}
+        {[...Array(8)].map((_, i) => (
           <Heart
             key={`heart-${i}`}
             className={`absolute text-pink-200/25 animate-pulse ${
@@ -73,9 +92,9 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              fontSize: `${16 + Math.random() * 12}px`,
+              fontSize: `${12 + Math.random() * 8}px`,
               animationDelay: `${Math.random() * 2}s`,
-              transition: 'opacity 1s ease-in-out'
+              transition: 'opacity 1.5s ease-in-out'
             }}
           />
         ))}
