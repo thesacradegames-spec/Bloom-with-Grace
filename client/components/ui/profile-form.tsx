@@ -32,7 +32,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 flex items-center justify-center p-4 relative overflow-hidden transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 flex items-center justify-center p-3 sm:p-4 relative overflow-hidden transition-colors duration-500">
       {/* Animated background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating flowers */}
@@ -98,7 +98,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
           {/* App icon and title */}
           <div className="mb-6 relative">
             <div className="bg-gradient-to-br from-pink-400/30 to-purple-400/30 backdrop-blur-sm p-6 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg">
-              <span className="text-3xl">🌸</span>
+              <span className="text-3xl">��</span>
             </div>
           </div>
 
