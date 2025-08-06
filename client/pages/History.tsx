@@ -109,6 +109,9 @@ export default function History() {
       <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
       
       <main className="max-w-7xl mx-auto px-6 pb-8">
+        {/* Navigation Tabs */}
+        <MainNavTabs />
+
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
