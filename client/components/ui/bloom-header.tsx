@@ -102,8 +102,8 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
       </div>
 
 
-      {/* Bottom gradient line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 via-purple-500 to-blue-500 opacity-60"></div>
+      {/* Bottom gradient line - hidden in dark mode for better UI */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 via-purple-500 to-blue-500 opacity-60 dark:opacity-0 transition-opacity duration-500"></div>
     </header>
   );
 }
