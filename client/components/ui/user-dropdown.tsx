@@ -99,9 +99,9 @@ export function UserDropdown({ userName }: UserDropdownProps) {
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-left border-gray-200 hover:bg-gray-50"
+                className="w-full justify-start text-left border-gray-200 hover:bg-gray-50 text-sm"
               >
-                <Settings className="w-4 h-4 mr-2" />
+                <Settings className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 Settings
               </Button>
             </Link>
