@@ -369,28 +369,13 @@ export default function Settings() {
           {/* Notification Settings */}
           <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
                style={{ animationDelay: '0.1s' }}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-green-400 to-blue-400 p-2 rounded-xl shadow-lg">
-                <Bell className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-xl font-bold text-white">Notifications</h2>
-                <p className="text-white/70 text-sm">Manage your alerts</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white/10 rounded-xl border border-white/20">
-                <div>
-                  <p className="text-white font-medium">Daily Reminders</p>
-                  <p className="text-white/70 text-sm">Get reminded to track your goals</p>
-                </div>
-                <Switch
-                  checked={notifications}
-                  onCheckedChange={handleNotificationsChange}
-                />
-              </div>
-            </div>
+            <NotificationSettingsComponent
+              username={userName}
+              onSettingsChange={(settings) => {
+                // Optional: Handle settings changes if needed
+                console.log('Notification settings updated:', settings);
+              }}
+            />
           </div>
 
           {/* Goal Management */}
