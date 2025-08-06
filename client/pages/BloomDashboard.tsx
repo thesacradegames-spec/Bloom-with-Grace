@@ -296,10 +296,27 @@ export default function BloomDashboard() {
   };
 
   const handleWaterIncrement = () => {
-    setDashboardData(prev => ({
-      ...prev,
-      waterIntake: Math.min(prev.waterIntake + 0.5, 10) // Max 10L
-    }));
+    setDashboardData(prev => {
+      const newWaterIntake = Math.min(prev.waterIntake + 0.5, 10); // Max 10L
+
+      // Show notification when water goal is reached
+      if (newWaterIntake >= 3 && prev.waterIntake < 3) {
+        const currentUser = getCurrentUser();
+        if (currentUser) {
+          const settings = getNotificationSettings(currentUser);
+          if (settings.enabled && settings.waterReminder) {
+            setTimeout(() => {
+              showGoalReminder('Water Intake', newWaterIntake, 3);
+            }, 500);
+          }
+        }
+      }
+
+      return {
+        ...prev,
+        waterIntake: newWaterIntake
+      };
+    });
   };
 
   const handleWaterDecrement = () => {
