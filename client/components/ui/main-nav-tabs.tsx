@@ -43,8 +43,8 @@ export function MainNavTabs() {
                   to={tab.path}
                   className={`group relative px-6 py-4 rounded-2xl transition-all duration-300 flex items-center gap-3 font-medium ${
                     isActive
-                      ? 'bg-white/20 text-white shadow-lg scale-105 border border-white/30'
-                      : 'text-white/80 hover:text-white hover:bg-white/10 hover:scale-105'
+                      ? 'bg-white/20 dark:bg-purple-400/30 text-white shadow-lg scale-105 border border-white/30 dark:border-purple-300/50'
+                      : 'text-white/80 hover:text-white hover:bg-white/10 dark:hover:bg-purple-400/20 hover:scale-105'
                   }`}
                 >
                   {/* Background glow for active tab */}
