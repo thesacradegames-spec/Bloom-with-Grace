@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { X, Cake, Sparkles, Heart, Gift, Star, Crown } from "lucide-react";
 import { Button } from "./button";
+import { isTodayUsersBirthday, getUserAge } from "@/lib/birthday-utils";
+import { getCurrentUser } from "@/lib/user-data-utils";
 
 interface BirthdayPopupProps {
   currentDate: string;
@@ -8,14 +10,19 @@ interface BirthdayPopupProps {
 
 export function BirthdayPopup({ currentDate }: BirthdayPopupProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [userAge, setUserAge] = useState<number | null>(null);
+  const [userName, setUserName] = useState<string>("");
 
   useEffect(() => {
-    // Parse the current date string (YYYY-MM-DD format)
-    const [year, month, day] = currentDate.split('-').map(Number);
-    
-    // Check if current date is August 7th (month 8, day 7)
-    if (month === 8 && day === 7) {
-      // Always show popup on August 7th
+    const currentUser = getCurrentUser();
+    if (!currentUser) return;
+
+    // Check if today is the user's birthday
+    if (isTodayUsersBirthday(currentDate, currentUser)) {
+      setUserName(currentUser);
+      setUserAge(getUserAge(currentUser));
+
+      // Show popup after a brief delay
       setTimeout(() => {
         setIsVisible(true);
       }, 1000);
