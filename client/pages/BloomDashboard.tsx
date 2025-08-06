@@ -335,6 +335,16 @@ export default function BloomDashboard() {
                   </div>
                 ))}
               </div>
+
+              {/* Complete Day Button */}
+              <div className="mt-6">
+                <CompleteDayButton
+                  goals={dashboardData.goals}
+                  waterIntake={dashboardData.waterIntake}
+                  targetWater={3}
+                  onComplete={handleCompleteDay}
+                />
+              </div>
             </div>
 
             {/* Enhanced Wellness Section */}
