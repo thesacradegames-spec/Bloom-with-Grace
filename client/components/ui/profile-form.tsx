@@ -93,63 +93,75 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
         {/* Decorative border glow */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-300/20 via-purple-300/20 to-blue-300/20 opacity-60 animate-pulse"></div>
         
-        {/* Header section */}
+        {/* Header section with app icon */}
         <div className="text-center mb-8 relative z-10">
+          {/* App icon and title */}
           <div className="mb-6 relative">
-            <div className={`bg-gradient-to-r ${selectedCharacter.color} backdrop-blur-sm p-4 rounded-full w-24 h-24 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg animate-pulse`}>
-              <span className="text-4xl drop-shadow-lg">{selectedCharacter.emoji}</span>
+            <div className="bg-gradient-to-br from-pink-400/30 to-purple-400/30 backdrop-blur-sm p-6 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg">
+              <span className="text-3xl">🌸</span>
             </div>
-            <div className="absolute -top-2 -right-8 w-6 h-6 bg-yellow-400/80 rounded-full animate-bounce blur-sm" style={{ animationDelay: '0.5s' }}></div>
-            <div className="absolute -bottom-2 -left-8 w-4 h-4 bg-pink-400/80 rounded-full animate-bounce blur-sm" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <h1 className="text-4xl font-bold text-white drop-shadow-lg mb-3 tracking-wide">
-            Tell Us About You
+            Her Daily Bloom
           </h1>
 
-          <p className="text-white/90 text-lg mb-2">
-            🌟 Let's personalize your journey 🌟
+          <p className="text-white/90 text-lg mb-4">
+            ✨ Track your goals, bloom every day ✨
           </p>
 
-          <p className="text-sm text-white/80">
-            Choose your cute companion and let's get started!
+          <p className="text-sm text-white/80 mb-6">
+            Your personal journey to achieving dreams starts here!
           </p>
+
+          {/* Welcome section */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-6 border border-white/20">
+            <h2 className="text-xl font-semibold text-white mb-2">🌸 Welcome, Beautiful! 🌸</h2>
+            <p className="text-white/80 text-sm">
+              Ready to start your amazing journey? Enter your name below and let's begin tracking your daily goals together!
+            </p>
+          </div>
         </div>
 
         {/* Profile Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Character Selection */}
-          <div className="space-y-3">
-            <Label className="text-white font-medium">
-              Choose Your Cute Companion 🎭
+          {/* Selected Character Display */}
+          <div className="space-y-3 mb-6">
+            <div className="text-center">
+              <div className={`bg-gradient-to-r ${selectedCharacter.color} backdrop-blur-sm p-4 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-3 border border-white/30 shadow-lg transition-all duration-300`}>
+                <span className="text-3xl drop-shadow-lg">{selectedCharacter.emoji}</span>
+              </div>
+              <p className="text-white font-medium mb-2">{selectedCharacter.name}</p>
+              <p className="text-white/70 text-xs">{selectedCharacter.description}</p>
+            </div>
+
+            {/* Character Selection Grid */}
+            <Label className="text-white font-medium text-center block">
+              Choose Your Profile Character 🎭
             </Label>
-            <div className="grid grid-cols-4 gap-3 max-h-48 overflow-y-auto bg-white/5 rounded-2xl p-4 border border-white/20 backdrop-blur-sm">
+            <div className="grid grid-cols-6 gap-2 max-h-32 overflow-y-auto bg-white/5 rounded-2xl p-3 border border-white/20 backdrop-blur-sm">
               {CUTE_CHARACTERS.map((character) => (
                 <button
                   key={character.id}
                   type="button"
                   onClick={() => setSelectedCharacter(character)}
-                  className={`p-3 rounded-xl transition-all duration-300 border-2 ${
+                  className={`p-2 rounded-lg transition-all duration-200 border ${
                     selectedCharacter.id === character.id
-                      ? `border-white/60 bg-gradient-to-r ${character.color} shadow-lg scale-105`
+                      ? 'border-white/60 bg-white/20 shadow-lg scale-110'
                       : 'border-white/20 bg-white/10 hover:bg-white/20 hover:scale-105'
                   }`}
                   disabled={isLoading}
                 >
-                  <div className="text-2xl mb-1">{character.emoji}</div>
-                  <div className="text-white text-xs font-medium">{character.name}</div>
+                  <div className="text-xl">{character.emoji}</div>
                 </button>
               ))}
             </div>
-            <p className="text-white/70 text-xs text-center">
-              Selected: {selectedCharacter.name} - {selectedCharacter.description} ✨
-            </p>
           </div>
 
           {/* Name Field */}
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-white font-medium">
-              Your Beautiful Name ✨
+            <Label htmlFor="name" className="text-white font-medium text-left block">
+              Your Beautiful Name
             </Label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/60" />
@@ -159,7 +171,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name..."
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder-white/60 focus:border-white/40 focus:ring-white/20 backdrop-blur-sm"
+                className="pl-10 bg-white/10 border-white/20 text-white placeholder-white/60 focus:border-white/40 focus:ring-white/20 backdrop-blur-sm h-12 text-lg"
                 required
                 disabled={isLoading}
               />
@@ -168,7 +180,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
 
           {/* Birthday Field */}
           <div className="space-y-2">
-            <Label htmlFor="birthday" className="text-white font-medium">
+            <Label htmlFor="birthday" className="text-white font-medium text-left block">
               Your Special Day 🎂
             </Label>
             <div className="relative">
@@ -178,7 +190,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white focus:border-white/40 focus:ring-white/20 backdrop-blur-sm [&::-webkit-calendar-picker-indicator]:invert"
+                className="pl-10 bg-white/10 border-white/20 text-white focus:border-white/40 focus:ring-white/20 backdrop-blur-sm [&::-webkit-calendar-picker-indicator]:invert h-12"
                 required
                 disabled={isLoading}
                 max={new Date().toISOString().split('T')[0]}
@@ -193,7 +205,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
           <Button
             type="submit"
             disabled={!name.trim() || !birthday || !selectedCharacter || isLoading}
-            className="w-full bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg relative overflow-hidden border border-white/30 backdrop-blur-sm"
+            className="w-full bg-gradient-to-r from-pink-500/80 to-purple-500/80 hover:from-pink-600/90 hover:to-purple-600/90 text-white py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg relative overflow-hidden border border-white/20 backdrop-blur-sm"
           >
             {isLoading ? (
               <div className="flex items-center justify-center gap-2">
@@ -203,7 +215,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
             ) : (
               <div className="flex items-center justify-center gap-2">
                 <Sparkles className="w-5 h-5" />
-                Create My Garden
+                ✨ Start Your Journey ✨
                 <Sparkles className="w-5 h-5" />
               </div>
             )}
@@ -222,7 +234,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-2 border border-white/20">
               <span className="text-xl">📊</span>
             </div>
-            <p className="text-xs text-white/80 font-medium">Progress</p>
+            <p className="text-xs text-white/80 font-medium">Analytics</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-2 border border-white/20">
@@ -234,8 +246,8 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
 
         {/* Footer note */}
         <div className="mt-6 text-center">
-          <p className="text-xs text-white/70 italic">
-            💖 Your information is stored safely on your device 💖
+          <p className="text-xs text-white/70 italic mb-2">
+            💖 Your progress will be saved automatically 💖
           </p>
         </div>
       </div>
