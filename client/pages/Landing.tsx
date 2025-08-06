@@ -33,6 +33,7 @@ export default function Landing() {
     localStorage.setItem('bloom-current-user', profileData.name);
     localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-birthday`, profileData.birthday);
     localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-display-name`, profileData.name);
+    localStorage.setItem(`bloom-user-${profileData.name.toLowerCase().replace(/\s+/g, '-')}-character`, profileData.character);
 
     setStage('complete');
 
