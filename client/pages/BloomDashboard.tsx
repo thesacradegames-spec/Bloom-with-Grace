@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles } from "lucide-react";
 import { BloomHeader } from "@/components/ui/bloom-header";
 import { StatsCards } from "@/components/ui/stats-cards";
-import { NavTabs } from "@/components/ui/nav-tabs";
+import { MainNavTabs } from "@/components/ui/main-nav-tabs";
 import { GoalItem } from "@/components/ui/goal-item";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
 import { WellnessSection } from "@/components/ui/wellness-section";
