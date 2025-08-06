@@ -7,7 +7,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="group relative w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 hover:bg-white/20"
+      className="group relative w-12 h-12 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 dark:border-purple-400/30 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 hover:bg-white/20 dark:hover:bg-purple-400/20"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {/* Background glow */}
