@@ -114,25 +114,25 @@ export function WellnessSection({
           </div>
           
           {/* Control buttons */}
-          <div className="flex items-center gap-3 ml-6">
+          <div className="flex items-center gap-1 sm:gap-2 lg:gap-3 ml-2 sm:ml-4 lg:ml-6 flex-shrink-0">
             <button
               onClick={onWaterDecrement}
               disabled={waterIntake <= 0}
-              className="group/btn w-12 h-12 bg-gradient-to-r from-gray-100 to-gray-50 hover:from-red-100 hover:to-pink-100 disabled:from-gray-50 disabled:to-gray-50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg disabled:hover:scale-100"
+              className="group/btn w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-gray-100 to-gray-50 hover:from-red-100 hover:to-pink-100 disabled:from-gray-50 disabled:to-gray-50 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 sm:hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg disabled:hover:scale-100"
             >
-              <Minus className="w-5 h-5 text-gray-600 group-hover/btn:text-red-600 transition-colors duration-200" />
+              <Minus className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-gray-600 group-hover/btn:text-red-600 transition-colors duration-200" />
             </button>
-            
-            <div className="text-center px-2">
-              <div className="text-lg font-bold text-gray-700">{waterIntake.toFixed(1)}</div>
+
+            <div className="text-center px-1 sm:px-2 hidden sm:block">
+              <div className="text-sm sm:text-base lg:text-lg font-bold text-gray-700">{waterIntake.toFixed(1)}</div>
               <div className="text-xs text-gray-500">Liters</div>
             </div>
-            
+
             <button
               onClick={onWaterIncrement}
-              className="group/btn w-12 h-12 bg-gradient-to-r from-cyan-100 to-blue-100 hover:from-cyan-200 hover:to-blue-200 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-md hover:shadow-lg"
+              className="group/btn w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-cyan-100 to-blue-100 hover:from-cyan-200 hover:to-blue-200 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 sm:hover:scale-110 shadow-md hover:shadow-lg"
             >
-              <Plus className="w-5 h-5 text-cyan-600 group-hover/btn:text-cyan-700 transition-colors duration-200" />
+              <Plus className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-cyan-600 group-hover/btn:text-cyan-700 transition-colors duration-200" />
             </button>
           </div>
         </div>
