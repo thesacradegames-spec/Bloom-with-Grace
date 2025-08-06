@@ -60,42 +60,42 @@ export function GoalItem({
 
       <div className="flex items-center justify-between relative z-10">
         {/* Icon and title section */}
-        <div className="flex items-center gap-4 flex-1">
-          <div className="relative">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-1">
+          <div className="relative flex-shrink-0">
             {/* Icon background with glow */}
             <div className={cn(
-              "absolute inset-0 rounded-xl blur-lg opacity-30 transition-opacity duration-300",
+              "absolute inset-0 rounded-lg sm:rounded-xl blur-lg opacity-30 transition-opacity duration-300",
               isCompleted ? "bg-green-300" : "bg-purple-300 group-hover:opacity-50"
             )}></div>
             <div className={cn(
-              "relative bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-md transition-all duration-300 group-hover:shadow-lg",
+              "relative bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md transition-all duration-300 group-hover:shadow-lg",
               isCompleted && "bg-green-50/90"
             )}>
-              <div className="w-6 h-6 flex items-center justify-center">
+              <div className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 flex items-center justify-center">
                 {icon}
               </div>
             </div>
           </div>
-          
+
           <div className="flex-1 min-w-0">
             <h3 className={cn(
-              "font-semibold text-gray-800 transition-colors duration-300 group-hover:text-gray-900",
+              "font-semibold text-sm sm:text-base text-gray-800 transition-colors duration-300 group-hover:text-gray-900 truncate",
               isCompleted && "text-green-800"
             )}>
               {title}
             </h3>
             <div className="flex items-center gap-2 mt-1">
               <div className={cn(
-                "text-sm font-medium",
+                "text-xs sm:text-sm font-medium flex-shrink-0",
                 isCompleted ? "text-green-600" : "text-gray-600"
               )}>
                 {current}/{target}
               </div>
-              <div className="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
-                <div 
+              <div className="flex-1 bg-gray-200 rounded-full h-1.5 sm:h-2 overflow-hidden">
+                <div
                   className={cn(
                     "h-full transition-all duration-500 rounded-full",
-                    isCompleted 
+                    isCompleted
                       ? "bg-gradient-to-r from-green-400 to-emerald-500"
                       : "bg-gradient-to-r from-purple-400 to-pink-500"
                   )}
