@@ -1,6 +1,7 @@
-import { Flower2, BarChart3, Clock, Sparkles } from "lucide-react";
+import { Flower2, BarChart3, Clock, Sparkles, Quote } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { UserDropdown } from "./user-dropdown";
+import { getDailyQuote } from "@/lib/quotes-utils";
 
 interface BloomHeaderProps {
   userName?: string;
