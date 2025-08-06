@@ -148,26 +148,15 @@ export default function BloomDashboard() {
 
         // Create daily reminders
         createDailyReminder(currentUser);
-
-        // Create goal reminders for incomplete goals
-        const incompleteGoals = dashboardData.goals.filter(goal => goal.current < goal.target);
-        if (incompleteGoals.length > 0) {
-          createGoalReminders(currentUser, incompleteGoals);
-        }
-
-        // Create water reminders if needed
-        if (dashboardData.waterIntake < 3) {
-          createWaterReminders(currentUser, dashboardData.waterIntake);
-        }
       }
     };
 
-    // Only initialize notifications once
+    // Only initialize notifications once per session
     if (!sessionStorage.getItem('notifications-initialized')) {
       initNotifications();
       sessionStorage.setItem('notifications-initialized', 'true');
     }
-  }, [currentDate, dashboardData.goals, dashboardData.waterIntake]);
+  }, [currentDate]);
 
   // Listen for goal changes from settings
   useEffect(() => {
