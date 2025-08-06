@@ -318,7 +318,7 @@ export default function BloomDashboard() {
 
       <BirthdayCelebration isActive={isBirthday} />
       <BirthdayPopup currentDate={currentDate} />
-      <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
+      <BloomHeader userName={userName} />
       
       <main className="max-w-7xl mx-auto px-6 pb-12 relative z-10">
         {/* Beautiful Navigation Tabs */}
