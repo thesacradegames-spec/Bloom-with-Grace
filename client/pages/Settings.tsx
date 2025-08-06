@@ -71,7 +71,8 @@ export default function Settings() {
 
     setUserName(currentUser);
     setDisplayName(loadUserDisplayName(currentUser));
-    
+    setSelectedCharacter(getUserCharacter(currentUser));
+
     const userBirthday = getUserBirthday(currentUser);
     if (userBirthday) {
       setBirthday(userBirthday);
