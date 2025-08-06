@@ -111,8 +111,17 @@ export default function History() {
       <main className="max-w-7xl mx-auto px-6 pb-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-white">Progress History</h1>
-          
+          <div className="flex items-center gap-4">
+            <h1 className="text-3xl font-bold text-white drop-shadow-lg">Progress History</h1>
+            <Button
+              onClick={() => exportUserDataAsCSV('monthly')}
+              className="bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white border border-white/30 backdrop-blur-sm"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Export Month
+            </Button>
+          </div>
+
           {/* Month/Year Selector */}
           <div className="flex gap-3">
             <select
