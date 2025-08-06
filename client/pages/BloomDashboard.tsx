@@ -94,26 +94,41 @@ export default function BloomDashboard() {
     const globalStatsData = calculateUserGlobalStats(currentUser);
     setGlobalStats(globalStatsData);
 
+    // Load user's custom goals
+    const userGoals = getUserGoals(currentUser);
+
     // Load daily data for this user
     const savedData = loadUserDayData(currentUser, currentDate);
     if (savedData) {
-      // Merge saved goal data with default goals configuration
-      const updatedGoals = DEFAULT_GOALS.map(defaultGoal => {
-        const savedGoal = savedData.goalData?.find(g => g.id === defaultGoal.id);
-        return savedGoal 
-          ? { ...defaultGoal, current: savedGoal.current, target: savedGoal.target }
-          : defaultGoal;
+      // Merge saved goal data with user's current goal configuration
+      const updatedGoals = userGoals.map(userGoal => {
+        const savedGoal = savedData.goalData?.find(g => g.id === userGoal.id);
+        return {
+          id: userGoal.id,
+          title: userGoal.title,
+          icon: getGoalIcon(userGoal.icon),
+          current: savedGoal?.current || 0,
+          target: userGoal.target
+        };
       });
-      
+
       setDashboardData({
         waterIntake: savedData.waterIntake || 0,
         goals: updatedGoals
       });
     } else {
-      // Reset to defaults for new day
+      // Reset to user's goals for new day
+      const newGoals = userGoals.map(userGoal => ({
+        id: userGoal.id,
+        title: userGoal.title,
+        icon: getGoalIcon(userGoal.icon),
+        current: 0,
+        target: userGoal.target
+      }));
+
       setDashboardData({
         waterIntake: 0,
-        goals: DEFAULT_GOALS.map(goal => ({ ...goal, current: 0 }))
+        goals: newGoals
       });
     }
   }, [currentDate]);
