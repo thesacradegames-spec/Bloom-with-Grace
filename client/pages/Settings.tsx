@@ -332,7 +332,8 @@ export default function Settings() {
           </div>
 
           {/* Notification Settings */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
+          <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+               style={{ animationDelay: '0.1s' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-gradient-to-r from-green-400 to-blue-400 p-2 rounded-xl shadow-lg">
                 <Bell className="w-6 h-6 text-white" />
