@@ -25,9 +25,9 @@ export function GoalItem({
 
   return (
     <div className={cn(
-      "group relative glass-card rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.05] hover:-translate-y-2 animate-fade-in",
+      "group relative glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-[1.05] hover:-translate-y-1 sm:hover:-translate-y-2 animate-fade-in",
       isCompleted
-        ? "border-green-300/50 bg-gradient-to-r from-green-100/40 to-emerald-100/40 shadow-green-200/50" 
+        ? "border-green-300/50 bg-gradient-to-r from-green-100/40 to-emerald-100/40 shadow-green-200/50"
         : "border-gray-200 hover:border-purple-200 hover:shadow-purple-100"
     )}>
       
