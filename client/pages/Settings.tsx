@@ -478,7 +478,7 @@ export default function Settings() {
           <div className="lg:col-span-2 bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-gradient-to-r from-red-400 to-pink-400 p-2 rounded-xl shadow-lg">
-                <AlertTriangle className="w-6 h-6 text-white" />
+                <Download className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-xl font-bold text-white">Data Management</h2>
@@ -486,31 +486,93 @@ export default function Settings() {
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-4">
-              <Button
-                onClick={handleExportData}
-                className="bg-gradient-to-r from-blue-400 to-green-400 hover:from-blue-500 hover:to-green-500 text-white"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Export Data
-              </Button>
-              
-              <Button
-                onClick={handleClearAllData}
-                variant="destructive"
-                className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
-              >
-                <Trash2 className="w-4 h-4 mr-2" />
-                Clear All Data
-              </Button>
-              
-              <Button
-                onClick={handleSignOut}
-                className="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white"
-              >
-                <LogOut className="w-4 h-4 mr-2" />
-                Sign Out
-              </Button>
+            {/* Export Statistics */}
+            {exportStats && (
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/20">
+                <h3 className="text-white font-medium mb-3">📊 Your Data Summary</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <div className="text-white text-lg font-bold">{exportStats.totalDays}</div>
+                    <div className="text-white/70 text-xs">Total Days</div>
+                  </div>
+                  <div>
+                    <div className="text-white text-lg font-bold">{exportStats.perfectDays}</div>
+                    <div className="text-white/70 text-xs">Perfect Days</div>
+                  </div>
+                  <div>
+                    <div className="text-white text-lg font-bold">{exportStats.averageCompletion}%</div>
+                    <div className="text-white/70 text-xs">Avg Completion</div>
+                  </div>
+                  <div>
+                    <div className="text-white text-lg font-bold">
+                      {exportStats.dateRange ?
+                        `${Math.ceil((new Date(exportStats.dateRange.end).getTime() - new Date(exportStats.dateRange.start).getTime()) / (1000 * 60 * 60 * 24)) + 1}`
+                        : '0'}
+                    </div>
+                    <div className="text-white/70 text-xs">Day Range</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Export Options */}
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-white font-medium mb-3">📊 Export as CSV</h3>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  <Button
+                    onClick={() => handleExportCSV('weekly')}
+                    className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Last Week
+                  </Button>
+                  <Button
+                    onClick={() => handleExportCSV('monthly')}
+                    className="bg-gradient-to-r from-green-400 to-emerald-400 hover:from-green-500 hover:to-emerald-500 text-white"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Last Month
+                  </Button>
+                  <Button
+                    onClick={() => handleExportCSV('all')}
+                    className="bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-white"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    All Data
+                  </Button>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-white font-medium mb-3">🗂️ Other Options</h3>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  <Button
+                    onClick={handleExportJSON}
+                    className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Export JSON
+                  </Button>
+
+                  <Button
+                    onClick={handleClearAllData}
+                    variant="destructive"
+                    className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Clear All Data
+                  </Button>
+
+                  <Button
+                    onClick={handleSignOut}
+                    className="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
