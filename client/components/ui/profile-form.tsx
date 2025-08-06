@@ -88,7 +88,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
       </div>
 
       {/* Main content card with glassmorphism */}
-      <div className="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 w-full max-w-lg relative z-10 border border-white/20 animate-fade-in">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 w-full max-w-lg relative z-10 border border-white/20 animate-fade-in">
         
         {/* Decorative border glow */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-300/20 via-purple-300/20 to-blue-300/20 opacity-60 animate-pulse"></div>
@@ -98,7 +98,7 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
           {/* App icon and title */}
           <div className="mb-6 relative">
             <div className="bg-gradient-to-br from-pink-400/30 to-purple-400/30 backdrop-blur-sm p-6 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4 border border-white/30 shadow-lg">
-              <span className="text-3xl">��</span>
+              <span className="text-3xl">🌸</span>
             </div>
           </div>
 
