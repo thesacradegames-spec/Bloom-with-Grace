@@ -364,14 +364,17 @@ export default function BloomDashboard() {
           {/* Left Column - Goals and Wellness with better spacing */}
           <div className="lg:col-span-2 space-y-8">
             {/* Beautiful Goals Section */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
+            <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in">
               <div className="flex items-center gap-3 mb-8">
-                <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-3 rounded-xl shadow-lg">
+                <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-3 rounded-xl shadow-lg animate-pulse">
                   <Trophy className="w-7 h-7 text-white" />
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-white drop-shadow-lg">Today's Goals</h2>
-                  <p className="text-white/80 text-sm">Track your daily achievements</p>
+                <div className="flex-1">
+                  <h2 className="text-2xl font-bold text-white drop-shadow-lg flex items-center gap-2">
+                    Today's Goals
+                    <span className="text-lg animate-bounce">🎯</span>
+                  </h2>
+                  <p className="text-white/80 text-sm">Track your daily achievements and bloom! 🌺</p>
                 </div>
               </div>
               
