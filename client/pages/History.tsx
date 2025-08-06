@@ -106,7 +106,7 @@ export default function History() {
   const averageCompletion = Math.round(filteredData.reduce((sum, record) => sum + record.completionRate, 0) / filteredData.length);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600">
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 transition-colors duration-500">
       <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
       
       <main className="max-w-7xl mx-auto px-6 pb-8">
