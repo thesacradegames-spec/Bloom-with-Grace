@@ -84,13 +84,13 @@ export function UserDropdown({ userName }: UserDropdownProps) {
             right: `${dropdownPosition.right}px`,
           }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className={`w-12 h-12 bg-gradient-to-br ${userCharacter.color} rounded-full flex items-center justify-center border border-gray-200 shadow-sm`}>
-              <span className="text-xl">{userCharacter.emoji}</span>
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${userCharacter.color} rounded-full flex items-center justify-center border border-gray-200 shadow-sm`}>
+              <span className="text-lg sm:text-xl">{userCharacter.emoji}</span>
             </div>
             <div className="flex-1">
-              <div className="font-semibold text-gray-900">{userName}</div>
-              <div className="text-sm text-gray-500">User Profile</div>
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">{userName}</div>
+              <div className="text-xs sm:text-sm text-gray-500">User Profile</div>
             </div>
           </div>
 
