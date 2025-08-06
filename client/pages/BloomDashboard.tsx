@@ -410,7 +410,7 @@ export default function BloomDashboard() {
             </div>
 
             {/* Enhanced Wellness Section */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
+            <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <WellnessSection
                 waterIntake={dashboardData.waterIntake}
                 targetWater={3}
