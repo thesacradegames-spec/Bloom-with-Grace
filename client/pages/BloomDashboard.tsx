@@ -12,6 +12,7 @@ import { BirthdayPopup } from "@/components/ui/birthday-popup";
 import { BirthdayCelebration } from "@/components/ui/birthday-celebration";
 import { getCurrentLocalDate, addDaysToDateString, formatDateForDisplay } from "@/lib/date-utils";
 import { isTodayUsersBirthday } from "@/lib/birthday-utils";
+import { getUserGoals } from "@/lib/goal-utils";
 import { calculateGlobalStats, GlobalStats } from "@/lib/stats-utils";
 import { 
   getCurrentUser, 
