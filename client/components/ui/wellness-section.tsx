@@ -57,46 +57,46 @@ export function WellnessSection({
 
         <div className="flex items-center justify-between relative z-10">
           {/* Water info section */}
-          <div className="flex items-center gap-4 flex-1">
-            <div className="relative">
+          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-1">
+            <div className="relative flex-shrink-0">
               {/* Icon background with ripple effect */}
-              <div className="absolute inset-0 bg-cyan-300 rounded-xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-pulse"></div>
-              <div className={`relative bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-md transition-all duration-300 group-hover:shadow-lg ${
+              <div className="absolute inset-0 bg-cyan-300 rounded-lg sm:rounded-xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-pulse"></div>
+              <div className={`relative bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 shadow-md transition-all duration-300 group-hover:shadow-lg ${
                 isCompleted && "bg-cyan-50/90"
               }`}>
-                <Droplets className={`w-8 h-8 transition-colors duration-300 ${
+                <Droplets className={`w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 transition-colors duration-300 ${
                   isCompleted ? "text-cyan-600" : "text-cyan-500"
                 }`} />
               </div>
             </div>
-            
-            <div className="flex-1">
-              <h4 className={`text-lg font-semibold transition-colors duration-300 ${
+
+            <div className="flex-1 min-w-0">
+              <h4 className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors duration-300 ${
                 isCompleted ? "text-cyan-800" : "text-gray-800 group-hover:text-gray-900"
               }`}>
                 Water Intake
               </h4>
-              <div className="flex items-center gap-3 mt-2">
-                <div className={`text-2xl font-bold ${
+              <div className="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
+                <div className={`text-lg sm:text-xl lg:text-2xl font-bold ${
                   isCompleted ? "text-cyan-700" : "text-gray-700"
                 }`}>
                   {waterIntake}L
                 </div>
-                <div className="text-sm text-gray-500">/ {targetWater}L</div>
-                <div className={`text-xs font-medium px-3 py-1 rounded-full ${
-                  isCompleted 
+                <div className="text-xs sm:text-sm text-gray-500">/ {targetWater}L</div>
+                <div className={`text-xs font-medium px-2 sm:px-3 py-0.5 sm:py-1 rounded-full ${
+                  isCompleted
                     ? "bg-cyan-100 text-cyan-700"
                     : "bg-gray-100 text-gray-600"
                 }`}>
                   {Math.round(progressPercentage)}%
                 </div>
               </div>
-              
+
               {/* Progress bar */}
-              <div className="mt-3 bg-gray-200 rounded-full h-3 overflow-hidden">
-                <div 
+              <div className="mt-2 sm:mt-3 bg-gray-200 rounded-full h-2 sm:h-3 overflow-hidden">
+                <div
                   className={`h-full transition-all duration-700 rounded-full ${
-                    isCompleted 
+                    isCompleted
                       ? "bg-gradient-to-r from-cyan-400 to-teal-500"
                       : "bg-gradient-to-r from-cyan-400 to-blue-500"
                   }`}
