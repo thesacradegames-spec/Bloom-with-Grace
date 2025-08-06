@@ -203,13 +203,6 @@ export default function BloomDashboard() {
     setGlobalStats(updatedGlobalStats);
   }, [dashboardData, currentDate]);
 
-  const handleUserNameChange = (newName: string) => {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-    
-    setUserName(newName);
-    saveUserDisplayName(currentUser, newName);
-  };
 
   const handleNextDay = () => {
     // Move to next day using proper date utility
