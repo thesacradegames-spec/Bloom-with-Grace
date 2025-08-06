@@ -268,7 +268,7 @@ export default function BloomDashboard() {
         </div>
 
         {/* Beautiful Navigation Tabs */}
-        <NavTabs activeTab="dashboard" />
+        <MainNavTabs />
 
         {/* Enhanced Date and Next Day Section */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-12 gap-6">
