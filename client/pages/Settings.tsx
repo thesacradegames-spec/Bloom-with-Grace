@@ -52,6 +52,12 @@ export default function Settings() {
   const [isAddingGoal, setIsAddingGoal] = useState(false);
   const [newGoal, setNewGoal] = useState({ title: "", icon: "🎯", target: 1 });
   const [hasChanges, setHasChanges] = useState(false);
+  const [exportStats, setExportStats] = useState<{
+    totalDays: number;
+    dateRange: { start: string; end: string } | null;
+    perfectDays: number;
+    averageCompletion: number;
+  } | null>(null);
 
   useEffect(() => {
     const currentUser = getCurrentUser();
