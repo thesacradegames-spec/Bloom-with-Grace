@@ -85,47 +85,12 @@ export function UserDropdown({ userName }: UserDropdownProps) {
           }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-white" />
+            <div className={`w-12 h-12 bg-gradient-to-br ${userCharacter.color} rounded-full flex items-center justify-center border border-gray-200 shadow-sm`}>
+              <span className="text-xl">{userCharacter.emoji}</span>
             </div>
             <div className="flex-1">
-              {isEditing ? (
-                <div className="space-y-2">
-                  <input
-                    type="text"
-                    value={editValue}
-                    onChange={(e) => setEditValue(e.target.value)}
-                    className="w-full px-3 py-1 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    autoFocus
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleSave();
-                      if (e.key === 'Escape') handleCancel();
-                    }}
-                  />
-                  <div className="flex gap-1">
-                    <Button
-                      size="sm"
-                      onClick={handleSave}
-                      className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 h-7 text-xs"
-                    >
-                      <Check className="w-3 h-3" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={handleCancel}
-                      className="border-gray-300 text-gray-600 hover:bg-gray-50 px-2 py-1 h-7 text-xs"
-                    >
-                      <X className="w-3 h-3" />
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <div className="font-semibold text-gray-900">{userName}</div>
-                  <div className="text-sm text-gray-500">User Profile</div>
-                </div>
-              )}
+              <div className="font-semibold text-gray-900">{userName}</div>
+              <div className="text-sm text-gray-500">User Profile</div>
             </div>
           </div>
 
