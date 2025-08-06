@@ -174,41 +174,41 @@ export default function History() {
           </div>
         </div>
 
-        {/* History Timeline */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <Clock className="w-6 h-6 text-purple-500" />
+        {/* History Timeline - Mobile Responsive */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+            <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
             Daily Progress Timeline
           </h2>
-          
+
           {filteredData.length === 0 ? (
-            <div className="text-center py-12">
-              <Calendar className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No data for selected period</h3>
-              <p className="text-gray-500">Start tracking your goals to see your progress here!</p>
+            <div className="text-center py-8 sm:py-12">
+              <Calendar className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-2">No data for selected period</h3>
+              <p className="text-sm sm:text-base text-gray-500">Start tracking your goals to see your progress here!</p>
             </div>
           ) : (
-            <div className="space-y-4 max-h-96 overflow-y-auto">
+            <div className="space-y-3 sm:space-y-4 max-h-96 overflow-y-auto">
               {filteredData.slice().reverse().map((record) => (
-                <div key={record.date} className="border border-gray-200 rounded-xl p-4">
+                <div key={record.date} className="border border-gray-200 rounded-lg sm:rounded-xl p-3 sm:p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-3 h-3 rounded-full ${record.isPerfectDay ? 'bg-green-500' : 'bg-gray-300'}`} />
-                      <h3 className="font-semibold text-gray-900">{formatDate(record.date)}</h3>
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${record.isPerfectDay ? 'bg-green-500' : 'bg-gray-300'}`} />
+                      <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{formatDate(record.date)}</h3>
                       {record.isPerfectDay && (
-                        <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                        <span className="px-2 py-0.5 sm:py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
                           Perfect Day!
                         </span>
                       )}
                     </div>
-                    <div className="text-sm font-medium text-gray-600">
+                    <div className="text-xs sm:text-sm font-medium text-gray-600">
                       {record.completionRate}% completion
                     </div>
                   </div>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
                     {record.goals.map((goal) => (
-                      <div key={goal.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+                      <div key={goal.id} className="flex items-center gap-1.5 sm:gap-2 p-2 bg-gray-50 rounded-lg">
                         {getIconComponent(goal.icon)}
                         <div className="flex-1 min-w-0">
                           <div className="text-xs font-medium text-gray-700 truncate">{goal.title}</div>
@@ -217,24 +217,24 @@ export default function History() {
                           </div>
                         </div>
                         {goal.completed >= goal.target ? (
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
                         ) : (
-                          <XCircle className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                          <XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" />
                         )}
                       </div>
                     ))}
-                    
+
                     {/* Water Intake */}
-                    <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-                      <Droplets className="w-4 h-4 text-cyan-500" />
+                    <div className="flex items-center gap-1.5 sm:gap-2 p-2 bg-gray-50 rounded-lg">
+                      <Droplets className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-500" />
                       <div className="flex-1">
                         <div className="text-xs font-medium text-gray-700">Water</div>
                         <div className="text-xs text-gray-500">{record.waterIntake}L</div>
                       </div>
                       {record.waterIntake >= 3 ? (
-                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
                       ) : (
-                        <XCircle className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        <XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" />
                       )}
                     </div>
                   </div>
