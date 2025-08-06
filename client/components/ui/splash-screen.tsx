@@ -151,7 +151,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
               : 'opacity-0 translate-y-8'
           }`}
         >
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg mb-2 tracking-wide">
+          <h1 className="text-3xl sm:text-5xl font-bold text-white drop-shadow-lg mb-2 tracking-wide">
             <span className="bg-gradient-to-r from-white via-pink-100 to-white bg-clip-text text-transparent">
               Her Daily Bloom
             </span>
@@ -165,7 +165,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
                 : 'opacity-0 translate-y-6 scale-90'
             }`}
           >
-            <p className="text-2xl font-semibold text-white/95 mb-4 italic tracking-wide drop-shadow-md">
+            <p className="text-lg sm:text-2xl font-semibold text-white/95 mb-3 sm:mb-4 italic tracking-wide drop-shadow-md">
               🌸 Blooming with Grace 🌸
             </p>
           </div>
@@ -177,7 +177,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
                 : 'opacity-0 translate-y-4'
             }`}
           >
-            <p className="text-white/90 text-lg font-medium tracking-wide mb-2">
+            <p className="text-white/90 text-base sm:text-lg font-medium tracking-wide mb-2">
               ✨ Track your goals, bloom every day ✨
             </p>
 
