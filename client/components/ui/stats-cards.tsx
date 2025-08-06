@@ -23,60 +23,66 @@ export function StatsCards({
       label: "Current\nStreak",
       value: currentStreak,
       unit: "days",
-      iconColor: "text-orange-500",
-      bgGradient: "from-orange-100 to-red-100",
-      borderColor: "border-orange-200",
-      shadowColor: "shadow-orange-100"
+      iconColor: "text-orange-500 dark:text-orange-400",
+      bgGradient: "from-orange-100/90 to-red-100/90 dark:from-orange-900/40 dark:to-red-900/40",
+      borderColor: "border-orange-200/70 dark:border-orange-400/30",
+      shadowColor: "shadow-orange-100/50 dark:shadow-orange-900/30",
+      emoji: "🔥"
     },
     {
       icon: Trophy,
       label: "Longest\nStreak",
       value: longestStreak,
       unit: "days",
-      iconColor: "text-yellow-500",
-      bgGradient: "from-yellow-100 to-amber-100",
-      borderColor: "border-yellow-200",
-      shadowColor: "shadow-yellow-100"
+      iconColor: "text-yellow-500 dark:text-yellow-400",
+      bgGradient: "from-yellow-100/90 to-amber-100/90 dark:from-yellow-900/40 dark:to-amber-900/40",
+      borderColor: "border-yellow-200/70 dark:border-yellow-400/30",
+      shadowColor: "shadow-yellow-100/50 dark:shadow-yellow-900/30",
+      emoji: "🏆"
     },
     {
       icon: Calendar,
       label: "Total Days",
       value: totalDays,
       unit: "",
-      iconColor: "text-blue-500",
-      bgGradient: "from-blue-100 to-cyan-100",
-      borderColor: "border-blue-200",
-      shadowColor: "shadow-blue-100"
+      iconColor: "text-blue-500 dark:text-blue-400",
+      bgGradient: "from-blue-100/90 to-cyan-100/90 dark:from-blue-900/40 dark:to-cyan-900/40",
+      borderColor: "border-blue-200/70 dark:border-blue-400/30",
+      shadowColor: "shadow-blue-100/50 dark:shadow-blue-900/30",
+      emoji: "📅"
     },
     {
       icon: Target,
       label: "Perfect\nDays",
       value: perfectDays,
       unit: "",
-      iconColor: "text-purple-500",
-      bgGradient: "from-purple-100 to-violet-100",
-      borderColor: "border-purple-200",
-      shadowColor: "shadow-purple-100"
+      iconColor: "text-purple-500 dark:text-purple-400",
+      bgGradient: "from-purple-100/90 to-violet-100/90 dark:from-purple-900/40 dark:to-violet-900/40",
+      borderColor: "border-purple-200/70 dark:border-purple-400/30",
+      shadowColor: "shadow-purple-100/50 dark:shadow-purple-900/30",
+      emoji: "⭐"
     },
     {
       icon: CheckCircle,
       label: "Today's\nTotal",
       value: todaysTasks,
       unit: "tasks",
-      iconColor: "text-pink-500",
-      bgGradient: "from-pink-100 to-rose-100",
-      borderColor: "border-pink-200",
-      shadowColor: "shadow-pink-100"
+      iconColor: "text-pink-500 dark:text-pink-400",
+      bgGradient: "from-pink-100/90 to-rose-100/90 dark:from-pink-900/40 dark:to-rose-900/40",
+      borderColor: "border-pink-200/70 dark:border-pink-400/30",
+      shadowColor: "shadow-pink-100/50 dark:shadow-pink-900/30",
+      emoji: "✅"
     },
     {
       icon: Droplets,
       label: "Water\nIntake",
       value: waterIntake,
       unit: "L",
-      iconColor: "text-cyan-500",
-      bgGradient: "from-cyan-100 to-teal-100",
-      borderColor: "border-cyan-200",
-      shadowColor: "shadow-cyan-100"
+      iconColor: "text-cyan-500 dark:text-cyan-400",
+      bgGradient: "from-cyan-100/90 to-teal-100/90 dark:from-cyan-900/40 dark:to-teal-900/40",
+      borderColor: "border-cyan-200/70 dark:border-cyan-400/30",
+      shadowColor: "shadow-cyan-100/50 dark:shadow-cyan-900/30",
+      emoji: "💧"
     }
   ];
 
