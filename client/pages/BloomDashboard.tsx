@@ -325,7 +325,7 @@ export default function BloomDashboard() {
         <MainNavTabs />
 
         {/* Enhanced Statistics Cards with better spacing */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <StatsCards
             currentStreak={globalStats.currentStreak}
             longestStreak={globalStats.longestStreak}
