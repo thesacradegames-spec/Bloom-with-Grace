@@ -130,25 +130,29 @@ export function NotificationSettingsComponent({ username, onSettingsChange }: No
             </div>
           </div>
           
-          {permissionStatus !== 'granted' && permissionStatus !== 'unsupported' && (
-            <Button
-              onClick={handleEnableNotifications}
-              disabled={isRequestingPermission || permissionStatus === 'denied'}
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
-            >
-              {isRequestingPermission ? 'Requesting...' : 'Enable'}
-            </Button>
-          )}
+          <div className="flex gap-2">
+            {permissionStatus !== 'granted' && permissionStatus !== 'unsupported' && (
+              <Button
+                onClick={handleEnableNotifications}
+                disabled={isRequestingPermission || permissionStatus === 'denied'}
+                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white text-sm"
+                size="sm"
+              >
+                {isRequestingPermission ? 'Requesting...' : 'Enable'}
+              </Button>
+            )}
 
-          {permissionStatus === 'granted' && (
-            <Button
-              onClick={handleTestNotification}
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/10"
-            >
-              {testNotificationSent ? 'Sent! ✓' : 'Test Notification'}
-            </Button>
-          )}
+            {permissionStatus === 'granted' && (
+              <Button
+                onClick={handleTestNotification}
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10 text-sm"
+                size="sm"
+              >
+                {testNotificationSent ? 'Sent! ✓' : 'Test'}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
