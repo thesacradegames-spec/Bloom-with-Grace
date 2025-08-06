@@ -103,24 +103,24 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       {/* Main flower animation */}
       <div className="relative z-10 text-center">
         {/* Blooming flower container */}
-        <div className="relative mb-8">
+        <div className="relative mb-6 sm:mb-8">
           {/* Outer glow */}
-          <div 
-            className={`absolute inset-0 w-32 h-32 mx-auto rounded-full transition-all duration-2000 ease-out ${
-              animationStage >= 1 
-                ? 'bg-gradient-to-r from-pink-300/30 to-purple-300/30 blur-xl scale-150' 
+          <div
+            className={`absolute inset-0 w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full transition-all duration-2000 ease-out ${
+              animationStage >= 1
+                ? 'bg-gradient-to-r from-pink-300/30 to-purple-300/30 blur-xl scale-150'
                 : 'bg-transparent scale-0'
             }`}
           />
-          
+
           {/* Main flower */}
-          <div 
-            className={`relative w-32 h-32 mx-auto transition-all duration-2000 ease-out ${
+          <div
+            className={`relative w-24 h-24 sm:w-32 sm:h-32 mx-auto transition-all duration-2000 ease-out ${
               animationStage >= 1 ? 'scale-100 rotate-0' : 'scale-0 rotate-180'
             }`}
           >
-            <div className="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm p-8 rounded-full border border-white/30 shadow-2xl">
-              <Flower2 className="w-16 h-16 text-white drop-shadow-lg" />
+            <div className="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-full border border-white/30 shadow-2xl">
+              <Flower2 className="w-12 h-12 sm:w-16 sm:h-16 text-white drop-shadow-lg" />
             </div>
             
             {/* Rotating petals around the flower */}
