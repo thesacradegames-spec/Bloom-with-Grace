@@ -187,15 +187,15 @@ export function NotificationSettingsComponent({ username, onSettingsChange }: No
           {settings.enabled && permissionStatus === 'granted' && (
             <>
               {/* Reminder Types */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 space-y-4">
-                <h4 className="text-white font-medium">Reminder Types</h4>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Target className="w-4 h-4 text-white" />
-                      <div>
-                        <Label className="text-white text-sm">Goal Reminders</Label>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20 space-y-3 sm:space-y-4">
+                <h4 className="text-white font-medium text-sm sm:text-base">Reminder Types</h4>
+
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                      <Target className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
+                      <div className="min-w-0 flex-1">
+                        <Label className="text-white text-xs sm:text-sm">Goal Reminders</Label>
                         <div className="text-white/70 text-xs">Get reminded about incomplete goals</div>
                       </div>
                     </div>
