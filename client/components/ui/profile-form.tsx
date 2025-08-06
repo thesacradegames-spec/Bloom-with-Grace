@@ -126,33 +126,33 @@ export function ProfileForm({ onComplete }: ProfileFormProps) {
         {/* Profile Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Selected Character Display */}
-          <div className="space-y-3 mb-6">
+          <div className="space-y-3 mb-4 sm:mb-6">
             <div className="text-center">
-              <div className={`bg-gradient-to-r ${selectedCharacter.color} backdrop-blur-sm p-4 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-3 border border-white/30 shadow-lg transition-all duration-300`}>
-                <span className="text-3xl drop-shadow-lg">{selectedCharacter.emoji}</span>
+              <div className={`bg-gradient-to-r ${selectedCharacter.color} backdrop-blur-sm p-3 sm:p-4 rounded-full w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center mb-2 sm:mb-3 border border-white/30 shadow-lg transition-all duration-300`}>
+                <span className="text-2xl sm:text-3xl drop-shadow-lg">{selectedCharacter.emoji}</span>
               </div>
-              <p className="text-white font-medium mb-2">{selectedCharacter.name}</p>
+              <p className="text-white font-medium mb-1 sm:mb-2 text-sm sm:text-base">{selectedCharacter.name}</p>
               <p className="text-white/70 text-xs">{selectedCharacter.description}</p>
             </div>
 
             {/* Character Selection Grid */}
-            <Label className="text-white font-medium text-center block">
+            <Label className="text-white font-medium text-center block text-sm sm:text-base">
               Choose Your Profile Character 🎭
             </Label>
-            <div className="grid grid-cols-6 gap-2 max-h-32 overflow-y-auto bg-white/5 rounded-2xl p-3 border border-white/20 backdrop-blur-sm">
+            <div className="grid grid-cols-6 gap-1.5 sm:gap-2 max-h-28 sm:max-h-32 overflow-y-auto bg-white/5 rounded-xl sm:rounded-2xl p-2 sm:p-3 border border-white/20 backdrop-blur-sm">
               {CUTE_CHARACTERS.map((character) => (
                 <button
                   key={character.id}
                   type="button"
                   onClick={() => setSelectedCharacter(character)}
-                  className={`p-2 rounded-lg transition-all duration-200 border ${
+                  className={`p-1.5 sm:p-2 rounded-lg transition-all duration-200 border ${
                     selectedCharacter.id === character.id
                       ? 'border-white/60 bg-white/20 shadow-lg scale-110'
                       : 'border-white/20 bg-white/10 hover:bg-white/20 hover:scale-105'
                   }`}
                   disabled={isLoading}
                 >
-                  <div className="text-xl">{character.emoji}</div>
+                  <div className="text-lg sm:text-xl">{character.emoji}</div>
                 </button>
               ))}
             </div>
