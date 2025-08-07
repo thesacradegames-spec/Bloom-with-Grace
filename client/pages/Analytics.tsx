@@ -183,8 +183,6 @@ export default function Analytics() {
       <BloomHeader userName={userName} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8">
-        {/* Navigation Tabs */}
-        <MainNavTabs />
 
         <div className="space-y-6 sm:space-y-8">
           {/* Overview Stats - Mobile Responsive */}
