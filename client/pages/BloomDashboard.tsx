@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles, Target } from "lucide-react";
 import { BloomHeader } from "@/components/ui/bloom-header";
 import { StatsCards } from "@/components/ui/stats-cards";
-import { MainNavTabs } from "@/components/ui/main-nav-tabs";
-import { GoalItem } from "@/components/ui/goal-item";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
-import { WellnessSection } from "@/components/ui/wellness-section";
-import { NextDayButton } from "@/components/ui/next-day-button";
 import { CompleteDayButton } from "@/components/ui/complete-day-button";
 import { BirthdayPopup } from "@/components/ui/birthday-popup";
 import { BirthdayCelebration } from "@/components/ui/birthday-celebration";
@@ -23,10 +19,6 @@ import {
   loadUserDisplayName
 } from "@/lib/user-data-utils";
 import {
-  createGoalReminders,
-  createWaterReminders,
-  createDailyReminder,
-  showGoalReminder,
   getNotificationSettings,
   initializeNotifications
 } from "@/lib/notification-utils";
