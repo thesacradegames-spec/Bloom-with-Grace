@@ -451,7 +451,7 @@ export default function BloomDashboard() {
                 </div>
                 <div>
                   <h2 className="text-lg sm:text-xl font-bold text-white">Wellness Track</h2>
-                  <p className="text-white/80 text-xs sm:text-sm">Stay hydrated & healthy! 💧</p>
+                  <p className="text-white/80 text-xs sm:text-sm">Stay hydrated & healthy!</p>
                 </div>
               </div>
 
