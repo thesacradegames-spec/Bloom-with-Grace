@@ -365,52 +365,54 @@ export default function Settings() {
             </div>
           </div>
 
-          {/* Notification Settings */}
-          <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+          {/* Notification Settings - Mobile Responsive */}
+          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
                style={{ animationDelay: '0.1s' }}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-green-400 to-blue-400 p-2 rounded-xl shadow-lg">
-                <Bell className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="bg-gradient-to-r from-green-400 to-blue-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
+                <Bell className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Notifications</h2>
-                <p className="text-white/70 text-sm">Manage your alerts</p>
+                <h2 className="text-lg sm:text-xl font-bold text-white">Notifications</h2>
+                <p className="text-white/70 text-xs sm:text-sm">Manage your alerts</p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white/10 rounded-xl border border-white/20">
-                <div>
-                  <p className="text-white font-medium">Daily Reminders</p>
-                  <p className="text-white/70 text-sm">Get reminded to track your goals</p>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-center justify-between p-3 sm:p-4 bg-white/10 rounded-xl border border-white/20">
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-medium text-sm sm:text-base">Daily Reminders</p>
+                  <p className="text-white/70 text-xs sm:text-sm">Get reminded to track your goals</p>
                 </div>
                 <Switch
                   checked={notifications}
                   onCheckedChange={handleNotificationsChange}
+                  className="ml-3"
                 />
               </div>
             </div>
           </div>
 
-          {/* Goal Management */}
-          <div className="lg:col-span-2 glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+          {/* Goal Management - Mobile Responsive */}
+          <div className="lg:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
                style={{ animationDelay: '0.2s' }}>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-400 p-2 rounded-xl shadow-lg">
-                  <Target className="w-6 h-6 text-white" />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 sm:justify-between mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
+                  <Target className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white">Goals Management</h2>
-                  <p className="text-white/70 text-sm">Add, edit, or remove your daily goals</p>
+                  <h2 className="text-lg sm:text-xl font-bold text-white">Goals Management</h2>
+                  <p className="text-white/70 text-xs sm:text-sm">Add, edit, or remove your daily goals</p>
                 </div>
               </div>
               
               <Dialog open={isAddingGoal} onOpenChange={setIsAddingGoal}>
                 <DialogTrigger asChild>
-                  <Button className="bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white border border-white/30">
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add Goal
+                  <Button className="bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white border border-white/30 text-sm sm:text-base px-3 sm:px-4 py-2">
+                    <Plus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Add Goal</span>
+                    <span className="sm:hidden">Add</span>
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="bg-gradient-to-br from-pink-100 to-purple-100 border-none">
@@ -467,32 +469,32 @@ export default function Settings() {
               </Dialog>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
               {goals.map(goal => (
-                <div key={goal.id} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-2xl">{goal.icon}</span>
-                    <div className="flex-1">
-                      <h3 className="text-white font-medium">{goal.title}</h3>
-                      <p className="text-white/70 text-sm">Daily target: {goal.target}</p>
+                <div key={goal.id} className="bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3">
+                    <span className="text-xl sm:text-2xl">{goal.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-white font-medium text-sm sm:text-base truncate">{goal.title}</h3>
+                      <p className="text-white/70 text-xs sm:text-sm">Daily target: {goal.target}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 sm:gap-2">
                     <Button
                       size="sm"
                       variant="outline"
                       onClick={() => handleUpdateGoalTarget(goal.id, goal.target - 1)}
-                      className="text-white border-white/30 hover:bg-white/10"
+                      className="text-white border-white/30 hover:bg-white/10 h-8 w-8 p-0 sm:h-9 sm:w-9"
                     >
                       <Minus className="w-3 h-3" />
                     </Button>
-                    <span className="text-white font-medium px-2">{goal.target}</span>
+                    <span className="text-white font-medium px-2 text-sm sm:text-base min-w-[2rem] text-center">{goal.target}</span>
                     <Button
                       size="sm"
                       variant="outline"
                       onClick={() => handleUpdateGoalTarget(goal.id, goal.target + 1)}
-                      className="text-white border-white/30 hover:bg-white/10"
+                      className="text-white border-white/30 hover:bg-white/10 h-8 w-8 p-0 sm:h-9 sm:w-9"
                     >
                       <Plus className="w-3 h-3" />
                     </Button>
@@ -500,7 +502,7 @@ export default function Settings() {
                       size="sm"
                       variant="destructive"
                       onClick={() => handleDeleteGoal(goal.id)}
-                      className="ml-auto"
+                      className="ml-auto h-8 w-8 p-0 sm:h-9 sm:w-9"
                     >
                       <Trash2 className="w-3 h-3" />
                     </Button>
@@ -509,53 +511,53 @@ export default function Settings() {
               ))}
             </div>
 
-            {/* Save Changes Button for Goals */}
+            {/* Save Changes Button for Goals - Mobile Responsive */}
             <div className="flex justify-center">
               <Button
                 onClick={() => {
                   // Goals are automatically saved when modified, this is for user feedback
                   alert('✨ Goal changes have been saved successfully! ✨');
                 }}
-                className="bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+                className="bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm sm:text-base w-full sm:w-auto"
               >
-                <Save className="w-5 h-5 mr-2" />
+                <Save className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                 Save Goal Changes ✅
               </Button>
             </div>
           </div>
 
-          {/* Data Management */}
-          <div className="lg:col-span-2 glass-card rounded-3xl p-8 shadow-xl animate-fade-in"
+          {/* Data Management - Mobile Responsive */}
+          <div className="lg:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
                style={{ animationDelay: '0.3s' }}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-red-400 to-pink-400 p-2 rounded-xl shadow-lg">
-                <Download className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="bg-gradient-to-r from-red-400 to-pink-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
+                <Download className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Data Management</h2>
-                <p className="text-white/70 text-sm">Export or clear your data</p>
+                <h2 className="text-lg sm:text-xl font-bold text-white">Data Management</h2>
+                <p className="text-white/70 text-xs sm:text-sm">Export or clear your data</p>
               </div>
             </div>
 
-            {/* Export Statistics */}
+            {/* Export Statistics - Mobile Responsive */}
             {exportStats && (
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/20">
-                <h3 className="text-white font-medium mb-3">📊 Your Data Summary</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 mb-4 sm:mb-6 border border-white/20">
+                <h3 className="text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">📊 Your Data Summary</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
                   <div>
-                    <div className="text-white text-lg font-bold">{exportStats.totalDays}</div>
+                    <div className="text-white text-base sm:text-lg font-bold">{exportStats.totalDays}</div>
                     <div className="text-white/70 text-xs">Total Days</div>
                   </div>
                   <div>
-                    <div className="text-white text-lg font-bold">{exportStats.perfectDays}</div>
+                    <div className="text-white text-base sm:text-lg font-bold">{exportStats.perfectDays}</div>
                     <div className="text-white/70 text-xs">Perfect Days</div>
                   </div>
                   <div>
-                    <div className="text-white text-lg font-bold">{exportStats.averageCompletion}%</div>
+                    <div className="text-white text-base sm:text-lg font-bold">{exportStats.averageCompletion}%</div>
                     <div className="text-white/70 text-xs">Avg Completion</div>
                   </div>
                   <div>
-                    <div className="text-white text-lg font-bold">
+                    <div className="text-white text-base sm:text-lg font-bold">
                       {exportStats.dateRange ?
                         `${Math.ceil((new Date(exportStats.dateRange.end).getTime() - new Date(exportStats.dateRange.start).getTime()) / (1000 * 60 * 60 * 24)) + 1}`
                         : '0'}
@@ -566,60 +568,60 @@ export default function Settings() {
               </div>
             )}
 
-            {/* Export Options */}
-            <div className="space-y-4">
+            {/* Export Options - Mobile Responsive */}
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <h3 className="text-white font-medium mb-3">📊 Export as CSV</h3>
-                <div className="grid sm:grid-cols-3 gap-3">
+                <h3 className="text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">📊 Export as CSV</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                   <Button
                     onClick={() => handleExportCSV('weekly')}
-                    className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white"
+                    className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white text-sm sm:text-base py-2 sm:py-3"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Last Week
                   </Button>
                   <Button
                     onClick={() => handleExportCSV('monthly')}
-                    className="bg-gradient-to-r from-green-400 to-emerald-400 hover:from-green-500 hover:to-emerald-500 text-white"
+                    className="bg-gradient-to-r from-green-400 to-emerald-400 hover:from-green-500 hover:to-emerald-500 text-white text-sm sm:text-base py-2 sm:py-3"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Last Month
                   </Button>
                   <Button
                     onClick={() => handleExportCSV('all')}
-                    className="bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-white"
+                    className="bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-white text-sm sm:text-base py-2 sm:py-3"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     All Data
                   </Button>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-white font-medium mb-3">🗂️ Other Options</h3>
-                <div className="grid sm:grid-cols-3 gap-3">
+                <h3 className="text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">🗂️ Other Options</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                   <Button
                     onClick={handleExportJSON}
-                    className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white"
+                    className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white text-sm sm:text-base py-2 sm:py-3"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Export JSON
                   </Button>
 
                   <Button
                     onClick={handleClearAllData}
                     variant="destructive"
-                    className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
+                    className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-sm sm:text-base py-2 sm:py-3"
                   >
-                    <Trash2 className="w-4 h-4 mr-2" />
+                    <Trash2 className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Clear All Data
                   </Button>
 
                   <Button
                     onClick={handleSignOut}
-                    className="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white"
+                    className="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white text-sm sm:text-base py-2 sm:py-3"
                   >
-                    <LogOut className="w-4 h-4 mr-2" />
+                    <LogOut className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Sign Out
                   </Button>
                 </div>
