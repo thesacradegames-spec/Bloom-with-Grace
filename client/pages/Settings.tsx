@@ -3,7 +3,7 @@ import {
   Settings as SettingsIcon, 
   User, 
   Target, 
-  Bell, 
+
   Download, 
   Trash2, 
   LogOut, 
