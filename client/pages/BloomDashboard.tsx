@@ -256,15 +256,6 @@ export default function BloomDashboard() {
 
       // Show notification when water goal is reached
       if (newWaterIntake >= 3 && prev.waterIntake < 3) {
-        const currentUser = getCurrentUser();
-        if (currentUser) {
-          const settings = getNotificationSettings(currentUser);
-          if (settings.enabled && settings.waterReminder) {
-            setTimeout(() => {
-              showGoalReminder('Water Intake', newWaterIntake, 3);
-            }, 500);
-          }
-        }
       }
 
       return {
@@ -464,7 +455,7 @@ export default function BloomDashboard() {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">💧</span>
+                    <span className="text-2xl">���</span>
                     <div>
                       <h3 className="text-white font-medium">Water Intake</h3>
                       <p className="text-white/70 text-sm">{dashboardData.waterIntake}/3 glasses</p>
