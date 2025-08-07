@@ -352,7 +352,7 @@ export default function BloomDashboard() {
 
         {/* Enhanced Date and Next Day Section - Mobile Optimized */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 lg:mb-8 gap-3 sm:gap-4">
-          <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-xl animate-fade-in floating w-full sm:w-auto">
+          <div className="glass-card rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 shadow-xl animate-fade-in floating w-full sm:w-auto">
             <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
               <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white animate-pulse" />
               <h2 className="text-base sm:text-lg lg:text-2xl font-bold text-white drop-shadow-lg">
