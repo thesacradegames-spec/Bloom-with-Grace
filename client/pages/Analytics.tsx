@@ -225,17 +225,17 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Weekly Progress Chart */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-6">
-              <BarChart3 className="w-6 h-6 text-blue-500" />
-              <h3 className="text-xl font-semibold text-gray-900">Weekly Progress</h3>
+          {/* Weekly Progress Chart - Mobile Responsive */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Weekly Progress</h3>
             </div>
-            <div className="grid grid-cols-7 gap-4">
+            <div className="grid grid-cols-7 gap-2 sm:gap-3 lg:gap-4">
               {analyticsData.weeklyProgress.map((day) => (
                 <div key={day.day} className="text-center">
-                  <div className="text-sm font-medium text-gray-600 mb-2">{day.day}</div>
-                  <div className="h-32 bg-gray-100 rounded-lg relative overflow-hidden">
+                  <div className="text-xs sm:text-sm font-medium text-gray-600 mb-1 sm:mb-2">{day.day}</div>
+                  <div className="h-20 sm:h-24 lg:h-32 bg-gray-100 rounded-lg relative overflow-hidden">
                     <div
                       className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-500 to-purple-500 rounded-lg transition-all duration-500"
                       style={{ height: `${day.completion}%` }}
