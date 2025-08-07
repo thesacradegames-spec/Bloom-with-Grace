@@ -155,7 +155,6 @@ export default function Settings() {
         birthday
       },
       settings: {
-        notifications,
         goals
       },
       data: []
