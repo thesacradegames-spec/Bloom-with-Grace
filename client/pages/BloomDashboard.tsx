@@ -484,8 +484,8 @@ export default function BloomDashboard() {
             </div>
           </div>
 
-          {/* Right Column - Enhanced Calendar */}
-          <div>
+          {/* Right Column - Enhanced Calendar - Mobile Optimized */}
+          <div className="order-first lg:order-last">
             <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 shadow-xl animate-fade-in floating" style={{ animationDelay: '0.3s' }}>
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                 <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg animate-pulse">
