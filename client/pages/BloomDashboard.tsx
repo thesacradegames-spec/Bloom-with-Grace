@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles, Target } from "lucide-react";
+import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles, Target, Droplets } from "lucide-react";
 import { BloomHeader } from "@/components/ui/bloom-header";
 import { StatsCards } from "@/components/ui/stats-cards";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
