@@ -16,7 +16,7 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-dreamblush/30 to-dreampeach/20">
-      <Header userName="Dreamer" />
+      <BloomHeader userName="Dreamer" />
 
       <main className="flex flex-col items-center justify-center min-h-[70vh] p-4 sm:p-6">
         <div className="text-center animate-fade-in">
