@@ -257,32 +257,32 @@ export default function Settings() {
 
       <BloomHeader userName={displayName} />
       
-      <main className="max-w-4xl mx-auto px-6 pb-12 relative z-10">
-        {/* Page Title */}
-        <div className="mb-8">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-3 rounded-xl shadow-lg">
-                <SettingsIcon className="w-7 h-7 text-white" />
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12 relative z-10">
+        {/* Page Title - Mobile Responsive */}
+        <div className="mb-6 sm:mb-8">
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 shadow-lg">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg">
+                <SettingsIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white drop-shadow-lg">Settings</h1>
-                <p className="text-white/80 text-sm">Customize your Her Daily Bloom experience</p>
+                <h1 className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">Settings</h1>
+                <p className="text-white/80 text-xs sm:text-sm">Customize your Her Daily Bloom experience</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Profile Settings */}
-          <div className="glass-card rounded-3xl p-8 shadow-xl animate-fade-in">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-xl shadow-lg">
-                <User className="w-6 h-6 text-white" />
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
+          {/* Profile Settings - Mobile Responsive */}
+          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
+                <User className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Profile</h2>
-                <p className="text-white/70 text-sm">Your personal information</p>
+                <h2 className="text-lg sm:text-xl font-bold text-white">Profile</h2>
+                <p className="text-white/70 text-xs sm:text-sm">Your personal information</p>
               </div>
             </div>
 
