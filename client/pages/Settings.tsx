@@ -77,9 +77,6 @@ export default function Settings() {
       setBirthday(userBirthday);
     }
 
-    // Load notifications preference
-    const notifPref = localStorage.getItem(`bloom-user-${currentUser.toLowerCase().replace(/\s+/g, '-')}-notifications`);
-    setNotifications(notifPref !== 'false');
 
     // Load custom goals (if any)
     const savedGoals = localStorage.getItem(`bloom-user-${currentUser.toLowerCase().replace(/\s+/g, '-')}-goals`);
