@@ -369,8 +369,6 @@ export default function BloomDashboard() {
       <BloomHeader userName={userName} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12 relative z-10">
-        {/* Beautiful Navigation Tabs */}
-        <MainNavTabs />
 
         {/* Enhanced Statistics Cards with better spacing */}
         <div className="mb-8 sm:mb-12">
