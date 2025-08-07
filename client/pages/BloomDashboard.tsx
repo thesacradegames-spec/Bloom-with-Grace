@@ -434,15 +434,32 @@ export default function BloomDashboard() {
                     className="animate-fade-in"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <GoalItem
-                      id={goal.id}
-                      icon={goal.icon}
-                      title={goal.title}
-                      current={goal.current}
-                      target={goal.target}
-                      onIncrement={handleGoalIncrement}
-                      onDecrement={handleGoalDecrement}
-                    />
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-lg">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{goal.icon}</span>
+                          <div>
+                            <h3 className="text-white font-medium">{goal.title}</h3>
+                            <p className="text-white/70 text-sm">{goal.current}/{goal.target}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => handleGoalDecrement(goal.id)}
+                            className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                          >
+                            -
+                          </button>
+                          <span className="text-white font-bold min-w-[2rem] text-center">{goal.current}</span>
+                          <button
+                            onClick={() => handleGoalIncrement(goal.id)}
+                            className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
