@@ -458,7 +458,7 @@ export default function BloomDashboard() {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-<div className="bg-gradient-to-br from-blue-400 to-cyan-300 p-2 rounded-lg shadow-lg">
+                    <div className="bg-gradient-to-br from-blue-400 to-cyan-300 p-2 rounded-lg shadow-lg">
                       <Droplets className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
