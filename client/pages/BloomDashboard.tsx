@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles, Target, Droplets } from "lucide-react";
 import { BloomHeader } from "@/components/ui/bloom-header";
 import { StatsCards } from "@/components/ui/stats-cards";
+import { NavTabs } from "@/components/ui/nav-tabs";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
 import { CompleteDayButton } from "@/components/ui/complete-day-button";
 import { BirthdayPopup } from "@/components/ui/birthday-popup";
@@ -455,7 +456,7 @@ export default function BloomDashboard() {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">���</span>
+                    <span className="text-2xl">�����</span>
                     <div>
                       <h3 className="text-white font-medium">Water Intake</h3>
                       <p className="text-white/70 text-sm">{dashboardData.waterIntake}/3 glasses</p>
