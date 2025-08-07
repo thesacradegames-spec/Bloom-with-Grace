@@ -446,7 +446,7 @@ export default function Settings() {
                       size="sm"
                       variant="outline"
                       onClick={() => handleUpdateGoalTarget(goal.id, goal.target - 1)}
-                      className="text-white border-white/30 hover:bg-white/10 h-8 w-8 p-0 sm:h-9 sm:w-9"
+                      className="text-white border-white/30 hover:bg-white/10 h-10 w-10 p-0 sm:h-9 sm:w-9"
                     >
                       <Minus className="w-3 h-3" />
                     </Button>
@@ -455,7 +455,7 @@ export default function Settings() {
                       size="sm"
                       variant="outline"
                       onClick={() => handleUpdateGoalTarget(goal.id, goal.target + 1)}
-                      className="text-white border-white/30 hover:bg-white/10 h-8 w-8 p-0 sm:h-9 sm:w-9"
+                      className="text-white border-white/30 hover:bg-white/10 h-10 w-10 p-0 sm:h-9 sm:w-9"
                     >
                       <Plus className="w-3 h-3" />
                     </Button>
