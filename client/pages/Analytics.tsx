@@ -269,18 +269,18 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Monthly Performance */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-6">
-              <Calendar className="w-6 h-6 text-purple-500" />
-              <h3 className="text-xl font-semibold text-gray-900">Monthly Performance</h3>
+          {/* Monthly Performance - Mobile Responsive */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Monthly Performance</h3>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {analyticsData.monthlyStats.map((month) => (
-                <div key={month.month} className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-lg font-semibold text-gray-900 mb-2">{month.month}</div>
-                  <div className="text-3xl font-bold text-purple-600 mb-1">{month.perfectDays}</div>
-                  <div className="text-sm text-gray-600">Perfect Days out of {month.totalDays}</div>
+                <div key={month.month} className="text-center p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
+                  <div className="text-base sm:text-lg font-semibold text-gray-900 mb-2">{month.month}</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1">{month.perfectDays}</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Perfect Days out of {month.totalDays}</div>
                   <div className="text-xs text-gray-500 mt-1">
                     {Math.round((month.perfectDays / month.totalDays) * 100)}% Success Rate
                   </div>
