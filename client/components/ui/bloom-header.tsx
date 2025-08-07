@@ -2,6 +2,7 @@ import { Flower2, BarChart3, Clock, Sparkles, Quote } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { UserDropdown } from "./user-dropdown";
 import { ThemeToggle } from "./theme-toggle";
+import { NotificationStatus } from "./notification-status";
 import { getDailyQuote } from "@/lib/quotes-utils";
 
 interface BloomHeaderProps {
@@ -68,7 +69,10 @@ export function BloomHeader({ userName = "diwakar", onUserNameChange }: BloomHea
         </Link>
 
         {/* Enhanced Navigation and User Section */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Notification Status */}
+          <NotificationStatus />
+
           {/* Theme Toggle */}
           <ThemeToggle />
 

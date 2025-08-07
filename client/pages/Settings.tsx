@@ -25,6 +25,8 @@ import { getUserBirthday, saveUserBirthday, formatBirthday } from "@/lib/birthda
 import { exportUserDataAsCSV, getExportStats } from "@/lib/export-utils";
 import { getUserCharacter, saveUserCharacter } from "@/lib/character-utils";
 import { CUTE_CHARACTERS, Character } from "@/lib/characters";
+import { NotificationSettingsComponent } from "@/components/ui/notification-settings";
+import { NotificationTestButton } from "@/components/ui/notification-test-button";
 import { useNavigate } from "react-router-dom";
 
 interface Goal {
@@ -258,21 +260,31 @@ export default function Settings() {
       <BloomHeader userName={displayName} />
       
       <main className="max-w-4xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12 relative z-10">
+<<<<<<< HEAD
         {/* Page Title - Mobile Responsive */}
+=======
+        {/* Page Title */}
+>>>>>>> 2c811b4e442d9ab1b3938863303e958734485493
         <div className="mb-6 sm:mb-8">
           <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 shadow-lg">
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg">
                 <SettingsIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
               </div>
+<<<<<<< HEAD
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">Settings</h1>
+=======
+              <div className="min-w-0 flex-1">
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-lg">Settings</h1>
+>>>>>>> 2c811b4e442d9ab1b3938863303e958734485493
                 <p className="text-white/80 text-xs sm:text-sm">Customize your Her Daily Bloom experience</p>
               </div>
             </div>
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Profile Settings - Mobile Responsive */}
           <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in">
@@ -281,6 +293,16 @@ export default function Settings() {
                 <User className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
               <div>
+=======
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          {/* Profile Settings */}
+          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-lg sm:rounded-xl shadow-lg">
+                <User className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <div className="min-w-0 flex-1">
+>>>>>>> 2c811b4e442d9ab1b3938863303e958734485493
                 <h2 className="text-lg sm:text-xl font-bold text-white">Profile</h2>
                 <p className="text-white/70 text-xs sm:text-sm">Your personal information</p>
               </div>
@@ -365,6 +387,7 @@ export default function Settings() {
             </div>
           </div>
 
+<<<<<<< HEAD
           {/* Notification Settings - Mobile Responsive */}
           <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
                style={{ animationDelay: '0.1s' }}>
@@ -402,6 +425,29 @@ export default function Settings() {
                   <Target className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
                 <div>
+=======
+          {/* Notification Settings */}
+          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in lg:col-span-2"
+               style={{ animationDelay: '0.1s' }}>
+            <NotificationSettingsComponent
+              username={userName}
+              onSettingsChange={(settings) => {
+                // Optional: Handle settings changes if needed
+                console.log('Notification settings updated:', settings);
+              }}
+            />
+          </div>
+
+          {/* Goal Management */}
+          <div className="lg:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
+               style={{ animationDelay: '0.2s' }}>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-400 p-2 rounded-lg sm:rounded-xl shadow-lg">
+                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
+                <div className="min-w-0 flex-1">
+>>>>>>> 2c811b4e442d9ab1b3938863303e958734485493
                   <h2 className="text-lg sm:text-xl font-bold text-white">Goals Management</h2>
                   <p className="text-white/70 text-xs sm:text-sm">Add, edit, or remove your daily goals</p>
                 </div>

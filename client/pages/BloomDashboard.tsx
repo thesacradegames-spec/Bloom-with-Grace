@@ -14,14 +14,22 @@ import { getCurrentLocalDate, addDaysToDateString, formatDateForDisplay } from "
 import { isTodayUsersBirthday } from "@/lib/birthday-utils";
 import { getUserGoals } from "@/lib/goal-utils";
 import { calculateGlobalStats, GlobalStats } from "@/lib/stats-utils";
-import { 
-  getCurrentUser, 
-  saveUserDayData, 
-  loadUserDayData, 
+import {
+  getCurrentUser,
+  saveUserDayData,
+  loadUserDayData,
   calculateUserGlobalStats,
   saveUserDisplayName,
   loadUserDisplayName
 } from "@/lib/user-data-utils";
+import {
+  createGoalReminders,
+  createWaterReminders,
+  createDailyReminder,
+  showGoalReminder,
+  getNotificationSettings,
+  initializeNotifications
+} from "@/lib/notification-utils";
 
 interface Goal {
   id: string;
@@ -131,7 +139,24 @@ export default function BloomDashboard() {
         goals: newGoals
       });
     }
+
+    // Initialize notifications for the user (only once per session)
+    const initKey = `notifications-initialized-${currentUser}`;
+    if (!sessionStorage.getItem(initKey)) {
+      // Use setTimeout to avoid blocking the main render
+      setTimeout(async () => {
+        const settings = getNotificationSettings(currentUser);
+        if (settings.enabled) {
+          await initializeNotifications(currentUser);
+          createDailyReminder(currentUser);
+        }
+      }, 100);
+      sessionStorage.setItem(initKey, 'true');
+    }
   }, [currentDate]);
+
+  // Note: Removed problematic notifications useEffect that was causing infinite loops
+  // Goal and water reminders are now only created during manual actions (increment/decrement)
 
   // Listen for goal changes from settings
   useEffect(() => {
@@ -217,14 +242,35 @@ export default function BloomDashboard() {
   };
 
   const handleGoalIncrement = (goalId: string) => {
-    setDashboardData(prev => ({
-      ...prev,
-      goals: prev.goals.map(goal =>
-        goal.id === goalId && goal.current < goal.target
-          ? { ...goal, current: goal.current + 1 }
-          : goal
-      )
-    }));
+    setDashboardData(prev => {
+      const updatedGoals = prev.goals.map(goal => {
+        if (goal.id === goalId && goal.current < goal.target) {
+          const newCurrent = goal.current + 1;
+          const updatedGoal = { ...goal, current: newCurrent };
+
+          // Show notification when goal is completed
+          if (newCurrent === goal.target) {
+            const currentUser = getCurrentUser();
+            if (currentUser) {
+              const settings = getNotificationSettings(currentUser);
+              if (settings.enabled && settings.goalReminders) {
+                setTimeout(() => {
+                  showGoalReminder(goal.title, newCurrent, goal.target);
+                }, 500); // Slight delay for better UX
+              }
+            }
+          }
+
+          return updatedGoal;
+        }
+        return goal;
+      });
+
+      return {
+        ...prev,
+        goals: updatedGoals
+      };
+    });
   };
 
   const handleGoalDecrement = (goalId: string) => {
@@ -239,10 +285,27 @@ export default function BloomDashboard() {
   };
 
   const handleWaterIncrement = () => {
-    setDashboardData(prev => ({
-      ...prev,
-      waterIntake: Math.min(prev.waterIntake + 0.5, 10) // Max 10L
-    }));
+    setDashboardData(prev => {
+      const newWaterIntake = Math.min(prev.waterIntake + 0.5, 10); // Max 10L
+
+      // Show notification when water goal is reached
+      if (newWaterIntake >= 3 && prev.waterIntake < 3) {
+        const currentUser = getCurrentUser();
+        if (currentUser) {
+          const settings = getNotificationSettings(currentUser);
+          if (settings.enabled && settings.waterReminder) {
+            setTimeout(() => {
+              showGoalReminder('Water Intake', newWaterIntake, 3);
+            }, 500);
+          }
+        }
+      }
+
+      return {
+        ...prev,
+        waterIntake: newWaterIntake
+      };
+    });
   };
 
   const handleWaterDecrement = () => {
