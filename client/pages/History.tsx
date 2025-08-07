@@ -102,8 +102,6 @@ export default function History() {
       <BloomHeader userName={userName} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8">
-        {/* Navigation Tabs */}
-        <MainNavTabs />
 
         {/* Header - Mobile Optimized */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
