@@ -460,6 +460,7 @@ export default function BloomDashboard() {
                   <div className="flex items-center gap-3">
 <div className="bg-gradient-to-br from-blue-400 to-cyan-300 p-2 rounded-lg shadow-lg">
                       <Droplets className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
                     <div>
                       <h3 className="text-white font-medium">Water Intake</h3>
                       <p className="text-white/70 text-sm">{dashboardData.waterIntake}/3 glasses</p>
