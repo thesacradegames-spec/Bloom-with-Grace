@@ -398,10 +398,13 @@ export default function BloomDashboard() {
           </div>
 
           <div className="glass-card rounded-xl sm:rounded-2xl p-2 shadow-xl animate-fade-in floating-delayed flex-shrink-0">
-            <NextDayButton
-              currentDate={currentDate}
-              onNextDay={handleNextDay}
-            />
+            <button
+              onClick={handleNextDay}
+              className="bg-gradient-to-r from-green-400 to-blue-400 hover:from-green-500 hover:to-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
+            >
+              <Calendar className="w-4 h-4" />
+              Next Day
+            </button>
           </div>
         </div>
 
