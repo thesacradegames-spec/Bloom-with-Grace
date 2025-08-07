@@ -354,33 +354,6 @@ export default function Settings() {
             </div>
           </div>
 
-          {/* Notification Settings - Mobile Responsive */}
-          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
-               style={{ animationDelay: '0.1s' }}>
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-              <div className="bg-gradient-to-r from-green-400 to-blue-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
-                <Bell className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg sm:text-xl font-bold text-white">Notifications</h2>
-                <p className="text-white/70 text-xs sm:text-sm">Manage your alerts</p>
-              </div>
-            </div>
-
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-center justify-between p-3 sm:p-4 bg-white/10 rounded-xl border border-white/20">
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-medium text-sm sm:text-base">Daily Reminders</p>
-                  <p className="text-white/70 text-xs sm:text-sm">Get reminded to track your goals</p>
-                </div>
-                <Switch
-                  checked={notifications}
-                  onCheckedChange={handleNotificationsChange}
-                  className="ml-3"
-                />
-              </div>
-            </div>
-          </div>
 
           {/* Goal Management - Mobile Responsive */}
           <div className="lg:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in"
