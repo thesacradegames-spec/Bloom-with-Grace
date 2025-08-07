@@ -463,7 +463,7 @@ export default function Settings() {
                       size="sm"
                       variant="destructive"
                       onClick={() => handleDeleteGoal(goal.id)}
-                      className="ml-auto h-8 w-8 p-0 sm:h-9 sm:w-9"
+                      className="ml-auto h-10 w-10 p-0 sm:h-9 sm:w-9"
                     >
                       <Trash2 className="w-3 h-3" />
                     </Button>
