@@ -18,9 +18,6 @@ import {
   saveUserDisplayName,
   loadUserDisplayName
 } from "@/lib/user-data-utils";
-import {
-  initializeNotifications
-} from "@/lib/notification-utils";
 
 interface Goal {
   id: string;
