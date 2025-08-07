@@ -181,46 +181,46 @@ export default function Analytics() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 transition-colors duration-500">
-      <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
-      
-      <main className="max-w-7xl mx-auto px-6 pb-8">
+      <BloomHeader userName={userName} />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8">
         {/* Navigation Tabs */}
         <MainNavTabs />
 
-        <div className="space-y-8">
-          {/* Overview Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <Calendar className="w-6 h-6 text-blue-500" />
-                <span className="text-sm text-gray-600">Days Tracked</span>
+        <div className="space-y-6 sm:space-y-8">
+          {/* Overview Stats - Mobile Responsive */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Days Tracked</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.totalDaysTracked}</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.totalDaysTracked}</div>
             </div>
-            
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <Target className="w-6 h-6 text-green-500" />
-                <span className="text-sm text-gray-600">Avg Completion</span>
+
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-green-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Avg Completion</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.averageCompletion}%</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.averageCompletion}%</div>
             </div>
-            
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <Award className="w-6 h-6 text-yellow-500" />
-                <span className="text-sm text-gray-600">Best Streak</span>
+
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-yellow-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Best Streak</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.bestStreak}</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.bestStreak}</div>
               <div className="text-xs text-gray-500">days</div>
             </div>
-            
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <TrendingUp className="w-6 h-6 text-purple-500" />
-                <span className="text-sm text-gray-600">Current Streak</span>
+
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-purple-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Current Streak</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.currentStreak}</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.currentStreak}</div>
               <div className="text-xs text-gray-500">days</div>
             </div>
           </div>
