@@ -381,7 +381,7 @@ export default function BloomDashboard() {
           {/* Left Column - Goals and Wellness with better spacing */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Beautiful Goals Section */}
-            <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in">
+            <div className="glass-card rounded-xl sm:rounded-2xl lg:rounded-3xl p-3 sm:p-4 lg:p-6 shadow-xl animate-fade-in">
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
                 <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg animate-pulse">
                   <Trophy className="w-5 h-5 sm:w-6 sm:w-7 sm:h-7 text-white" />
