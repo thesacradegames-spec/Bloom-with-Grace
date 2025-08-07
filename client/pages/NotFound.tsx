@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Header } from "@/components/ui/header";
+import { BloomHeader } from "@/components/ui/bloom-header";
 import { Star, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
