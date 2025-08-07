@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BloomHeader } from "@/components/ui/bloom-header";
+import { NavTabs } from "@/components/ui/nav-tabs";
 import { TrendingUp, Target, Calendar, Award, BarChart3, PieChart } from "lucide-react";
 import { getAllStoredDates, getDayProgress, DayProgress } from "@/lib/data-utils";
 import { calculateGlobalStats } from "@/lib/stats-utils";
