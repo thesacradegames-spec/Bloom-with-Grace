@@ -19,7 +19,6 @@ import {
   loadUserDisplayName
 } from "@/lib/user-data-utils";
 import {
-  getNotificationSettings,
   initializeNotifications
 } from "@/lib/notification-utils";
 
