@@ -120,38 +120,42 @@ export function CompleteDayButton({
       <Button
         onClick={handleComplete}
         disabled={disabled || isCompleting}
-        className={`w-full py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg relative overflow-hidden ${
-          isPerfectDay 
-            ? 'bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white' 
+        className={`w-full py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-base sm:text-lg relative overflow-hidden ${
+          isPerfectDay
+            ? 'bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white'
             : allGoalsCompleted
             ? 'bg-gradient-to-r from-green-400 to-blue-400 hover:from-green-500 hover:to-blue-500 text-white'
             : 'bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 text-white border border-white/30 backdrop-blur-sm'
         }`}
       >
         {isCompleting ? (
-          <div className="flex items-center justify-center gap-2">
-            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-            {getButtonText()}
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+            <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <span className="hidden sm:inline">{getButtonText()}</span>
+            <span className="sm:hidden">Completing...</span>
           </div>
         ) : (
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2">
             {isPerfectDay ? (
-              <Trophy className="w-5 h-5" />
+              <Trophy className="w-4 h-4 sm:w-5 sm:h-5" />
             ) : allGoalsCompleted ? (
-              <CheckCircle className="w-5 h-5" />
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
             ) : (
-              <Clock className="w-5 h-5" />
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             )}
-            {getButtonText()}
-            <Sparkles className="w-5 h-5" />
+            <span className="hidden sm:inline">{getButtonText()}</span>
+            <span className="sm:hidden">
+              {isPerfectDay ? "Perfect Day! 🌟" : allGoalsCompleted ? "Goals Done! 🎯" : "Complete Day"}
+            </span>
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
           </div>
         )}
       </Button>
 
       {/* Encouragement Message */}
-      <div className="mt-4 text-center">
+      <div className="mt-3 sm:mt-4 text-center">
         <p className="text-white/70 text-xs italic">
-          {isPerfectDay 
+          {isPerfectDay
             ? "🎉 Amazing work! You're absolutely crushing it! 🎉"
             : "💖 Every step forward is progress worth celebrating! 💖"
           }
