@@ -143,12 +143,6 @@ export default function Settings() {
     localStorage.setItem(key, JSON.stringify(updatedGoals));
   };
 
-  const handleNotificationsChange = (enabled: boolean) => {
-    setNotifications(enabled);
-    if (!userName) return;
-    const key = `bloom-user-${userName.toLowerCase().replace(/\s+/g, '-')}-notifications`;
-    localStorage.setItem(key, enabled ? 'true' : 'false');
-  };
 
   const handleExportJSON = () => {
     if (!userName) return;
