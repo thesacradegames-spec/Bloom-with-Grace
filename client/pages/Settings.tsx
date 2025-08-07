@@ -325,10 +325,10 @@ export default function Settings() {
               </div>
 
               <div>
-                <Label className="text-white font-medium mb-3 block">
+                <Label className="text-white font-medium mb-2 sm:mb-3 block text-sm sm:text-base">
                   Profile Character 🎭
                 </Label>
-                <div className="grid grid-cols-4 gap-3 max-h-40 overflow-y-auto bg-white/5 rounded-2xl p-4 border border-white/20">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 max-h-36 sm:max-h-40 overflow-y-auto bg-white/5 rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20">
                   {CUTE_CHARACTERS.map((character) => (
                     <button
                       key={character.id}
@@ -337,13 +337,13 @@ export default function Settings() {
                         setSelectedCharacter(character);
                         setHasChanges(true);
                       }}
-                      className={`p-3 rounded-xl transition-all duration-300 border-2 ${
+                      className={`p-2 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-300 border-2 ${
                         selectedCharacter.id === character.id
                           ? `border-white/60 bg-gradient-to-r ${character.color} shadow-lg scale-105`
                           : 'border-white/20 bg-white/10 hover:bg-white/20 hover:scale-105'
                       }`}
                     >
-                      <div className="text-2xl mb-1">{character.emoji}</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl mb-0.5 sm:mb-1">{character.emoji}</div>
                       <div className="text-white text-xs font-medium">{character.name}</div>
                     </button>
                   ))}
