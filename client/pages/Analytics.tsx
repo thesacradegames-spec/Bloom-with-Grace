@@ -247,23 +247,23 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Goal Completion Rates */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-6">
-              <PieChart className="w-6 h-6 text-green-500" />
-              <h3 className="text-xl font-semibold text-gray-900">Goal Completion Rates</h3>
+          {/* Goal Completion Rates - Mobile Responsive */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Goal Completion Rates</h3>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {analyticsData.goalCompletionRates.map((goal) => (
-                <div key={goal.goal} className="flex items-center gap-4">
-                  <div className="w-24 text-sm font-medium text-gray-700">{goal.goal}</div>
-                  <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
+                <div key={goal.goal} className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                  <div className="w-20 sm:w-24 text-xs sm:text-sm font-medium text-gray-700 truncate">{goal.goal}</div>
+                  <div className="flex-1 bg-gray-200 rounded-full h-2.5 sm:h-3 overflow-hidden">
                     <div
                       className={`h-full ${goal.color} transition-all duration-500`}
                       style={{ width: `${goal.rate}%` }}
                     />
                   </div>
-                  <div className="w-12 text-sm font-semibold text-gray-900">{goal.rate}%</div>
+                  <div className="w-10 sm:w-12 text-xs sm:text-sm font-semibold text-gray-900 text-right">{goal.rate}%</div>
                 </div>
               ))}
             </div>
