@@ -56,27 +56,27 @@ export function CompleteDayButton({
   };
 
   return (
-    <div className="glass-card rounded-2xl p-6 shadow-xl animate-fade-in">
+    <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl animate-fade-in">
       {/* Progress Summary */}
-      <div className="mb-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 rounded-xl shadow-lg">
-            <Trophy className="w-5 h-5 text-white" />
+      <div className="mb-4 sm:mb-6">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+          <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg">
+            <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">Day Summary</h3>
-            <p className="text-white/80 text-sm">Your progress today</p>
+            <h3 className="text-base sm:text-lg font-bold text-white">Day Summary</h3>
+            <p className="text-white/80 text-xs sm:text-sm">Your progress today</p>
           </div>
         </div>
 
         {/* Goals Progress */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-            <div className="flex items-center gap-2 mb-1">
-              <CheckCircle className={`w-4 h-4 ${allGoalsCompleted ? 'text-green-400' : 'text-white/60'}`} />
-              <span className="text-white text-sm font-medium">Goals</span>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-2.5 sm:p-3 border border-white/20">
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+              <CheckCircle className={`w-3 h-3 sm:w-4 sm:h-4 ${allGoalsCompleted ? 'text-green-400' : 'text-white/60'}`} />
+              <span className="text-white text-xs sm:text-sm font-medium">Goals</span>
             </div>
-            <div className="text-white text-lg font-bold">
+            <div className="text-white text-base sm:text-lg font-bold">
               {completedGoals}/{totalGoals}
             </div>
             <div className="text-white/70 text-xs">
@@ -84,12 +84,12 @@ export function CompleteDayButton({
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-            <div className="flex items-center gap-2 mb-1">
-              <div className={`w-4 h-4 rounded-full ${waterGoalMet ? 'bg-blue-400' : 'bg-white/40'}`} />
-              <span className="text-white text-sm font-medium">Water</span>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-2.5 sm:p-3 border border-white/20">
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+              <div className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${waterGoalMet ? 'bg-blue-400' : 'bg-white/40'}`} />
+              <span className="text-white text-xs sm:text-sm font-medium">Water</span>
             </div>
-            <div className="text-white text-lg font-bold">
+            <div className="text-white text-base sm:text-lg font-bold">
               {waterIntake}L
             </div>
             <div className="text-white/70 text-xs">
@@ -99,17 +99,17 @@ export function CompleteDayButton({
         </div>
 
         {/* Status Message */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20 text-center">
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-2.5 sm:p-3 border border-white/20 text-center">
           {isPerfectDay ? (
-            <div className="text-yellow-400 font-medium text-sm">
+            <div className="text-yellow-400 font-medium text-xs sm:text-sm">
               🌟 Perfect Day! All goals and water target achieved! 🌟
             </div>
           ) : allGoalsCompleted ? (
-            <div className="text-green-400 font-medium text-sm">
+            <div className="text-green-400 font-medium text-xs sm:text-sm">
               🎯 All goals completed! Don't forget your water intake.
             </div>
           ) : (
-            <div className="text-white/80 font-medium text-sm">
+            <div className="text-white/80 font-medium text-xs sm:text-sm">
               Keep going! You're making great progress.
             </div>
           )}
