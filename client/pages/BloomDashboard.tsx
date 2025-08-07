@@ -225,15 +225,6 @@ export default function BloomDashboard() {
 
           // Show notification when goal is completed
           if (newCurrent === goal.target) {
-            const currentUser = getCurrentUser();
-            if (currentUser) {
-              const settings = getNotificationSettings(currentUser);
-              if (settings.enabled && settings.goalReminders) {
-                setTimeout(() => {
-                  showGoalReminder(goal.title, newCurrent, goal.target);
-                }, 500); // Slight delay for better UX
-              }
-            }
           }
 
           return updatedGoal;
