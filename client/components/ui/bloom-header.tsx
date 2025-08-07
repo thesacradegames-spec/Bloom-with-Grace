@@ -2,7 +2,6 @@ import { Flower2, BarChart3, Clock, Sparkles, Quote } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { UserDropdown } from "./user-dropdown";
 import { ThemeToggle } from "./theme-toggle";
-import { NotificationStatus } from "./notification-status";
 import { getDailyQuote } from "@/lib/quotes-utils";
 
 interface BloomHeaderProps {
