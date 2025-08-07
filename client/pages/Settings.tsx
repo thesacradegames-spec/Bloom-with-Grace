@@ -255,7 +255,7 @@ export default function Settings() {
         ))}
       </div>
 
-      <BloomHeader userName={displayName} onUserNameChange={setDisplayName} />
+      <BloomHeader userName={displayName} />
       
       <main className="max-w-4xl mx-auto px-6 pb-12 relative z-10">
         {/* Page Title */}
