@@ -376,8 +376,8 @@ export default function BloomDashboard() {
           </div>
         </div>
 
-        {/* Enhanced Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        {/* Enhanced Main Content Grid - Mobile First */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Column - Goals and Wellness with better spacing */}
           <div className="lg:col-span-2 space-y-6 sm:space-y-8">
             {/* Beautiful Goals Section */}
