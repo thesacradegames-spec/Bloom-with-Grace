@@ -178,13 +178,6 @@ export default function Analytics() {
     setAnalyticsData(calculateAnalytics());
   }, []);
 
-  const handleUserNameChange = (newName: string) => {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-
-    setUserName(newName);
-    saveUserDisplayName(currentUser, newName);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 transition-colors duration-500">
