@@ -1,20 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { User, Edit3, Check, X } from "lucide-react";
+import { User, Settings } from "lucide-react";
 import { Button } from "./button";
+import { Link } from "react-router-dom";
+import { getUserCharacter } from "@/lib/character-utils";
 
 interface UserDropdownProps {
   userName: string;
-  onUserNameChange: (newName: string) => void;
 }
 
-export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) {
+export function UserDropdown({ userName }: UserDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(userName);
+  const [userCharacter, setUserCharacter] = useState(() => getUserCharacter());
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Update character only when userName changes, not when dropdown opens
+  useEffect(() => {
+    setUserCharacter(getUserCharacter());
+  }, [userName]);
 
   // Calculate dropdown position
   const updateDropdownPosition = () => {
@@ -32,8 +37,6 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
           buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
         setIsOpen(false);
-        setIsEditing(false);
-        setEditValue(userName);
       }
     };
 
@@ -52,17 +55,6 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
     };
   }, [userName, isOpen]);
 
-  const handleSave = () => {
-    if (editValue.trim() && editValue.trim() !== userName) {
-      onUserNameChange(editValue.trim());
-    }
-    setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setEditValue(userName);
-    setIsEditing(false);
-  };
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -73,14 +65,11 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
           updateDropdownPosition();
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+        className="flex items-center gap-3 hover:opacity-80 transition-all duration-300"
       >
-        <span className="text-white font-medium hidden sm:block">
-          {userName}
-        </span>
-        <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-lg">
-            {userName.charAt(0).toUpperCase()}
+        <div className={`w-12 h-12 bg-gradient-to-br ${userCharacter.color} backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 animate-pulse`}>
+          <span className="text-2xl drop-shadow-lg">
+            {userCharacter.emoji}
           </span>
         </div>
       </button>
@@ -89,70 +78,34 @@ export function UserDropdown({ userName, onUserNameChange }: UserDropdownProps) 
       {isOpen && typeof window !== 'undefined' && createPortal(
         <div
           ref={dropdownRef}
-          className="fixed w-64 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 p-4 z-[99999] animate-fade-in"
+          className="fixed w-56 sm:w-64 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 p-3 sm:p-4 z-[99999] animate-fade-in"
           style={{
             top: `${dropdownPosition.top}px`,
             right: `${dropdownPosition.right}px`,
           }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-white" />
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${userCharacter.color} rounded-full flex items-center justify-center border border-gray-200 shadow-sm`}>
+              <span className="text-lg sm:text-xl">{userCharacter.emoji}</span>
             </div>
             <div className="flex-1">
-              {isEditing ? (
-                <div className="space-y-2">
-                  <input
-                    type="text"
-                    value={editValue}
-                    onChange={(e) => setEditValue(e.target.value)}
-                    className="w-full px-3 py-1 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    autoFocus
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleSave();
-                      if (e.key === 'Escape') handleCancel();
-                    }}
-                  />
-                  <div className="flex gap-1">
-                    <Button
-                      size="sm"
-                      onClick={handleSave}
-                      className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 h-7 text-xs"
-                    >
-                      <Check className="w-3 h-3" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={handleCancel}
-                      className="border-gray-300 text-gray-600 hover:bg-gray-50 px-2 py-1 h-7 text-xs"
-                    >
-                      <X className="w-3 h-3" />
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <div className="font-semibold text-gray-900">{userName}</div>
-                  <div className="text-sm text-gray-500">User Profile</div>
-                </div>
-              )}
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">{userName}</div>
+              <div className="text-xs sm:text-sm text-gray-500">User Profile</div>
             </div>
           </div>
 
-          {!isEditing && (
-            <div className="space-y-2">
+          <div className="space-y-2">
+            <Link to="/settings" onClick={() => setIsOpen(false)}>
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setIsEditing(true)}
-                className="w-full justify-start text-left border-gray-200 hover:bg-gray-50"
+                className="w-full justify-start text-left border-gray-200 hover:bg-gray-50 text-sm"
               >
-                <Edit3 className="w-4 h-4 mr-2" />
-                Edit Name
+                <Settings className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                Settings
               </Button>
-            </div>
-          )}
+            </Link>
+          </div>
         </div>,
         document.body
       )}

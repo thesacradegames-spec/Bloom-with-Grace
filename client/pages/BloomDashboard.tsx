@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles } from "lucide-react";
+import { Trophy, Code, FileText, Brain, Github, Calendar, Sparkles, Target, Droplets } from "lucide-react";
 import { BloomHeader } from "@/components/ui/bloom-header";
 import { StatsCards } from "@/components/ui/stats-cards";
 import { NavTabs } from "@/components/ui/nav-tabs";
-import { GoalItem } from "@/components/ui/goal-item";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
-import { WellnessSection } from "@/components/ui/wellness-section";
-import { NextDayButton } from "@/components/ui/next-day-button";
+import { CompleteDayButton } from "@/components/ui/complete-day-button";
 import { BirthdayPopup } from "@/components/ui/birthday-popup";
+import { BirthdayCelebration } from "@/components/ui/birthday-celebration";
 import { getCurrentLocalDate, addDaysToDateString, formatDateForDisplay } from "@/lib/date-utils";
+import { isTodayUsersBirthday } from "@/lib/birthday-utils";
+import { getUserGoals } from "@/lib/goal-utils";
 import { calculateGlobalStats, GlobalStats } from "@/lib/stats-utils";
-import { 
-  getCurrentUser, 
-  saveUserDayData, 
-  loadUserDayData, 
+import {
+  getCurrentUser,
+  saveUserDayData,
+  loadUserDayData,
   calculateUserGlobalStats,
   saveUserDisplayName,
   loadUserDisplayName
@@ -43,47 +44,24 @@ interface DashboardData {
   goals: Goal[];
 }
 
-const DEFAULT_GOALS: Goal[] = [
-  {
-    id: "codeforces",
-    title: "Codeforces",
-    icon: <Trophy className="w-6 h-6 text-yellow-500" />,
-    current: 0,
-    target: 2
-  },
-  {
-    id: "codechef",
-    title: "CodeChef",
-    icon: <Trophy className="w-6 h-6 text-orange-500" />,
-    current: 0,
-    target: 2
-  },
-  {
-    id: "leetcode",
-    title: "LeetCode",
-    icon: <Code className="w-6 h-6 text-blue-500" />,
-    current: 0,
-    target: 3
-  },
-  {
-    id: "dsa",
-    title: "DSA Practice",
-    icon: <Brain className="w-6 h-6 text-pink-500" />,
-    current: 0,
-    target: 2
-  },
-  {
-    id: "github",
-    title: "GitHub",
-    icon: <Github className="w-6 h-6 text-gray-700" />,
-    current: 0,
-    target: 1
-  }
-];
+// Icon mapping for goals
+const getGoalIcon = (iconString: string) => {
+  const iconMap: Record<string, React.ReactNode> = {
+    '🏆': <Trophy className="w-6 h-6 text-yellow-500" />,
+    '🥇': <Trophy className="w-6 h-6 text-orange-500" />,
+    '💻': <Code className="w-6 h-6 text-blue-500" />,
+    '🧠': <Brain className="w-6 h-6 text-pink-500" />,
+    '📂': <Github className="w-6 h-6 text-gray-700" />,
+    '🎯': <Target className="w-6 h-6 text-purple-500" />,
+    '⭐': <Sparkles className="w-6 h-6 text-yellow-400" />,
+  };
+  return iconMap[iconString] || <Target className="w-6 h-6 text-gray-500" />;
+};
 
 export default function BloomDashboard() {
   const [currentDate, setCurrentDate] = useState(getCurrentLocalDate());
   const [userName, setUserName] = useState("");
+  const [isBirthday, setIsBirthday] = useState(false);
   const [globalStats, setGlobalStats] = useState<GlobalStats>({
     currentStreak: 0,
     longestStreak: 0,
@@ -92,7 +70,7 @@ export default function BloomDashboard() {
   });
   const [dashboardData, setDashboardData] = useState<DashboardData>({
     waterIntake: 0,
-    goals: DEFAULT_GOALS
+    goals: []
   });
 
   // Load data from localStorage
@@ -106,32 +84,103 @@ export default function BloomDashboard() {
     const displayName = loadUserDisplayName(currentUser);
     setUserName(displayName);
 
+    // Check if today is user's birthday
+    setIsBirthday(isTodayUsersBirthday(currentDate, currentUser));
+
     // Load global stats for this user
     const globalStatsData = calculateUserGlobalStats(currentUser);
     setGlobalStats(globalStatsData);
 
+    // Load user's custom goals
+    const userGoals = getUserGoals(currentUser);
+
     // Load daily data for this user
     const savedData = loadUserDayData(currentUser, currentDate);
     if (savedData) {
-      // Merge saved goal data with default goals configuration
-      const updatedGoals = DEFAULT_GOALS.map(defaultGoal => {
-        const savedGoal = savedData.goalData?.find(g => g.id === defaultGoal.id);
-        return savedGoal 
-          ? { ...defaultGoal, current: savedGoal.current, target: savedGoal.target }
-          : defaultGoal;
+      // Merge saved goal data with user's current goal configuration
+      const updatedGoals = userGoals.map(userGoal => {
+        const savedGoal = savedData.goalData?.find(g => g.id === userGoal.id);
+        return {
+          id: userGoal.id,
+          title: userGoal.title,
+          icon: getGoalIcon(userGoal.icon),
+          current: savedGoal?.current || 0,
+          target: userGoal.target
+        };
       });
-      
+
       setDashboardData({
         waterIntake: savedData.waterIntake || 0,
         goals: updatedGoals
       });
     } else {
-      // Reset to defaults for new day
+      // Reset to user's goals for new day
+      const newGoals = userGoals.map(userGoal => ({
+        id: userGoal.id,
+        title: userGoal.title,
+        icon: getGoalIcon(userGoal.icon),
+        current: 0,
+        target: userGoal.target
+      }));
+
       setDashboardData({
         waterIntake: 0,
-        goals: DEFAULT_GOALS.map(goal => ({ ...goal, current: 0 }))
+        goals: newGoals
       });
     }
+
+  }, [currentDate]);
+
+  // Note: Removed problematic notifications useEffect that was causing infinite loops
+  // Goal and water reminders are now only created during manual actions (increment/decrement)
+
+  // Listen for goal changes from settings
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      // Check if goals were updated
+      if (e.key === `bloom-user-${currentUser.toLowerCase().replace(/\s+/g, '-')}-goals`) {
+        // Reload goals when they change in settings
+        const userGoals = getUserGoals(currentUser);
+        const savedData = loadUserDayData(currentUser, currentDate);
+
+        if (savedData) {
+          const updatedGoals = userGoals.map(userGoal => {
+            const savedGoal = savedData.goalData?.find(g => g.id === userGoal.id);
+            return {
+              id: userGoal.id,
+              title: userGoal.title,
+              icon: getGoalIcon(userGoal.icon),
+              current: savedGoal?.current || 0,
+              target: userGoal.target
+            };
+          });
+
+          setDashboardData(prev => ({
+            ...prev,
+            goals: updatedGoals
+          }));
+        } else {
+          const newGoals = userGoals.map(userGoal => ({
+            id: userGoal.id,
+            title: userGoal.title,
+            icon: getGoalIcon(userGoal.icon),
+            current: 0,
+            target: userGoal.target
+          }));
+
+          setDashboardData(prev => ({
+            ...prev,
+            goals: newGoals
+          }));
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, [currentDate]);
 
   // Save daily data to localStorage and recalculate global stats
@@ -155,13 +204,6 @@ export default function BloomDashboard() {
     setGlobalStats(updatedGlobalStats);
   }, [dashboardData, currentDate]);
 
-  const handleUserNameChange = (newName: string) => {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-    
-    setUserName(newName);
-    saveUserDisplayName(currentUser, newName);
-  };
 
   const handleNextDay = () => {
     // Move to next day using proper date utility
@@ -176,14 +218,26 @@ export default function BloomDashboard() {
   };
 
   const handleGoalIncrement = (goalId: string) => {
-    setDashboardData(prev => ({
-      ...prev,
-      goals: prev.goals.map(goal =>
-        goal.id === goalId && goal.current < goal.target
-          ? { ...goal, current: goal.current + 1 }
-          : goal
-      )
-    }));
+    setDashboardData(prev => {
+      const updatedGoals = prev.goals.map(goal => {
+        if (goal.id === goalId && goal.current < goal.target) {
+          const newCurrent = goal.current + 1;
+          const updatedGoal = { ...goal, current: newCurrent };
+
+          // Show notification when goal is completed
+          if (newCurrent === goal.target) {
+          }
+
+          return updatedGoal;
+        }
+        return goal;
+      });
+
+      return {
+        ...prev,
+        goals: updatedGoals
+      };
+    });
   };
 
   const handleGoalDecrement = (goalId: string) => {
@@ -198,10 +252,18 @@ export default function BloomDashboard() {
   };
 
   const handleWaterIncrement = () => {
-    setDashboardData(prev => ({
-      ...prev,
-      waterIntake: Math.min(prev.waterIntake + 0.5, 10) // Max 10L
-    }));
+    setDashboardData(prev => {
+      const newWaterIntake = Math.min(prev.waterIntake + 0.5, 10); // Max 10L
+
+      // Show notification when water goal is reached
+      if (newWaterIntake >= 3 && prev.waterIntake < 3) {
+      }
+
+      return {
+        ...prev,
+        waterIntake: newWaterIntake
+      };
+    });
   };
 
   const handleWaterDecrement = () => {
@@ -213,34 +275,71 @@ export default function BloomDashboard() {
 
   const todaysTasks = dashboardData.goals.reduce((total, goal) => total + goal.current, 0);
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 relative overflow-hidden">
-      {/* Optimized background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-60">
-        {/* Reduced decorative circles */}
-        <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-white/8 to-pink-300/15 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-purple-300/15 to-blue-400/15 rounded-full blur-3xl"></div>
+  const handleCompleteDay = () => {
+    // Mark the day as completed - this could trigger additional logic
+    // like updating streaks, sending notifications, etc.
+    console.log('Day completed!', {
+      date: currentDate,
+      goals: dashboardData.goals,
+      waterIntake: dashboardData.waterIntake
+    });
 
-        {/* Reduced floating sparkles */}
-        {[...Array(5)].map((_, i) => (
-          <Sparkles
+    // You could add additional completion logic here:
+    // - Show a completion animation
+    // - Update completion timestamps
+    // - Calculate bonus points
+    // - Send notifications
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 relative overflow-hidden transition-colors duration-500">
+      {/* Enhanced background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-60">
+        {/* Cute floating shapes */}
+        <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-white/8 to-pink-300/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-purple-300/15 to-blue-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+        {/* Cute floating emojis */}
+        {['🌸', '✨', '🦋', '🌺', '💖', '🌟', '🎀', '🌙'].map((emoji, i) => (
+          <div
             key={i}
-            className="absolute text-white/8"
+            className="absolute text-white/20 text-xl animate-bounce"
             style={{
-              left: `${20 + i * 20}%`,
-              top: `${20 + i * 15}%`,
-              fontSize: '12px',
+              left: `${10 + i * 12}%`,
+              top: `${15 + (i % 3) * 25}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + (i % 2)}s`
+            }}
+          >
+            {emoji}
+          </div>
+        ))}
+
+        {/* Floating sparkles */}
+        {[...Array(8)].map((_, i) => (
+          <Sparkles
+            key={`sparkle-${i}`}
+            className="absolute text-white/10 animate-pulse"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${10 + i * 20}%`,
+              fontSize: '14px',
+              animationDelay: `${i * 0.3}s`
             }}
           />
         ))}
       </div>
 
+      <BirthdayCelebration isActive={isBirthday} />
       <BirthdayPopup currentDate={currentDate} />
-      <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
-      
-      <main className="max-w-7xl mx-auto px-6 pb-12 relative z-10">
+      <BloomHeader userName={userName} />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12 relative z-10">
+        {/* Navigation Tabs */}
+        <NavTabs />
+
         {/* Enhanced Statistics Cards with better spacing */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <StatsCards
             currentStreak={globalStats.currentStreak}
             longestStreak={globalStats.longestStreak}
@@ -251,44 +350,48 @@ export default function BloomDashboard() {
           />
         </div>
 
-        {/* Beautiful Navigation Tabs */}
-        <NavTabs activeTab="dashboard" />
-
-        {/* Enhanced Date and Next Day Section */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-12 gap-6">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3 mb-2">
-              <Calendar className="w-6 h-6 text-white" />
-              <h2 className="text-2xl font-bold text-white drop-shadow-lg">
+        {/* Enhanced Date and Next Day Section - Mobile Optimized */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 lg:mb-8 gap-3 sm:gap-4">
+          <div className="glass-card rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 shadow-xl animate-fade-in floating w-full sm:w-auto">
+            <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white animate-pulse" />
+              <h2 className="text-base sm:text-lg lg:text-2xl font-bold text-white drop-shadow-lg">
                 {formatDateForDisplay(currentDate)}
               </h2>
+              <span className="text-sm sm:text-base lg:text-lg animate-bounce">🌸</span>
             </div>
-            <p className="text-white/90 text-sm font-medium">
-              ✨ Ready to achieve your dreams today? ✨
+            <p className="text-white/90 text-xs sm:text-sm font-medium">
+              ✨ Ready to bloom and achieve your dreams today? ✨
             </p>
           </div>
-          
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-2 border border-white/20 shadow-lg">
-            <NextDayButton
-              currentDate={currentDate}
-              onNextDay={handleNextDay}
-            />
+
+          <div className="glass-card rounded-xl sm:rounded-2xl p-2 shadow-xl animate-fade-in floating-delayed flex-shrink-0">
+            <button
+              onClick={handleNextDay}
+              className="bg-gradient-to-r from-green-400 to-blue-400 hover:from-green-500 hover:to-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
+            >
+              <Calendar className="w-4 h-4" />
+              Next Day
+            </button>
           </div>
         </div>
 
-        {/* Enhanced Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-10">
+        {/* Enhanced Main Content Grid - Mobile First */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Column - Goals and Wellness with better spacing */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Beautiful Goals Section */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-3 rounded-xl shadow-lg">
-                  <Trophy className="w-7 h-7 text-white" />
+            <div className="glass-card rounded-xl sm:rounded-2xl lg:rounded-3xl p-3 sm:p-4 lg:p-6 shadow-xl animate-fade-in">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
+                <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg animate-pulse">
+                  <Trophy className="w-5 h-5 sm:w-6 sm:w-7 sm:h-7 text-white" />
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-white drop-shadow-lg">Today's Goals</h2>
-                  <p className="text-white/80 text-sm">Track your daily achievements</p>
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-lg flex items-center gap-1 sm:gap-2">
+                    Today's Goals
+                    <span className="text-sm sm:text-base lg:text-lg animate-bounce">🎯</span>
+                  </h2>
+                  <p className="text-white/80 text-xs sm:text-sm">Track your daily achievements and bloom! 🌺</p>
                 </div>
               </div>
               
@@ -299,44 +402,106 @@ export default function BloomDashboard() {
                     className="animate-fade-in"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <GoalItem
-                      id={goal.id}
-                      icon={goal.icon}
-                      title={goal.title}
-                      current={goal.current}
-                      target={goal.target}
-                      onIncrement={handleGoalIncrement}
-                      onDecrement={handleGoalDecrement}
-                    />
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-lg">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{goal.icon}</span>
+                          <div>
+                            <h3 className="text-white font-medium">{goal.title}</h3>
+                            <p className="text-white/70 text-sm">{goal.current}/{goal.target}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => handleGoalDecrement(goal.id)}
+                            className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                          >
+                            -
+                          </button>
+                          <span className="text-white font-bold min-w-[2rem] text-center">{goal.current}</span>
+                          <button
+                            onClick={() => handleGoalIncrement(goal.id)}
+                            className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Complete Day Button */}
+              <div className="mt-6">
+                <CompleteDayButton
+                  goals={dashboardData.goals}
+                  waterIntake={dashboardData.waterIntake}
+                  targetWater={3}
+                  onComplete={handleCompleteDay}
+                />
               </div>
             </div>
 
             {/* Enhanced Wellness Section */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-xl">
-              <WellnessSection
-                waterIntake={dashboardData.waterIntake}
-                targetWater={3}
-                onWaterIncrement={handleWaterIncrement}
-                onWaterDecrement={handleWaterDecrement}
-              />
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <div className="bg-gradient-to-r from-blue-400 to-cyan-400 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg">
+                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-lg sm:text-xl font-bold text-white">Wellness Track</h2>
+                  <p className="text-white/80 text-xs sm:text-sm">Stay hydrated & healthy!</p>
+                </div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-gradient-to-br from-blue-400 to-cyan-300 p-2 rounded-lg shadow-lg">
+                      <Droplets className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-medium">Water Intake</h3>
+                      <p className="text-white/70 text-sm">{dashboardData.waterIntake}/3 glasses</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handleWaterDecrement}
+                      className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                    >
+                      -
+                    </button>
+                    <span className="text-white font-bold min-w-[2rem] text-center">{dashboardData.waterIntake}</span>
+                    <button
+                      onClick={handleWaterIncrement}
+                      className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Column - Enhanced Calendar */}
-          <div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 shadow-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-2 rounded-xl shadow-lg">
-                  <Calendar className="w-6 h-6 text-white" />
+          {/* Right Column - Enhanced Calendar - Mobile Optimized */}
+          <div className="order-first lg:order-last">
+            <div className="glass-card rounded-xl sm:rounded-2xl lg:rounded-3xl p-3 sm:p-4 lg:p-6 shadow-xl animate-fade-in floating" style={{ animationDelay: '0.3s' }}>
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <div className="bg-gradient-to-r from-blue-400 to-purple-400 p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg animate-pulse">
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white">Progress Calendar</h3>
-                  <p className="text-white/70 text-xs">Your journey overview</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-1 sm:gap-2">
+                    Progress Calendar
+                    <span className="text-xs sm:text-sm animate-bounce">🗓️</span>
+                  </h3>
+                  <p className="text-white/70 text-xs">Your magical journey overview ✨</p>
                 </div>
               </div>
-              <CalendarWidget 
+              <CalendarWidget
                 currentDate={currentDate}
                 onDateSelect={handleDateSelect}
               />

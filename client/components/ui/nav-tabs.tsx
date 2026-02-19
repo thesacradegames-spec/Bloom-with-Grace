@@ -1,58 +1,58 @@
-import { Link, useLocation } from "react-router-dom";
-import { BarChart3, Home } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { BarChart3, Calendar, Target, Home } from "lucide-react";
 
-interface NavTabsProps {
-  activeTab: "dashboard" | "analytics";
-  onTabChange?: (tab: "dashboard" | "analytics") => void;
-}
-
-export function NavTabs({ activeTab }: NavTabsProps) {
+export function NavTabs() {
+  const navigate = useNavigate();
   const location = useLocation();
-  const currentPath = location.pathname;
-  
-  return (
-    <div className="flex items-center justify-center mb-10">
-      <div className="relative bg-white/20 backdrop-blur-lg rounded-2xl p-1.5 border border-white/30 shadow-lg">
-        {/* Background slider */}
-        <div className={`absolute top-1.5 bottom-1.5 w-1/2 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg transition-all duration-300 ${
-          currentPath === "/analytics" ? "translate-x-full" : "translate-x-0"
-        }`}></div>
-        
-        <div className="flex relative z-10">
-          <Link
-            to="/dashboard"
-            className={`relative px-8 py-4 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 min-w-[140px] justify-center ${
-              currentPath === "/dashboard"
-                ? "text-gray-800 scale-105"
-                : "text-white/90 hover:text-white hover:scale-105"
-            }`}
-          >
-            <Home className="w-4 h-4" />
-            <span>Dashboard</span>
-            {currentPath === "/dashboard" && (
-              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-            )}
-          </Link>
-          
-          <Link
-            to="/analytics"
-            className={`relative px-8 py-4 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 min-w-[140px] justify-center ${
-              currentPath === "/analytics"
-                ? "text-gray-800 scale-105"
-                : "text-white/90 hover:text-white hover:scale-105"
-            }`}
-          >
-            <BarChart3 className="w-4 h-4" />
-            <span>Analytics</span>
-            {currentPath === "/analytics" && (
-              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-            )}
-          </Link>
-        </div>
 
-        {/* Decorative elements */}
-        <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full opacity-60 animate-pulse" style={{ animationDelay: '1s' }}></div>
+  const tabs = [
+    {
+      id: 'dashboard',
+      label: 'Dashboard',
+      icon: Home,
+      path: '/dashboard',
+      color: 'from-pink-400 to-purple-400'
+    },
+    {
+      id: 'analytics',
+      label: 'Analytics',
+      icon: BarChart3,
+      path: '/analytics',
+      color: 'from-blue-400 to-cyan-400'
+    },
+    {
+      id: 'history',
+      label: 'History',
+      icon: Calendar,
+      path: '/history',
+      color: 'from-green-400 to-blue-400'
+    }
+  ];
+
+  const isActive = (path: string) => location.pathname === path;
+
+  return (
+    <div className="glass-card rounded-2xl sm:rounded-3xl p-2 shadow-xl animate-fade-in mb-6 sm:mb-8">
+      <div className="flex gap-1 sm:gap-2">
+        {tabs.map((tab) => {
+          const IconComponent = tab.icon;
+          const active = isActive(tab.path);
+          
+          return (
+            <button
+              key={tab.id}
+              onClick={() => navigate(tab.path)}
+              className={`flex-1 flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 ${
+                active
+                  ? `bg-gradient-to-r ${tab.color} text-white shadow-lg scale-105`
+                  : 'text-white/80 hover:text-white hover:bg-white/10 hover:scale-105'
+              }`}
+            >
+              <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline font-medium text-sm sm:text-base">{tab.label}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

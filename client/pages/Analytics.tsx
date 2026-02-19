@@ -178,71 +178,64 @@ export default function Analytics() {
     setAnalyticsData(calculateAnalytics());
   }, []);
 
-  const handleUserNameChange = (newName: string) => {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-
-    setUserName(newName);
-    saveUserDisplayName(currentUser, newName);
-  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600">
-      <BloomHeader userName={userName} onUserNameChange={handleUserNameChange} />
-      
-      <main className="max-w-7xl mx-auto px-6 pb-8">
-        {/* Navigation Tabs */}
-        <NavTabs activeTab="analytics" onTabChange={() => {}} />
+    <div className="min-h-screen bg-gradient-to-br from-pink-400 via-pink-500 to-purple-600 dark:from-black dark:via-purple-900 dark:to-purple-800 transition-colors duration-500">
+      <BloomHeader userName={userName} />
 
-        <div className="space-y-8">
-          {/* Overview Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <Calendar className="w-6 h-6 text-blue-500" />
-                <span className="text-sm text-gray-600">Days Tracked</span>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8">
+        {/* Navigation Tabs */}
+        <NavTabs />
+
+        <div className="space-y-6 sm:space-y-8">
+          {/* Overview Stats - Mobile Responsive */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Days Tracked</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.totalDaysTracked}</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.totalDaysTracked}</div>
             </div>
-            
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <Target className="w-6 h-6 text-green-500" />
-                <span className="text-sm text-gray-600">Avg Completion</span>
+
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-green-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Avg Completion</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.averageCompletion}%</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.averageCompletion}%</div>
             </div>
-            
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <Award className="w-6 h-6 text-yellow-500" />
-                <span className="text-sm text-gray-600">Best Streak</span>
+
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-yellow-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Best Streak</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.bestStreak}</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.bestStreak}</div>
               <div className="text-xs text-gray-500">days</div>
             </div>
-            
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-              <div className="flex items-center gap-3 mb-2">
-                <TrendingUp className="w-6 h-6 text-purple-500" />
-                <span className="text-sm text-gray-600">Current Streak</span>
+
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-purple-500" />
+                <span className="text-xs sm:text-sm text-gray-600 font-medium">Current Streak</span>
               </div>
-              <div className="text-3xl font-bold text-gray-900">{analyticsData.currentStreak}</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{analyticsData.currentStreak}</div>
               <div className="text-xs text-gray-500">days</div>
             </div>
           </div>
 
-          {/* Weekly Progress Chart */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-6">
-              <BarChart3 className="w-6 h-6 text-blue-500" />
-              <h3 className="text-xl font-semibold text-gray-900">Weekly Progress</h3>
+          {/* Weekly Progress Chart - Mobile Responsive */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Weekly Progress</h3>
             </div>
-            <div className="grid grid-cols-7 gap-4">
+            <div className="grid grid-cols-7 gap-2 sm:gap-3 lg:gap-4">
               {analyticsData.weeklyProgress.map((day) => (
                 <div key={day.day} className="text-center">
-                  <div className="text-sm font-medium text-gray-600 mb-2">{day.day}</div>
-                  <div className="h-32 bg-gray-100 rounded-lg relative overflow-hidden">
+                  <div className="text-xs sm:text-sm font-medium text-gray-600 mb-1 sm:mb-2">{day.day}</div>
+                  <div className="h-20 sm:h-24 lg:h-32 bg-gray-100 rounded-lg relative overflow-hidden">
                     <div
                       className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-500 to-purple-500 rounded-lg transition-all duration-500"
                       style={{ height: `${day.completion}%` }}
@@ -254,40 +247,40 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Goal Completion Rates */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-6">
-              <PieChart className="w-6 h-6 text-green-500" />
-              <h3 className="text-xl font-semibold text-gray-900">Goal Completion Rates</h3>
+          {/* Goal Completion Rates - Mobile Responsive */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Goal Completion Rates</h3>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {analyticsData.goalCompletionRates.map((goal) => (
-                <div key={goal.goal} className="flex items-center gap-4">
-                  <div className="w-24 text-sm font-medium text-gray-700">{goal.goal}</div>
-                  <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
+                <div key={goal.goal} className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                  <div className="w-20 sm:w-24 text-xs sm:text-sm font-medium text-gray-700 truncate">{goal.goal}</div>
+                  <div className="flex-1 bg-gray-200 rounded-full h-2.5 sm:h-3 overflow-hidden">
                     <div
                       className={`h-full ${goal.color} transition-all duration-500`}
                       style={{ width: `${goal.rate}%` }}
                     />
                   </div>
-                  <div className="w-12 text-sm font-semibold text-gray-900">{goal.rate}%</div>
+                  <div className="w-10 sm:w-12 text-xs sm:text-sm font-semibold text-gray-900 text-right">{goal.rate}%</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Monthly Performance */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/40">
-            <div className="flex items-center gap-3 mb-6">
-              <Calendar className="w-6 h-6 text-purple-500" />
-              <h3 className="text-xl font-semibold text-gray-900">Monthly Performance</h3>
+          {/* Monthly Performance - Mobile Responsive */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-white/40">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Monthly Performance</h3>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {analyticsData.monthlyStats.map((month) => (
-                <div key={month.month} className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-lg font-semibold text-gray-900 mb-2">{month.month}</div>
-                  <div className="text-3xl font-bold text-purple-600 mb-1">{month.perfectDays}</div>
-                  <div className="text-sm text-gray-600">Perfect Days out of {month.totalDays}</div>
+                <div key={month.month} className="text-center p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
+                  <div className="text-base sm:text-lg font-semibold text-gray-900 mb-2">{month.month}</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1">{month.perfectDays}</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Perfect Days out of {month.totalDays}</div>
                   <div className="text-xs text-gray-500 mt-1">
                     {Math.round((month.perfectDays / month.totalDays) * 100)}% Success Rate
                   </div>

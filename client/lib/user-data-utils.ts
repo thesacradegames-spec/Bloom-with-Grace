@@ -185,6 +185,66 @@ export function loadUserDisplayName(username: string): string {
 }
 
 /**
+ * Save user's character preference
+ */
+export function saveUserCharacter(username: string, character: string): void {
+  const key = getUserKey(username, 'character');
+  localStorage.setItem(key, character);
+}
+
+/**
+ * Save user's birthday
+ */
+export function saveUserBirthday(username: string, birthday: string): void {
+  const key = getUserKey(username, 'birthday');
+  localStorage.setItem(key, birthday);
+}
+
+/**
+ * Switch to a different user (for multi-user support)
+ */
+export function switchToUser(username: string): boolean {
+  const userKey = username.toLowerCase().replace(/\s+/g, '-');
+  const hasProfile = localStorage.getItem(`bloom-user-${userKey}-display-name`) ||
+                     localStorage.getItem(`bloom-user-${userKey}-birthday`) ||
+                     localStorage.getItem(`bloom-user-${userKey}-character`);
+
+  if (hasProfile) {
+    setCurrentUser(userKey);
+    return true; // User exists
+  }
+
+  return false; // User doesn't exist
+}
+
+/**
+ * Get user profile summary
+ */
+export function getUserProfile(username: string): {
+  displayName: string;
+  birthday: string | null;
+  character: string | null;
+  totalDays: number;
+  hasData: boolean;
+} {
+  const userKey = username.toLowerCase().replace(/\s+/g, '-');
+  return {
+    displayName: loadUserDisplayName(userKey),
+    birthday: getUserBirthday(userKey),
+    character: getUserCharacter(userKey),
+    totalDays: getUserStoredDates(userKey).length,
+    hasData: getUserStoredDates(userKey).length > 0
+  };
+}
+
+/**
+ * Clear current user session (logout)
+ */
+export function clearCurrentUser(): void {
+  localStorage.removeItem('bloom-current-user');
+}
+
+/**
  * Check if user exists (has any data)
  */
 export function userExists(username: string): boolean {
@@ -192,11 +252,65 @@ export function userExists(username: string): boolean {
 }
 
 /**
+ * Reset all user data (for new users)
+ */
+export function resetUserData(username: string): void {
+  const userPrefix = `bloom-user-${username.toLowerCase().replace(/\s+/g, '-')}-`;
+
+  // Remove all user-specific data
+  const keysToRemove: string[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(userPrefix)) {
+      keysToRemove.push(key);
+    }
+  }
+
+  keysToRemove.forEach(key => localStorage.removeItem(key));
+}
+
+/**
+ * Initialize new user with clean slate
+ */
+export function initializeNewUser(username: string, displayName: string, birthday: string, character: string): void {
+  // Reset any existing data for this user
+  resetUserData(username);
+
+  // Set up fresh user data
+  setCurrentUser(username);
+  saveUserDisplayName(username, displayName);
+
+  // Save user profile information
+  const userKey = username.toLowerCase().replace(/\s+/g, '-');
+  localStorage.setItem(`bloom-user-${userKey}-birthday`, birthday);
+  localStorage.setItem(`bloom-user-${userKey}-character`, character);
+  localStorage.setItem(`bloom-user-${userKey}-created-at`, new Date().toISOString());
+}
+
+/**
+ * Check if this is a completely new user (no profile data exists)
+ */
+export function isCompletelyNewUser(username: string): boolean {
+  const userKey = username.toLowerCase().replace(/\s+/g, '-');
+  const hasProfile = localStorage.getItem(`bloom-user-${userKey}-display-name`) ||
+                     localStorage.getItem(`bloom-user-${userKey}-birthday`) ||
+                     localStorage.getItem(`bloom-user-${userKey}-character`);
+  return !hasProfile;
+}
+
+/**
+ * Get a safe username (normalized)
+ */
+export function normalizeUsername(username: string): string {
+  return username.toLowerCase().replace(/\s+/g, '-');
+}
+
+/**
  * Get all users who have used the app
  */
 export function getAllUsers(): string[] {
   const users = new Set<string>();
-  
+
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     if (key && key.startsWith('bloom-user-')) {
@@ -206,6 +320,22 @@ export function getAllUsers(): string[] {
       }
     }
   }
-  
+
   return Array.from(users);
+}
+
+/**
+ * Get user's character selection
+ */
+export function getUserCharacter(username: string): string | null {
+  const key = getUserKey(username, 'character');
+  return localStorage.getItem(key);
+}
+
+/**
+ * Get user's birthday
+ */
+export function getUserBirthday(username: string): string | null {
+  const key = getUserKey(username, 'birthday');
+  return localStorage.getItem(key);
 }

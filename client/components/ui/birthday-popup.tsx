@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { X, Cake, Sparkles, Heart, Gift, Star, Crown } from "lucide-react";
 import { Button } from "./button";
+import { isTodayUsersBirthday, getUserAge } from "@/lib/birthday-utils";
+import { getCurrentUser } from "@/lib/user-data-utils";
 
 interface BirthdayPopupProps {
   currentDate: string;
@@ -8,14 +10,19 @@ interface BirthdayPopupProps {
 
 export function BirthdayPopup({ currentDate }: BirthdayPopupProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [userAge, setUserAge] = useState<number | null>(null);
+  const [userName, setUserName] = useState<string>("");
 
   useEffect(() => {
-    // Parse the current date string (YYYY-MM-DD format)
-    const [year, month, day] = currentDate.split('-').map(Number);
-    
-    // Check if current date is August 7th (month 8, day 7)
-    if (month === 8 && day === 7) {
-      // Always show popup on August 7th
+    const currentUser = getCurrentUser();
+    if (!currentUser) return;
+
+    // Check if today is the user's birthday
+    if (isTodayUsersBirthday(currentDate, currentUser)) {
+      setUserName(currentUser);
+      setUserAge(getUserAge(currentUser));
+
+      // Show popup after a brief delay
       setTimeout(() => {
         setIsVisible(true);
       }, 1000);
@@ -114,21 +121,21 @@ export function BirthdayPopup({ currentDate }: BirthdayPopupProps) {
           
           {/* Title with gentle gradient */}
           <h2 className="text-3xl font-bold text-gray-800 mb-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-            🎉 Happy Birthday! 🎂
+            🎉 Happy Birthday{userName ? `, ${userName}` : ''}! 🎂
           </h2>
-          
-          {/* Simple subtitle */}
+
+          {/* Simple subtitle with age */}
           <h3 className="text-lg font-medium text-purple-600 mb-4">
-            ✨ Wishing you a wonderful day! ✨
+            ✨ {userAge ? `Celebrating ${userAge} amazing years!` : 'Wishing you a wonderful day!'} ✨
           </h3>
-          
+
           {/* Birthday message in calm container */}
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-pink-200">
             <p className="text-base text-gray-700 mb-2 leading-relaxed">
               🌟 May this special day bring you joy, success, and all the happiness you deserve!
             </p>
             <p className="text-sm text-purple-600 font-medium">
-              Keep achieving your dreams! ✨
+              Keep blooming and achieving your dreams! ✨
             </p>
           </div>
 
